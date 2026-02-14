@@ -1,0 +1,37 @@
+{
+  "models": [
+    {"name": "Embodied-R1.5", "short": "ER1.5", "group": "ours", "logo": "./logo/ER1.5-logo3.png", "color": "#2563eb"},
+    {"name": "Embodied-R1", "short": "ER1", "group": "embodied", "logo": "./logo/ER1.5-logo3.png", "color": "#7cb3ff"},
+    {"name": "Gemini-Robotics-1.5", "short": "GR-1.5", "group": "generalist", "logo": "./logo/gemini.jpeg", "color": "#4b5563"},
+    {"name": "Gemini-2.5-Pro", "short": "Gemini-2.5", "group": "generalist", "logo": "./logo/gemini.jpeg", "color": "#7c8494"},
+    {"name": "GPT-5", "short": "GPT-5", "group": "generalist", "logo": "./logo/openai.png", "color": "#a3aab6"},
+    {"name": "Mimo-Embodied", "short": "Mimo", "group": "embodied", "logo": "./logo/xiaomi.png", "color": "#c9cdd4"}
+  ],
+  "featured": ["ERQA", "OpenEQA", "VAbench-P", "RoboVQA"],
+  "overalls": {
+    "Embodied Cognition and Spatial Reasoning\n7 Benchmarks": [74.5, 60.0, 63.5, 72.4, 70.6, 68.0],
+    "Embodied Pointing and Location\n8 Benchmarks":           [70.7, 59.8, 50.1, 28.9, 28.9, 55.7],
+    "Embodied Planning and Correction\n4 Benchmarks":         [59.6, 44.5, 39.4, 46.5, 42.1, 53.9]
+  },
+  "all_benchmarks": {
+    "EgoPlan2":     [53.7, 26.5, 32.0, 42.9, 36.9, 43.0],
+    "Cosmos":       [64.9, 55.2, 53.7, 62.8, 56.2, 56.8],
+    "RoboFAC":      [76.8, 40.2, 47.0, 46.4, 69.0, 54.6],
+    "VAbench-P":    [70.7, 66.0, 41.6, 21.7, 31.1, 46.9],
+    "Where2Place":  [71.0, 69.5, 48.3, 49.6, 39.7, 63.6],
+    "RefSpatial":   [49.5, 39.7, 39.7, 36.5, 21.6, 48.0],
+    "Part-Afford":  [80.8, 56.6, 27.0, 25.5, 16.9, 65.5],
+    "RoboRefit":    [87.5, 85.6, 80.0, 38.4, 44.7, 82.3],
+    "RoboAfford":   [79.6, 67.2, 57.6, 23.4, 30.0, 69.8],
+    "PIO":          [63.8, 44.4, 54.0, 23.2, 23.6, 27.5],
+    "Pixmo-Point":  [62.5, 49.4, 52.5, 12.7, 23.6, 42.4],
+    "ERQA":         [51.3, 35.2, 48.5, 55.7, 54.5, 46.8],
+    "RoboSpatial":  [69.1, 47.4, 40.1, 59.9, 54.1, 61.8],
+    "EmbSpatial":   [80.2, 67.4, 73.4, 78.7, 78.3, 76.2],
+    "CV-Bench":     [88.8, 82.7, 83.6, 84.6, 84.5, 88.8],
+    "SAT":          [76.7, 76.3, 62.7, 76.7, 83.3, 54.6],
+    "RoboVQA":      [60.1, 51.8, 32.6, 33.9, 33.1, 62.0],
+    "OpenEQA":      [63.0, 34.5, 50.5, 65.8, 64.4, 53.6],
+    "BLINK (Rel. Depth)":        [92.7, 76.6, 85.9, 85.5, 75.0, 94.4]
+  }
+}

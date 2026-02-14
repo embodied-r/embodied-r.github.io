@@ -1,0 +1,68 @@
+{
+  "google_robot_vm": {
+    "title": "Simpler-Google Robot (Visual Matching)",
+    "tasks": ["Pick Coke Can", "Move Near", "Open/Close Drawer", "Open Top Drawer & Place Apple", "Overall"],
+    "models": {
+      "RT-1-X":            [56.7, 31.7, 59.7, 21.3, 42.4],
+      "RT-2-X":            [78.7, 77.9, 25.0, 3.7, 46.3],
+      "OpenVLA":           [16.3, 46.2, 35.6, 0.0, 24.5],
+      "SpatialVLA":        [86.0, 77.9, 57.4, 0.0, 55.3],
+      "pi0":               [97.9, 78.7, 62.3, 46.6, 71.4],
+      "pi0-FAST":          [75.3, 67.5, 42.9, 0.0, 46.4],
+      "GR00T N1.5":        [51.7, 54.0, 27.8, 7.4, 35.2],
+      "Embodied-R1.5-VLA": [92.3, 93.8, 86.1, 97.2, 92.4]
+    }
+  },
+  "google_robot_va": {
+    "title": "Simpler-Google Robot (Variant Aggregation)",
+    "tasks": ["Pick Coke Can", "Move Near", "Open/Close Drawer", "Open Top Drawer & Place Apple", "Overall"],
+    "models": {
+      "RT-1-X":            [49.0, 32.3, 29.4, 10.1, 30.2],
+      "RT-2-X":            [82.3, 79.2, 35.3, 20.6, 54.4],
+      "OpenVLA":           [54.5, 47.7, 17.7, 0.0, 30.0],
+      "SpatialVLA":        [88.0, 72.7, 41.8, 6.3, 52.2],
+      "pi0":               [90.1, 80.7, 27.6, 20.5, 54.7],
+      "pi0-FAST":          [77.6, 68.2, 31.3, 0.0, 44.3],
+      "GR00T N1.5":        [69.3, 68.7, 35.8, 4.0, 44.5],
+      "Embodied-R1.5-VLA": [80.6, 72.2, 58.3, 75.0, 71.5]
+    }
+  },
+  "widowx": {
+    "title": "Simpler-WidowX (Visual Matching)",
+    "tasks": ["Put Spoon on Towel", "Put Carrot on Plate", "Stack Blocks", "Put Eggplant in Basket", "Overall"],
+    "models": {
+      "RT-1-X":            [0.0, 4.2, 0.0, 0.0, 1.1],
+      "CogACT":            [71.7, 50.8, 15.0, 67.5, 51.3],
+      "OpenVLA":           [4.2, 0.0, 0.0, 12.5, 4.2],
+      "SpatialVLA":        [16.7, 25.0, 29.2, 100.0, 42.7],
+      "pi0":               [29.1, 0.0, 16.6, 62.5, 27.1],
+      "pi0-FAST":          [29.1, 21.9, 10.8, 66.6, 32.1],
+      "GR00T N1.5":        [75.3, 54.3, 57.0, 61.3, 62.0],
+      "Embodied-R1.5-VLA": [83.3, 75.0, 37.5, 100.0, 74.0]
+    }
+  },
+  "libero": {
+    "title": "LIBERO Benchmark",
+    "tasks": ["Goal", "Spatial", "Object", "Long", "Overall"],
+    "groups": {
+      "W/ Action Pretraining": {
+        "SpatialVLA":    [78.6, 88.2, 89.9, 55.5, 78.1],
+        "CoT-VLA":       [87.6, 87.5, 91.6, 69.0, 83.9],
+        "GR00T N1":      [93.0, 94.4, 97.6, 90.6, 93.9],
+        "GR00T N1.6":    [97.5, 97.7, 98.5, 94.4, 97.0],
+        "OpenVLA":       [79.2, 84.7, 88.4, 53.7, 76.5],
+        "OpenVLA-OFT":   [97.9, 97.6, 98.4, 94.5, 97.1],
+        "pi0":           [95.8, 96.8, 98.8, 85.2, 94.2],
+        "pi0-FAST":      [88.6, 96.4, 96.8, 60.2, 85.5],
+        "pi0.5":         [98.0, 98.8, 98.2, 92.4, 96.9]
+      },
+      "W/O Action Pretraining": {
+        "Diffusion Policy": [68.3, 78.3, 92.5, 50.5, 72.4],
+        "OpenVLA-OFT":      [91.7, 94.3, 95.2, 86.5, 91.9],
+        "pi0-FAST":         [89.0, 87.0, 63.0, 48.0, 71.8],
+        "pi0.5":            [94.6, 96.6, 97.2, 85.8, 93.6],
+        "Embodied-R1.5-VLA":[97.4, 97.8, 99.2, 93.2, 96.9]
+      }
+    }
+  }
+}

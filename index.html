@@ -1,0 +1,3684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embodied-R1.5</title>
+  <link rel="icon" href="./logo/ER1.5-logo3.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=STIX+Two+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <!-- Progress Sidebar -->
+  <nav class="progress-sidebar" aria-label="Page progress">
+    <div class="progress-track">
+      <div class="progress-line"></div>
+      <div class="progress-line-fill"></div>
+      <div class="progress-item" data-section="hero">
+        <a href="#">
+          <span class="progress-dot"></span>
+          <span class="progress-label">Intro</span>
+        </a>
+      </div>
+      <div class="progress-item" data-section="highlight">
+        <a href="#highlight">
+          <span class="progress-dot"></span>
+          <span class="progress-label">Highlight</span>
+        </a>
+      </div>
+      <div class="progress-item" data-section="models">
+        <a href="#models">
+          <span class="progress-dot"></span>
+          <span class="progress-label">Models</span>
+        </a>
+      </div>
+      <div class="progress-item" data-section="multi-agent">
+        <a href="#multi-agent">
+          <span class="progress-dot"></span>
+          <span class="progress-label">Multi-agent</span>
+        </a>
+      </div>
+      <div class="progress-item" data-section="results">
+        <a href="#results">
+          <span class="progress-dot"></span>
+          <span class="progress-label">Results</span>
+        </a>
+      </div>
+      <div class="progress-item" data-section="evalkit">
+        <a href="#evalkit">
+          <span class="progress-dot"></span>
+          <span class="progress-label">EvalKit</span>
+        </a>
+      </div>
+      <div class="progress-item" data-section="bibtex">
+        <a href="#bibtex">
+          <span class="progress-dot"></span>
+          <span class="progress-label">BibTeX</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <div class="hero-flow hero-compact">
+      <div class="hero-orb" aria-hidden="true"></div>
+      <div class="hero-title-line">
+        <span class="hero-title-art">Embodied-R1.5</span><span class="hero-title-sep">:</span>
+        <span class="hero-title-rest">Evolving <span class="hero-keyword">Physical Intelligence</span> via <span class="hero-keyword">Embodied Foundation Models</span></span>
+      </div>
+
+      <div class="hero-team-block">
+        <div class="hero-team-header" onclick="this.parentElement.classList.toggle('expanded')">
+          <img class="hero-team-logo" src="./logo/Gemini_ER_alpha_clean.png?v=2" alt="ER1.5 logo">
+          <span class="hero-team-name">Embodied-R1.5 Team</span>
+          <svg class="hero-team-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+        <div class="hero-team-expand">
+          <div class="hero-team-institutions">
+            <span class="institution-text">Tianjin University</span>
+            <span class="institution-text">Tencent Hunyuan</span>
+          </div>
+          <div class="hero-team-authors">
+            Author A, Author B, Author C, Author D, Author E, Author F, Author G, Author H
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-pill-row">
+        <span class="hero-pill">Embodied Foundation Model</span>
+        <span class="hero-pill">General Manipulation</span>
+        <span class="hero-pill">Comprehensive Embodied Capabilities</span>
+      </div>
+
+      <div class="hero-actions">
+        <a class="cta gray" href="#" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
+            style="vertical-align: -3px; margin-right: 6px;">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+          Github
+        </a>
+        <a class="cta gray" href="#" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+            style="vertical-align: -2px; margin-right: 6px;">
+            <path
+              d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h5v7h7v9H6zm2-6h8v2H8v-2zm0-4h4v2H8v-2zm0 8h8v2H8v-2z" />
+          </svg>
+          Paper
+        </a>
+        <a class="cta gray" href="#" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+            style="vertical-align: -2px; margin-right: 6px;">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+          </svg>
+          Models
+        </a>
+        <a class="cta gray" href="#" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+            style="vertical-align: -2px; margin-right: 6px;">
+            <path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" />
+          </svg>
+          Datasets
+        </a>
+        <a class="cta gray" href="#" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+            style="vertical-align: -2px; margin-right: 6px;">
+            <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+          </svg>
+          EmbodiedEvalKit
+        </a>
+        <a class="cta gray" href="#" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+            style="vertical-align: -2px; margin-right: 6px;">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          Video
+        </a>
+      </div>
+
+      <div class="hero-roadmap expanded">
+        <div class="hero-roadmap-header" onclick="this.parentElement.classList.toggle('expanded')">
+          Open-Source Roadmap
+          <svg class="hero-roadmap-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+        <div class="hero-roadmap-content">
+          <ul class="hero-roadmap-list">
+            <li><span class="roadmap-item">Release Models and Inference Scripts</span><span class="roadmap-time">~2 weeks</span></li>
+            <li><span class="roadmap-item">Release Paper on arXiv</span><span class="roadmap-time">~3 weeks</span></li>
+            <li><span class="roadmap-item">Open-source EmbodiedEvalKit</span><span class="roadmap-time">~4 weeks</span></li>
+            <li><span class="roadmap-item">Open-source Training Data</span><span class="roadmap-time">~5 weeks</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hero-waves" aria-hidden="true">
+        <svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+          </defs>
+          <g class="wave-parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(212,148,10,0.25)"></use>
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(147,51,234,0.2)"></use>
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(59,130,246,0.18)"></use>
+            <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(37,99,235,0.25)"></use>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- Section 1: Highlight -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="tagline" id="highlight">Highlight</div>
+
+    <!-- TL;DR + Key Contributions -->
+    <div class="card-surface" style="margin-bottom: 24px; padding: 28px 36px;">
+      <!-- TL;DR Header -->
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 6px; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; font-family: system-ui, sans-serif;">TL;DR</span>
+        <span style="font-size: 15px; font-family: system-ui, sans-serif; display: inline-flex; align-items: center; gap: 8px;">
+          <span style="color: #9ca3af; font-weight: 500; font-family: 'STIX Two Text', serif;">Embodied-R1</span>
+          <span style="display: inline-block; background: linear-gradient(135deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; font-size: 20px;">↗</span>
+          <span style="font-weight: 700; font-size: 19px; font-family: 'STIX Two Text', serif; background: linear-gradient(135deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Embodied-R1.5</span>
+        </span>
+      </div>
+      <p style="font-size: 17px; line-height: 1.75; color: var(--text-primary); margin: 0 0 24px 0; font-weight: 400; font-family: 'STIX Two Text', serif;">Embodied-R1.5 is a unified embodied foundation model that masters embodied cognition, planning, error correction, and pointing to achieve SOTA performance across 20+ embodied VLM benchmarks and 4 mainstream VLA evaluation suite, enabling zero-shot, long-horizon autonomy across diverse robotic embodiments.</p>
+
+      <!-- Key Contributions -->
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+        <div style="height: 1px; flex: 1; background: var(--border-subtle);"></div>
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-secondary); font-family: system-ui, sans-serif;">Key Contributions</span>
+        <div style="height: 1px; flex: 1; background: var(--border-subtle);"></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 14px; margin-bottom: 14px;">
+        <div style="background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 100%); border: 1px solid rgba(37,99,235,0.1); border-radius: 12px; padding: 20px 18px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <span style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">1</span>
+            <h3 style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.3; font-family: 'STIX Two Text', serif;">Unified Embodied Cognition</h3>
+          </div>
+          <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin: 0; font-family: 'STIX Two Text', serif;">Instead of focusing on raw performance, this triad represents a unified cognitive engine that integrates <strong style="color: var(--text-primary);">spatial reasoning</strong>, <strong style="color: var(--text-primary);">task planning</strong>, <strong style="color: var(--text-primary);">proactive error correction</strong>, and <strong style="color: var(--text-primary);">precise pointing</strong> into a single, seamless framework.</p>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 100%); border: 1px solid rgba(37,99,235,0.1); border-radius: 12px; padding: 20px 18px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <span style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">2</span>
+            <h3 style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.3; font-family: 'STIX Two Text', serif;">SOTA VLM-to-VLA Performance</h3>
+          </div>
+          <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin: 0; font-family: 'STIX Two Text', serif;">Achieving <strong style="color: var(--text-primary);">SOTA across 20+ diverse VLM benchmarks</strong>; by efficiently integrating an action head, the model further attains SOTA status on <strong style="color: var(--text-primary);">3 major VLA benchmarks across 40+ tasks</strong>. This proves that rich foundational vision-language knowledge is a critical catalyst for downstream embodied execution.</p>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 100%); border: 1px solid rgba(37,99,235,0.1); border-radius: 12px; padding: 20px 18px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <span style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">3</span>
+            <h3 style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.3; font-family: 'STIX Two Text', serif;">Robust Multi-Task RL Recipe</h3>
+          </div>
+          <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin: 0; font-family: 'STIX Two Text', serif;">A specialized <strong style="color: var(--text-primary);">reinforcement learning recipe</strong> and sophisticated <strong style="color: var(--text-primary);">reward function design</strong> that ensure stable, simultaneous learning across a wide spectrum of tasks with vastly different difficulty levels and requirements.</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+        <div style="background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 100%); border: 1px solid rgba(37,99,235,0.1); border-radius: 12px; padding: 20px 18px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <span style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">4</span>
+            <h3 style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.3; font-family: 'STIX Two Text', serif;">Universal &amp; Long-Horizon Autonomy</h3>
+          </div>
+          <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin: 0; font-family: 'STIX Two Text', serif;">A single model enabling a complete <strong style="color: var(--text-primary);">closed-loop pipeline</strong>&mdash;from high-level task decomposition and precision manipulation to <strong style="color: var(--text-primary);">autonomous reflection and retries</strong>&mdash;supporting complex, long-sequence operations across varied embodiments.</p>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 100%); border: 1px solid rgba(37,99,235,0.1); border-radius: 12px; padding: 20px 18px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <span style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">5</span>
+            <h3 style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.3; font-family: 'STIX Two Text', serif;">Full Open-Source Ecosystem</h3>
+          </div>
+          <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin: 0; font-family: 'STIX Two Text', serif;">Fully open-sourcing <strong style="color: var(--text-primary);">model weights</strong>, <strong style="color: var(--text-primary);">datasets</strong>, <strong style="color: var(--text-primary);">training scripts</strong>, and the <strong style="color: var(--text-primary);">EmbodiedEvalKit</strong> evaluation framework to accelerate community progress and establish a new standard for open embodied AI research.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-surface charts-section">
+      <div class="section-heading">Embodied VLM Evaluation</div>
+      <div id="vlm-overall-container"></div>
+      <div class="chart-legend" id="vlm-overall-legend"></div>
+
+      <p class="section-lead" style="margin-top: 20px;">Per-benchmark scores across all evaluated tasks.</p>
+      <div class="carousel-wrapper">
+        <button class="carousel-arrow carousel-arrow-left" id="bench-carousel-left" aria-label="Previous">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="carousel-viewport" id="bench-carousel-viewport">
+          <div class="carousel-track" id="bench-carousel-track"></div>
+        </div>
+        <button class="carousel-arrow carousel-arrow-right" id="bench-carousel-right" aria-label="Next">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+      <div class="carousel-dots" id="bench-carousel-dots"></div>
+      <div class="chart-legend" id="bench-carousel-legend"></div>
+
+      <div class="section-heading" style="margin-top: 24px;">VLA Benchmark Comparisons</div>
+      <div style="background: linear-gradient(135deg, rgba(37,99,235,0.06) 0%, rgba(147,51,234,0.06) 100%); border-left: 3px solid var(--blue-energy); border-radius: 12px; padding: 18px 24px; margin-bottom: 16px;">
+        <p style="color: var(--text-primary); font-size: 15.5px; line-height: 1.8; margin: 0; font-weight: 500;">
+          Embodied-R1.5-VLA is built upon Embodied-R1.5 as the backbone, augmented with an action head for VLA training — <em>without</em> large-scale action pretraining. We demonstrate that broad improvements in embodied capabilities effectively transfer to downstream VLA manipulation performance.
+        </p>
+      </div>
+      <div id="vla-charts-container"></div>
+      <p style="color: #9ca3af; font-style: italic; font-size: 13px; margin: 8px 0 4px; text-align: center;">* In LIBERO, GR00T uses GR00T-N1.6 scores and OpenVLA uses OpenVLA-OFT scores.</p>
+      <div class="chart-legend" id="vla-chart-legend"></div>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- Section 2: Models -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="tagline" id="models">Models</div>
+
+    <div class="card-surface framework-section">
+      <div class="section-heading">Model Architecture</div>
+      <p class="section-lead">Embodied-R1.5 unifies vision-language understanding with action generation in a single framework.</p>
+      <div class="framework-diagram-placeholder">
+        <div class="demo-placeholder">Architecture Diagram Coming Soon</div>
+      </div>
+    </div>
+
+    <div class="capabilities-grid">
+      <div class="capability-card card-surface">
+        <div class="capability-icon">🧠</div>
+        <h3>Embodied Reasoning</h3>
+        <p>Advanced spatial understanding and embodied QA across diverse real-world scenarios.</p>
+      </div>
+      <div class="capability-card card-surface">
+        <div class="capability-icon">🎯</div>
+        <h3>Precise Pointing</h3>
+        <p>Accurate affordance prediction and spatial grounding for manipulation tasks.</p>
+      </div>
+      <div class="capability-card card-surface">
+        <div class="capability-icon">📋</div>
+        <h3>Task Planning</h3>
+        <p>Long-horizon planning and action sequencing for complex robotic tasks.</p>
+      </div>
+      <div class="capability-card card-surface">
+        <div class="capability-icon">🤖</div>
+        <h3>Action Generation</h3>
+        <p>Direct low-level action output for multiple robot embodiments without action pretraining.</p>
+      </div>
+    </div>
+
+    <div class="card-surface"><div class="demo-placeholder">More Model Details Coming Soon</div></div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- Section 5: Multi-agent System -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="tagline" id="multi-agent">Multi-agent System</div>
+
+    <div class="card-surface"><div class="demo-placeholder">Multi-agent System Content Coming Soon</div></div>
+
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- Section 6: Results -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="tagline" id="results">Core Result</div>
+
+    <!-- Result Tabs -->
+    <div class="result-tabs">
+      <button class="result-tab active" data-tab="vlm-tab">Comprehensive Embodied VLM Evaluation<br><span class="tab-sub">(20+ Benchmarks)</span></button>
+      <button class="result-tab" data-tab="vla-tab">VLA Benchmarks<br><span class="tab-sub">(SIMPLER)</span></button>
+      <button class="result-tab" data-tab="libero-tab">VLA Benchmarks<br><span class="tab-sub">(LIBERO)</span></button>
+      <button class="result-tab" data-tab="afford-tab">Affordance Benchmarks<br><span class="tab-sub">(PartNet-Mobility)</span></button>
+    </div>
+
+    <!-- Tab 1: VLM -->
+    <div class="result-tab-content active" id="vlm-tab">
+
+    <div style="background: linear-gradient(135deg, rgba(37,99,235,0.06) 0%, rgba(147,51,234,0.06) 100%); border-left: 3px solid var(--blue-energy); border-radius: 12px; padding: 18px 24px; margin: 20px 0 20px 0;">
+      <p style="color: var(--text-primary); font-size: 15.5px; line-height: 1.8; margin: 0; font-weight: 500;">Compared with its predecessor, Embodied-R1.5 features comprehensive advancements in <strong>cognition</strong>, <strong>planning</strong>, and <strong>error correction</strong>, while significantly refining its <strong>pointing and localization precision</strong>. It currently establishes a <strong>new SOTA across 10+ benchmarks</strong>, with its mean performance markedly exceeding that of leading general-purpose and embodied models. Notably, Embodied-R1.5 demonstrates a <strong>clear competitive advantage over Gemini-Robotics-ER-1.5</strong> across all evaluated capability domains.</p>
+    </div>
+
+    <!-- Leaderboard Table Section -->
+    <section class="leaderboard-section" id="leaderboard">
+      <div class="section-heading">Embodied VLM Leaderboard</div>
+      <p class="section-lead">Comprehensive evaluation across Embodied Planning and Correction Benchmark (4 Tasks), Embodied Pointing and Location Benchmark (8 Tasks), and Embodied Cognition and Spatial benchmarks (7 Tasks).</p>
+      <div class="leaderboard-table-wrapper">
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th class="sticky-col benchmark-header" rowspan="2">Benchmark</th>
+              <th class="group-header ours-group" colspan="1">Ours</th>
+              <th class="group-header" colspan="4">Generalist</th>
+              <th class="group-header" colspan="4">Embodied</th>
+            </tr>
+            <tr class="model-row">
+              <th class="model-name ours"><span class="m-name">Embodied-R1.5*</span><span class="m-inst">ER</span></th>
+              <th class="model-name"><span class="m-name">Gemini-2.5-Pro</span><span class="m-inst">Google</span></th>
+              <th class="model-name"><span class="m-name">GPT-5</span><span class="m-inst">OpenAI</span></th>
+              <th class="model-name"><span class="m-name">Gemini-ER-1.5</span><span class="m-inst">Google</span></th>
+              <th class="model-name"><span class="m-name">Qwen3VL-8B</span><span class="m-inst">Qwen</span></th>
+              <th class="model-name"><span class="m-name">RoboBrain2.0</span><span class="m-inst">BAAI</span></th>
+              <th class="model-name"><span class="m-name">Mimo-Embodied</span><span class="m-inst">Xiaomi</span></th>
+              <th class="model-name"><span class="m-name">Pelican-VL</span><span class="m-inst">X-Humanoid</span></th>
+              <th class="model-name"><span class="m-name">Embodied-R1</span><span class="m-inst">ER</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="category-row"><td class="sticky-col category-label" colspan="10">Embodied Planning and Correction</td></tr>
+            <tr>
+              <td class="sticky-col bench-name">RoboVQA<span class="bench-split">test</span></td>
+              <td class="ours-col">60.1</td>
+              <td>33.9</td><td>33.1</td><td>32.6</td><td>55.0</td>
+              <td>57.5</td><td>62.0</td><td>58.5</td><td>51.8</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">EgoPlan2</td>
+              <td class="ours-col">53.7</td>
+              <td>42.9</td><td>36.9</td><td>32.0</td><td>32.3</td>
+              <td>33.2</td><td>43.0</td><td>32.0</td><td>26.5</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">Cosmos<span class="bench-split">reason</span></td>
+              <td class="ours-col">64.9</td>
+              <td>62.8</td><td>56.2</td><td>53.7</td><td>64.0</td>
+              <td>33.8</td><td>56.8</td><td>62.6</td><td>55.2</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">RoboFAC<span class="bench-split">test</span></td>
+              <td class="ours-col">76.8</td>
+              <td>46.4</td><td>69.0</td><td>47.0</td><td>65.4</td>
+              <td>54.2</td><td>54.6</td><td>60.2</td><td>40.2</td>
+            </tr>
+            <tr class="overall-row">
+              <td class="sticky-col bench-name overall-name">Overall</td>
+              <td class="ours-col overall-val">59.6</td>
+              <td class="overall-val">46.5</td><td class="overall-val">42.1</td><td class="overall-val">39.4</td><td class="overall-val">50.4</td>
+              <td class="overall-val">41.5</td><td class="overall-val">53.9</td><td class="overall-val">51.0</td><td class="overall-val">44.5</td>
+            </tr>
+            <tr class="category-row"><td class="sticky-col category-label" colspan="10">Embodied Pointing</td></tr>
+            <tr>
+              <td class="sticky-col bench-name">VAbench-P</td>
+              <td class="ours-col">70.7</td>
+              <td>21.7</td><td>31.1</td><td>41.6</td><td>42.3</td>
+              <td>41.0</td><td>46.9</td><td>14.5</td><td>66.0</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">Where2Place</td>
+              <td class="ours-col">71.0</td>
+              <td>49.6</td><td>39.7</td><td>48.3</td><td>64.0</td>
+              <td>63.6</td><td>63.6</td><td>57.8</td><td>69.5</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">RefSpatial<span class="bench-split">all</span></td>
+              <td class="ours-col">49.5</td>
+              <td>36.5</td><td>21.6</td><td>39.7</td><td>42.2</td>
+              <td>32.5</td><td>48.0</td><td>37.5</td><td>39.7</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">Part-Afford</td>
+              <td class="ours-col">80.8</td>
+              <td>25.5</td><td>16.9</td><td>27.0</td><td>48.7</td>
+              <td>45.6</td><td>65.5</td><td>28.8</td><td>56.6</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">RoboRefit<span class="bench-split">test</span></td>
+              <td class="ours-col">87.5</td>
+              <td>38.4</td><td>44.7</td><td>80.0</td><td>83.6</td>
+              <td>70.4</td><td>82.3</td><td>74.9</td><td>85.6</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">RoboAfford<span class="bench-split">test</span></td>
+              <td class="ours-col">79.6</td>
+              <td>23.4</td><td>30.0</td><td>57.6</td><td>69.9</td>
+              <td>51.5</td><td>69.8</td><td>63.4</td><td>67.2</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">PIO<span class="bench-split">S1&amp;S2</span></td>
+              <td class="ours-col">63.8</td>
+              <td>23.2</td><td>23.6</td><td>54.0</td><td>56.8</td>
+              <td>54.0</td><td>27.5</td><td>32.9</td><td>44.4</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">Pixmo-Point<span class="bench-split">test</span></td>
+              <td class="ours-col">62.5</td>
+              <td>12.7</td><td>23.6</td><td>52.5</td><td>59.9</td>
+              <td>54.7</td><td>42.4</td><td>26.1</td><td>49.4</td>
+            </tr>
+            <tr class="overall-row">
+              <td class="sticky-col bench-name overall-name">Overall</td>
+              <td class="ours-col overall-val">70.7</td>
+              <td class="overall-val">28.9</td><td class="overall-val">28.9</td><td class="overall-val">50.1</td><td class="overall-val">58.4</td>
+              <td class="overall-val">51.7</td><td class="overall-val">55.7</td><td class="overall-val">42.0</td><td class="overall-val">59.8</td>
+            </tr>
+            <tr class="category-row"><td class="sticky-col category-label" colspan="10">Embodied Cognition and Spatial Reasoning</td></tr>
+            <tr>
+              <td class="sticky-col bench-name">ERQA</td>
+              <td class="ours-col">51.3</td>
+              <td>55.7</td><td>54.5</td><td>48.5</td><td>41.8</td>
+              <td>38.5</td><td>46.8</td><td>39.8</td><td>35.2</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">OpenEQA</td>
+              <td class="ours-col">63.0</td>
+              <td>65.8</td><td>64.4</td><td>50.5</td><td>68.4</td>
+              <td>24.2</td><td>53.6</td><td>54.7</td><td>34.5</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">CV-Bench<span class="bench-split">all</span></td>
+              <td class="ours-col">88.8</td>
+              <td>84.6</td><td>84.5</td><td>83.6</td><td>86.3</td>
+              <td>85.8</td><td>88.8</td><td>78.9</td><td>82.7</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">EmbSpatial<span class="bench-split">test</span></td>
+              <td class="ours-col">80.2</td>
+              <td>78.7</td><td>78.3</td><td>73.4</td><td>78.5</td>
+              <td>76.3</td><td>76.2</td><td>73.2</td><td>67.4</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">SAT<span class="bench-split">test</span></td>
+              <td class="ours-col">76.7</td>
+              <td>76.7</td><td>83.3</td><td>62.7</td><td>65.3</td>
+              <td>75.3</td><td>54.6</td><td>54.6</td><td>76.3</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">BLINK<span class="bench-split">rel. depth</span></td>
+              <td class="ours-col">92.7</td>
+              <td>85.5</td><td>75.0</td><td>85.9</td><td>84.7</td>
+              <td>79.0</td><td>94.4</td><td>78.2</td><td>76.6</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">RoboSpatial</td>
+              <td class="ours-col">69.1</td>
+              <td>59.9</td><td>54.1</td><td>40.1</td><td>67.4</td>
+              <td>54.2</td><td>61.8</td><td>57.5</td><td>47.4</td>
+            </tr>
+            <tr class="overall-row">
+              <td class="sticky-col bench-name overall-name">Overall</td>
+              <td class="ours-col overall-val">74.5</td>
+              <td class="overall-val">72.4</td><td class="overall-val">70.6</td><td class="overall-val">63.5</td><td class="overall-val">70.3</td>
+              <td class="overall-val">61.9</td><td class="overall-val">68.0</td><td class="overall-val">62.4</td><td class="overall-val">60.0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div style="margin-top: 16px; padding: 0 4px;">
+      <p style="color: #9ca3af; font-size: 13px; font-style: italic; line-height: 1.6; margin: 0;">* Embodied-R1.5 denotes the Preview version, which has not been trained on the full dataset.</p>
+      <p style="color: #9ca3af; font-size: 13px; font-style: italic; line-height: 1.6; margin: 4px 0 0;">* Evaluation is conducted using the VLLM inference engine.</p>
+    </div>
+
+    </div><!-- end vlm-tab -->
+
+    <!-- Tab 2: VLA -->
+    <div class="result-tab-content" id="vla-tab">
+
+    <div style="background: linear-gradient(135deg, rgba(37,99,235,0.06) 0%, rgba(147,51,234,0.06) 100%); border-left: 3px solid var(--blue-energy); border-radius: 12px; padding: 18px 24px; margin: 20px 0 20px 0;">
+      <p style="color: var(--text-primary); font-size: 15.5px; line-height: 1.8; margin: 0; font-weight: 500;">Demonstrating superior generalization performance, Embodied-R1.5-VLA <strong>excels in all three Simpler evaluation suites</strong>. In the rigorous Google Robot Benchmark, our model <strong>outperforms the leading baseline, pi0, by a substantial 20% margin</strong>, setting a <strong>new performance standard</strong> for embodied agents.</p>
+    </div>
+
+    <!-- VLA: Google Robot VM -->
+    <section class="leaderboard-section" id="vla-google-vm">
+      <div class="section-heading">Simpler-Google Robot Benchmark (Visual Matching)</div>
+      <div class="leaderboard-table-wrapper">
+        <table class="leaderboard-table vla-table">
+          <thead>
+            <tr>
+              <th class="sticky-col benchmark-header">Model</th>
+              <th>Pick Coke Can</th>
+              <th>Move Near</th>
+              <th>Open/Close Drawer</th>
+              <th>Open Top Drawer<br>& Place Apple</th>
+              <th>Overall</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="sticky-col bench-name">RT-1-X</td>
+              <td>56.7</td><td>31.7</td><td>59.7</td><td>21.3</td><td>42.4</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">RT-2-X</td>
+              <td>78.7</td><td>77.9</td><td>25.0</td><td>3.7</td><td>46.3</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">OpenVLA</td>
+              <td>16.3</td><td>46.2</td><td>35.6</td><td>0.0</td><td>24.5</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">SpatialVLA</td>
+              <td>86.0</td><td>77.9</td><td>57.4</td><td>0.0</td><td>55.3</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">pi0</td>
+              <td>97.9</td><td>78.7</td><td>62.3</td><td>46.6</td><td>71.4</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">pi0-FAST</td>
+              <td>75.3</td><td>67.5</td><td>42.9</td><td>0.0</td><td>46.4</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">GR00T N1.5</td>
+              <td>51.7</td><td>54.0</td><td>27.8</td><td>7.4</td><td>35.2</td>
+            </tr>
+            <tr class="ours-row">
+              <td class="sticky-col bench-name ours-model">Embodied-R1.5-VLA</td>
+              <td class="ours-col">92.3</td><td class="ours-col">93.8</td><td class="ours-col">86.1</td><td class="ours-col">97.2</td><td class="ours-col">92.4</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- VLA: Google Robot VA -->
+    <section class="leaderboard-section" id="vla-google-va">
+      <div class="section-heading">Simpler-Google Robot Benchmark (Variant Aggregation)</div>
+      <div class="leaderboard-table-wrapper">
+        <table class="leaderboard-table vla-table">
+          <thead>
+            <tr>
+              <th class="sticky-col benchmark-header">Model</th>
+              <th>Pick Coke Can</th>
+              <th>Move Near</th>
+              <th>Open/Close Drawer</th>
+              <th>Open Top Drawer<br>& Place Apple</th>
+              <th>Overall</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="sticky-col bench-name">RT-1-X</td>
+              <td>49.0</td><td>32.3</td><td>29.4</td><td>10.1</td><td>30.2</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">RT-2-X</td>
+              <td>82.3</td><td>79.2</td><td>35.3</td><td>20.6</td><td>54.4</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">OpenVLA</td>
+              <td>54.5</td><td>47.7</td><td>17.7</td><td>0.0</td><td>30.0</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">SpatialVLA</td>
+              <td>88.0</td><td>72.7</td><td>41.8</td><td>6.3</td><td>52.2</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">pi0</td>
+              <td>90.1</td><td>80.7</td><td>27.6</td><td>20.5</td><td>54.7</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">pi0-FAST</td>
+              <td>77.6</td><td>68.2</td><td>31.3</td><td>0.0</td><td>44.3</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">GR00T N1.5</td>
+              <td>69.3</td><td>68.7</td><td>35.8</td><td>4.0</td><td>44.5</td>
+            </tr>
+            <tr class="ours-row">
+              <td class="sticky-col bench-name ours-model">Embodied-R1.5-VLA</td>
+              <td class="ours-col">80.6</td><td class="ours-col">72.2</td><td class="ours-col">58.3</td><td class="ours-col">75.0</td><td class="ours-col">71.5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- VLA: WidowX -->
+    <section class="leaderboard-section" id="vla-widowx">
+      <div class="section-heading">Simpler-WidowX Benchmark (Visual Matching)</div>
+      <div class="leaderboard-table-wrapper">
+        <table class="leaderboard-table vla-table">
+          <thead>
+            <tr>
+              <th class="sticky-col benchmark-header">Model</th>
+              <th>Put Spoon<br>on Towel</th>
+              <th>Put Carrot<br>on Plate</th>
+              <th>Stack Blocks</th>
+              <th>Put Eggplant<br>in Basket</th>
+              <th>Overall</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="sticky-col bench-name">RT-1-X</td>
+              <td>0.0</td><td>4.2</td><td>0.0</td><td>0.0</td><td>1.1</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">CogACT</td>
+              <td>71.7</td><td>50.8</td><td>15.0</td><td>67.5</td><td>51.3</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">OpenVLA</td>
+              <td>4.2</td><td>0.0</td><td>0.0</td><td>12.5</td><td>4.2</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">SpatialVLA</td>
+              <td>16.7</td><td>25.0</td><td>29.2</td><td>100.0</td><td>42.7</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">pi0</td>
+              <td>29.1</td><td>0.0</td><td>16.6</td><td>62.5</td><td>27.1</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">pi0-FAST</td>
+              <td>29.1</td><td>21.9</td><td>10.8</td><td>66.6</td><td>32.1</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">GR00T N1.5</td>
+              <td>75.3</td><td>54.3</td><td>57.0</td><td>61.3</td><td>62.0</td>
+            </tr>
+            <tr class="ours-row">
+              <td class="sticky-col bench-name ours-model">Embodied-R1.5-VLA</td>
+              <td class="ours-col">83.3</td><td class="ours-col">75.0</td><td class="ours-col">37.5</td><td class="ours-col">100.0</td><td class="ours-col">74.0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="video-wall" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin: 20px 0;">
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/vm/success_obj_0.0_0.0_qpos_0.000.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/vm/success_obj_-0.05_-0.02_qpos_0.17963315546512604_is_drawer_open_True_has_contact_172.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/vm/success_obj_0.0_0.0_qpos_0.237.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/vm/success_obj_episode_8_all_obj_keep_height_True_moved_correct_obj_True_moved_wrong_obj_False_near_tgt_obj_True_is_closest_to_tgt_True.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/va/pickCan/success_obj_-0.12_-0.02_n_lift_significant_60_consec_grasp_True_grasped_True.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/va/pickCan/success_obj_-0.235_0.09_n_lift_significant_47_consec_grasp_True_grasped_True.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/va/moveNear/success_obj_episode_10_all_obj_keep_height_True_moved_correct_obj_True_moved_wrong_obj_False_near_tgt_obj_True_is_closest_to_tgt_True.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/va/moveNear/success_obj_episode_22_all_obj_keep_height_True_moved_correct_obj_True_moved_wrong_obj_False_near_tgt_obj_True_is_closest_to_tgt_True.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/va/drawer/success_obj_0.0_0.0_qpos_0.000.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/va/drawer/success_obj_0.0_0.0_qpos_0.191.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/va/place/success_obj_-0.02_-0.02_qpos_0.19694340229034424_is_drawer_open_True_has_contact_68.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/va/place/success_obj_-0.05_0.08_qpos_0.2165730744600296_is_drawer_open_True_has_contact_2.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/va/pickCan/success_obj_-0.2925_0.42_n_lift_significant_66_consec_grasp_True_grasped_True.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/va/moveNear/success_obj_episode_54_all_obj_keep_height_True_moved_correct_obj_True_moved_wrong_obj_False_near_tgt_obj_True_is_closest_to_tgt_True.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/1489_1771073995.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/1490_1771073996.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/1491_1771073998.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline style="width:100%; border-radius: 8px;"><source src="./simpler_videos/1492_1771073999.mp4" type="video/mp4"></video>
+    </div>
+
+    </div><!-- end vla-tab -->
+
+    <!-- Tab: LIBERO -->
+    <div class="result-tab-content" id="libero-tab">
+
+    <div style="background: linear-gradient(135deg, rgba(37,99,235,0.06) 0%, rgba(147,51,234,0.06) 100%); border-left: 3px solid var(--blue-energy); border-radius: 12px; padding: 18px 24px; margin: 20px 0 20px 0;">
+      <p style="color: var(--text-primary); font-size: 15.5px; line-height: 1.8; margin: 0; font-weight: 500;"><strong>Efficient VLM-to-VLA Adaptation:</strong> Embodied-R1.5-VLA achieves high-performance control via direct fine-tuning from a VLM, successfully bypassing the conventional requirement for massive real-robot action pre-training.</p>
+      <p style="color: var(--text-primary); font-size: 15.5px; line-height: 1.8; margin: 8px 0 0 0; font-weight: 500;"><strong>Top-Tier Benchmark Dominance:</strong> The model demonstrates comprehensive task mastery across all LIBERO suites, reaching first-tier performance and significantly outperforming existing methods that lack action pre-training.</p>
+      <p style="color: var(--text-primary); font-size: 15.5px; line-height: 1.8; margin: 8px 0 0 0; font-weight: 500;"><strong>Superior Architectural Stability:</strong> Compared to native backbones like Qwen3-VL, Embodied-R1.5 delivers consistent and stable performance gains throughout the entire training curriculum.</p>
+    </div>
+
+    <section class="leaderboard-section" id="vla-libero">
+      <div class="section-heading">LIBERO Benchmark (40 Tasks)</div>
+      <div class="leaderboard-table-wrapper">
+        <table class="leaderboard-table vla-table">
+          <thead>
+            <tr>
+              <th class="sticky-col benchmark-header">Model</th>
+              <th>Pt.</th>
+              <th>Goal</th>
+              <th>Spatial</th>
+              <th>Object</th>
+              <th>Long</th>
+              <th>Overall</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="category-row"><td class="sticky-col category-label" colspan="7">W/ Action Pretraining</td></tr>
+            <tr>
+              <td class="sticky-col bench-name">SpatialVLA</td>
+              <td>Y</td><td>78.6</td><td>88.2</td><td>89.9</td><td>55.5</td><td>78.1</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">CoT-VLA</td>
+              <td>Y</td><td>87.6</td><td>87.5</td><td>91.6</td><td>69.0</td><td>83.9</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">GR00T N1</td>
+              <td>Y</td><td>93.0</td><td>94.4</td><td>97.6</td><td>90.6</td><td>93.9</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">GR00T N1.6</td>
+              <td>Y</td><td>97.5</td><td>97.7</td><td>98.5</td><td>94.4</td><td>97.0</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">OpenVLA</td>
+              <td>Y</td><td>79.2</td><td>84.7</td><td>88.4</td><td>53.7</td><td>76.5</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">OpenVLA-OFT</td>
+              <td>Y</td><td>97.9</td><td>97.6</td><td>98.4</td><td>94.5</td><td>97.1</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">pi0</td>
+              <td>Y</td><td>95.8</td><td>96.8</td><td>98.8</td><td>85.2</td><td>94.2</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">pi0-FAST</td>
+              <td>Y</td><td>88.6</td><td>96.4</td><td>96.8</td><td>60.2</td><td>85.5</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">pi0.5</td>
+              <td>Y</td><td>98.0</td><td>98.8</td><td>98.2</td><td>92.4</td><td>96.9</td>
+            </tr>
+            <tr class="category-row"><td class="sticky-col category-label" colspan="7">W/O Action Pretraining</td></tr>
+            <tr>
+              <td class="sticky-col bench-name">Diffusion Policy</td>
+              <td>N</td><td>68.3</td><td>78.3</td><td>92.5</td><td>50.5</td><td>72.4</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">OpenVLA-OFT</td>
+              <td>N</td><td>91.7</td><td>94.3</td><td>95.2</td><td>86.5</td><td>91.9</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">pi0-FAST</td>
+              <td>N</td><td>89.0</td><td>87.0</td><td>63.0</td><td>48.0</td><td>71.8</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">pi0.5</td>
+              <td>N</td><td>94.6</td><td>96.6</td><td>97.2</td><td>85.8</td><td>93.6</td>
+            </tr>
+            <tr class="ours-row">
+              <td class="sticky-col bench-name ours-model">Embodied-R1.5-VLA</td>
+              <td class="ours-col">N</td><td class="ours-col">97.4</td><td class="ours-col">97.8</td><td class="ours-col">99.2</td><td class="ours-col">93.2</td><td class="ours-col">96.9</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="section-heading" style="margin-top: 24px;">VLM Backbone Comparison on LIBERO</div>
+    <p class="section-lead">Overall success rates across training steps with different VLM backbones and action experts.</p>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+      <div id="libero-line-groot" style="flex: 1; min-width: 280px; max-width: 420px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 8px; background: #fff;"></div>
+      <div id="libero-line-oft" style="flex: 1; min-width: 280px; max-width: 420px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 8px; background: #fff;"></div>
+    </div>
+    <div style="text-align: center; margin-top: 12px;"><div id="libero-line-legend" style="display: inline-flex; gap: 24px; padding: 8px 20px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff;"></div></div>
+
+    </div><!-- end libero-tab -->
+
+    <!-- Tab 3: Affordance -->
+    <div class="result-tab-content" id="afford-tab">
+
+    <!-- ManiSkill PartNet: Combined -->
+    <section class="leaderboard-section" id="maniskill-seen">
+      <div class="section-heading">ManiSkill PartNet-Mobility — Affordance Prediction</div>
+
+      <!-- Row 1: Seen 1-15 -->
+      <div class="leaderboard-table-wrapper">
+        <table class="leaderboard-table vla-table icon-table">
+          <thead>
+            <tr>
+              <th class="sticky-col benchmark-header" rowspan="2">Model</th>
+              <th class="group-header" colspan="15">Seen Categories</th>
+            </tr>
+            <tr>
+              <th><img class="col-icon" src="./icon/safe.png" alt="Safe"><br>Safe</th>
+              <th><img class="col-icon" src="./icon/door.png" alt="Door"><br>Door</th>
+              <th><img class="col-icon" src="./icon/display.png" alt="Display"><br>Display</th>
+              <th><img class="col-icon" src="./icon/fridge.png" alt="Fridge"><br>Fridge</th>
+              <th><img class="col-icon" src="./icon/laptop.png" alt="Laptop"><br>Laptop</th>
+              <th><img class="col-icon" src="./icon/lighter.png" alt="Lighter"><br>Lighter</th>
+              <th><img class="col-icon" src="./icon/micro.png" alt="Microwave"><br>Micro.</th>
+              <th><img class="col-icon" src="./icon/mouse.png" alt="Mouse"><br>Mouse</th>
+              <th><img class="col-icon" src="./icon/box.png" alt="Box"><br>Box</th>
+              <th><img class="col-icon" src="./icon/trashcan.png" alt="TrashCan"><br>Trash</th>
+              <th><img class="col-icon" src="./icon/pot.png" alt="KitchenPot"><br>Pot</th>
+              <th><img class="col-icon" src="./icon/suitcase.png" alt="Suitcase"><br>Suitcase</th>
+              <th><img class="col-icon" src="./icon/pliers.png" alt="Pliers"><br>Pliers</th>
+              <th><img class="col-icon" src="./icon/storage.png" alt="Storage"><br>Storage</th>
+              <th><img class="col-icon" src="./icon/remote.png" alt="Remote"><br>Remote</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="sticky-col bench-name">Where2Act</td>
+              <td>0.26</td><td>0.36</td><td>0.19</td><td>0.27</td><td>0.23</td><td>0.11</td><td>0.15</td><td>0.47</td><td>0.14</td><td>0.24</td><td>0.13</td><td>0.12</td><td>0.56</td><td>0.68</td><td>0.07</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">FlowBot3D</td>
+              <td>0.67</td><td>0.55</td><td>0.20</td><td>0.32</td><td>0.27</td><td>0.31</td><td>0.61</td><td>0.68</td><td>0.15</td><td>0.28</td><td>0.36</td><td>0.18</td><td>0.21</td><td>0.70</td><td>0.18</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">Implicit3D</td>
+              <td>0.53</td><td>0.58</td><td>0.35</td><td>0.55</td><td>0.28</td><td>0.66</td><td>0.58</td><td>0.51</td><td>0.52</td><td>0.57</td><td>0.45</td><td>0.34</td><td>0.41</td><td>0.54</td><td>0.39</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">ManipLLM</td>
+              <td>0.68</td><td>0.64</td><td>0.36</td><td>0.77</td><td>0.43</td><td>0.62</td><td>0.65</td><td>0.61</td><td>0.65</td><td>0.52</td><td>0.53</td><td>0.40</td><td>0.64</td><td>0.71</td><td>0.60</td>
+            </tr>
+            <tr class="ours-row">
+              <td class="sticky-col bench-name ours-model">Embodied-R1.5</td>
+              <td class="ours-col">0.98</td><td class="ours-col">0.63</td><td class="ours-col">0.60</td><td class="ours-col">0.78</td><td class="ours-col">0.78</td><td class="ours-col">0.63</td><td class="ours-col">0.90</td><td class="ours-col">0.63</td><td class="ours-col">0.94</td><td class="ours-col">0.41</td><td class="ours-col">0.98</td><td class="ours-col">0.28</td><td class="ours-col">0.34</td><td class="ours-col">0.84</td><td class="ours-col">0.50</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Row 2: Seen 16-20 + AVG(Seen) + Unseen 1-10 + AVG(Unseen) -->
+      <div class="leaderboard-table-wrapper" style="margin-top: 24px;">
+        <table class="leaderboard-table vla-table icon-table">
+          <thead>
+            <tr>
+              <th class="sticky-col benchmark-header" rowspan="2">Model</th>
+              <th class="group-header" colspan="5">Seen (cont.)</th>
+              <th class="avg-col" rowspan="2">AVG<br><span style="font-size:9px;color:#999">(Seen)</span></th>
+              <th class="group-header" colspan="10">Unseen Categories</th>
+              <th class="avg-col" rowspan="2">AVG<br><span style="font-size:9px;color:#999">(Unseen)</span></th>
+            </tr>
+            <tr>
+              <th><img class="col-icon" src="./icon/bottle.png" alt="Bottle"><br>Bottle</th>
+              <th><img class="col-icon" src="./icon/foldingchair.png" alt="FoldingChair"><br>Chair</th>
+              <th><img class="col-icon" src="./icon/toaster.png" alt="Toaster"><br>Toaster</th>
+              <th><img class="col-icon" src="./icon/lamp.png" alt="Lamp"><br>Lamp</th>
+              <th><img class="col-icon" src="./icon/dispenser.png" alt="Dispenser"><br>Disp.</th>
+              <th><img class="col-icon" src="./icon/toilet.png" alt="Toilet"><br>Toilet</th>
+              <th><img class="col-icon" src="./icon/scrissor.png" alt="Scissors"><br>Scissors</th>
+              <th><img class="col-icon" src="./icon/table.png" alt="Table"><br>Table</th>
+              <th><img class="col-icon" src="./icon/stapler.png" alt="Stapler"><br>Stapler</th>
+              <th><img class="col-icon" src="./icon/kettle.png" alt="Kettle"><br>Kettle</th>
+              <th><img class="col-icon" src="./icon/usb.png" alt="USB"><br>USB</th>
+              <th><img class="col-icon" src="./icon/washing.png" alt="WashingMachine"><br>Washer</th>
+              <th><img class="col-icon" src="./icon/oven.png" alt="Oven"><br>Oven</th>
+              <th><img class="col-icon" src="./icon/faucet.png" alt="Faucet"><br>Faucet</th>
+              <th><img class="col-icon" src="./icon/phone.png" alt="Phone"><br>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="sticky-col bench-name">Where2Act</td>
+              <td>0.40</td><td>0.13</td><td>0.18</td><td>0.13</td><td>0.40</td>
+              <td class="avg-col">0.26</td>
+              <td>0.18</td><td>0.35</td><td>0.38</td><td>0.28</td><td>0.05</td><td>0.21</td><td>0.17</td><td>0.20</td><td>0.15</td><td>0.15</td>
+              <td class="avg-col">0.21</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">FlowBot3D</td>
+              <td>0.26</td><td>0.17</td><td>0.53</td><td>0.29</td><td>0.42</td>
+              <td class="avg-col">0.37</td>
+              <td>0.23</td><td>0.10</td><td>0.60</td><td>0.39</td><td>0.27</td><td>0.42</td><td>0.28</td><td>0.51</td><td>0.13</td><td>0.23</td>
+              <td class="avg-col">0.32</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">Implicit3D</td>
+              <td>0.43</td><td>0.27</td><td>0.65</td><td>0.20</td><td>0.33</td>
+              <td class="avg-col">0.46</td>
+              <td>0.45</td><td>0.17</td><td>0.80</td><td>0.53</td><td>0.15</td><td>0.69</td><td>0.41</td><td>0.31</td><td>0.30</td><td>0.31</td>
+              <td class="avg-col">0.41</td>
+            </tr>
+            <tr>
+              <td class="sticky-col bench-name">ManipLLM</td>
+              <td>0.64</td><td>0.41</td><td>0.75</td><td>0.44</td><td>0.67</td>
+              <td class="avg-col">0.59</td>
+              <td>0.38</td><td>0.22</td><td>0.81</td><td>0.86</td><td>0.38</td><td>0.85</td><td>0.42</td><td>0.83</td><td>0.26</td><td>0.38</td>
+              <td class="avg-col">0.54</td>
+            </tr>
+            <tr class="ours-row">
+              <td class="sticky-col bench-name ours-model">Embodied-R1.5</td>
+              <td class="ours-col">0.72</td><td class="ours-col">0.90</td><td class="ours-col">0.86</td><td class="ours-col">0.35</td><td class="ours-col">0.98</td>
+              <td class="ours-col avg-col">0.70</td>
+              <td class="ours-col">0.71</td><td class="ours-col">0.31</td><td class="ours-col">0.73</td><td class="ours-col">0.75</td><td class="ours-col">0.84</td><td class="ours-col">0.30</td><td class="ours-col">0.92</td><td class="ours-col">0.92</td><td class="ours-col">0.57</td><td class="ours-col">0.33</td>
+              <td class="ours-col avg-col">0.64</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Affordance Video Wall -->
+    <section class="leaderboard-section" id="affordance-videos">
+      <div class="afford-video-wall">
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/101611_Safe_5_pulling_10.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Safe</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/9263_Door_1_pulling_20.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Door</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/4541_Display_36_pulling_14.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Display</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/10144_Refrigerator_2_pulling_53.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Fridge</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/10270_Laptop_3_pulling_69.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Laptop</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/100310_Lighter_10_pulling_70.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Lighter</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/7119_Microwave_2_pulling_8.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Microwave</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/101416_Mouse_9_pulling_1.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Mouse</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/100191_Box_8_pulling_9.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Box</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/103013_TrashCan_2_pulling_16.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">TrashCan</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/100032_KitchenPot_3_pulling_68.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">KitchenPot</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/103770_Suitcase_13_pulling_57.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Suitcase</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/100172_Pliers_2_pulling_79.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Pliers</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/35059_StorageFurniture_0_pulling_14.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Storage</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/101117_Remote_63_pulling_48.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Remote</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/3593_Bottle_6_pulling_59.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Bottle</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/100526_FoldingChair_8_pulling_56.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Chair</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/103498_Toaster_3_pulling_10.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Toaster</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/15084_Lamp_4_pulling_61.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Lamp</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/101489_Dispenser_8_pulling_23.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Dispenser</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/101320_Toilet_1_pulling_46.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Toilet</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/10449_Scissors_3_pulling_2.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Scissors</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/20745_Table_1_pulling_5.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Table</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/103275_Stapler_10_pulling_43.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Stapler</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/101315_Kettle_11_pulling_67.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Kettle</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/100085_USB_2_pulling_10.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">USB</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/100283_WashingMachine_4_pulling_68.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Washer</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/101930_Oven_7_pulling_17.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Oven</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/1288_Faucet_1_pulling_27.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Faucet</span>
+        </div>
+        <div class="afford-video-item">
+          <video src="./affordance/video_sample_h264/103886_Phone_7_pulling_68.mp4" autoplay muted loop playsinline></video>
+          <span class="afford-video-label">Phone</span>
+        </div>
+      </div>
+      <p class="table-caption">Embodied-R1.5 predicts interaction affordances across 30 object categories in ManiSkill PartNet-Mobility.</p>
+    </section>
+
+    </div><!-- end afford-tab -->
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- Section: EmbodiedEvalKit -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="tagline" id="evalkit">EmbodiedEvalKit</div>
+
+    <div class="card-surface evalkit-section">
+      <img src="./logo/EElogo.png" alt="EmbodiedEvalKit" class="evalkit-logo">
+      <p class="section-lead">A unified evaluation framework for assessing MLLM on embodied intelligence tasks.</p>
+
+      <div class="evalkit-features">
+        <div class="evalkit-feature-item">
+          <div class="evalkit-feature-icon">🚀</div>
+          <div>
+            <h4>Multiple Inference Backends</h4>
+            <p>vLLM (tensor parallel & multi-GPU), HuggingFace Transformers, and API — switch backends in one config.</p>
+          </div>
+        </div>
+        <div class="evalkit-feature-item">
+          <div class="evalkit-feature-icon">🤖</div>
+          <div>
+            <h4>20+ Models Supported</h4>
+            <p>GPT, Gemini, Qwen, InternVL, Molmo, Magma and more — generalist and embodied-specialist families out of the box.</p>
+          </div>
+        </div>
+        <div class="evalkit-feature-item">
+          <div class="evalkit-feature-icon">📊</div>
+          <div>
+            <h4>20+ Embodied Benchmarks</h4>
+            <p>Embodied QA, Spatial Reasoning, Embodied Pointing, Affordance and Location, and Embodied Planning — all in one place.</p>
+          </div>
+        </div>
+        <div class="evalkit-feature-item">
+          <div class="evalkit-feature-icon">🗂️</div>
+          <div>
+            <h4>Standardized Dataset Format</h4>
+            <p>All benchmarks reorganized into HuggingFace Parquet — unified data pipeline for reproducible evaluation.</p>
+          </div>
+        </div>
+        <div class="evalkit-feature-item">
+          <div class="evalkit-feature-icon">🎯</div>
+          <div>
+            <h4>Unified Pointing Evaluation</h4>
+            <p>One interface for diverse pointing formats, coordinate systems, and model-specific conventions.</p>
+          </div>
+        </div>
+        <div class="evalkit-feature-item">
+          <div class="evalkit-feature-icon">🧩</div>
+          <div>
+            <h4>Modular & Decoupled Design</h4>
+            <p>Models, benchmarks, and metrics cleanly separated — easy to extend, swap, or customize independently.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="evalkit-benchmarks">
+        <div class="evalkit-sub-heading">Supported Benchmarks (20+)</div>
+        <div class="evalkit-bench-tags">
+          <span class="evalkit-tag">ERQA</span>
+          <span class="evalkit-tag">CV-Bench</span>
+          <span class="evalkit-tag">EmbSpatial</span>
+          <span class="evalkit-tag">SAT</span>
+          <span class="evalkit-tag">RoboSpatial</span>
+          <span class="evalkit-tag">RoboVQA</span>
+          <span class="evalkit-tag">VABench-P</span>
+          <span class="evalkit-tag">Where2Place</span>
+          <span class="evalkit-tag">RefSpatial</span>
+          <span class="evalkit-tag">Part-Afford</span>
+          <span class="evalkit-tag">RoboRefit</span>
+          <span class="evalkit-tag">RoboAfford</span>
+          <span class="evalkit-tag">VSI-Bench</span>
+          <span class="evalkit-tag">OpenEQA</span>
+          <span class="evalkit-tag">EgoPlan2</span>
+          <span class="evalkit-tag">PIOBench</span>
+          <span class="evalkit-tag">PointBench</span>
+          <span class="evalkit-tag">Pixmo Points</span>
+          <span class="evalkit-tag">Cosmos-Reason</span>
+          <span class="evalkit-tag">BLINK</span>
+          <span class="evalkit-tag">RoboFAC</span>
+          <span class="evalkit-tag">VABench-V</span>
+          <span class="evalkit-tag">PIO-S3</span>
+          <span class="evalkit-tag">VLABench</span>
+          <span class="evalkit-tag ellipsis">...</span>
+        </div>
+      </div>
+
+      <div class="evalkit-models">
+        <div class="evalkit-sub-heading">Evaluated Models (20+)</div>
+        <div class="evalkit-model-grid">
+          <div class="evalkit-model-group">
+            <div class="evalkit-model-group-label">Generalist</div>
+            <span class="evalkit-model-tag">GPT</span>
+            <span class="evalkit-model-tag">Gemini</span>
+            <span class="evalkit-model-tag">Qwen</span>
+            <span class="evalkit-model-tag">InternVL</span>
+            <span class="evalkit-model-tag">Molmo</span>
+            <span class="evalkit-model-tag ellipsis">...</span>
+          </div>
+          <div class="evalkit-model-group">
+            <div class="evalkit-model-group-label">Embodied</div>
+            <span class="evalkit-model-tag ours">Embodied-R1.5</span>
+            <span class="evalkit-model-tag ours">Embodied-R1</span>
+            <span class="evalkit-model-tag">RoboBrain</span>
+            <span class="evalkit-model-tag">Mimo</span>
+            <span class="evalkit-model-tag">Pelican</span>
+            <span class="evalkit-model-tag">Magma</span>
+            <span class="evalkit-model-tag">VeBrain</span>
+            <span class="evalkit-model-tag ellipsis">...</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="evalkit-note">EmbodiedEvalKit is part of our open-source roadmap and will be released soon!</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- Section: Bibtex -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="tagline" id="bibtex">BibTeX</div>
+
+    <div class="bibtex-card">
+      <div class="bibtex-card-header">
+        <div class="bibtex-card-title">Embodied-R1.5</div>
+        <button class="bibtex-copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('bib-er15').textContent).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='Copy'},2000)})">Copy</button>
+      </div>
+      <pre><code id="bib-er15">@article{yuan2025embodiedr15,
+  title={Embodied-R1.5: Evolving Physical Intelligence via Embodied Foundation Models},
+  author={Embodied-R1.5 Team}
+  journal={arXiv preprint},
+  year={2025}
+}</code></pre>
+    </div>
+
+    <div class="bibtex-card">
+      <div class="bibtex-card-header">
+        <div class="bibtex-card-title">Embodied-R1 <span class="bibtex-venue">ICLR 2026</span></div>
+        <button class="bibtex-copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('bib-er1').textContent).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='Copy'},2000)})">Copy</button>
+      </div>
+      <pre><code id="bib-er1">@article{yuan2025embodied,
+  title={Embodied-R1: Reinforced Embodied Reasoning for General Robotic Manipulation},
+  author={Yuan, Yifu and Cui, Haiqin and Huang, Yaoting and Chen, Yibin and Ni, Fei and Dong, Zibin and Li, Pengyi and Zheng, Yan and Hao, Jianye},
+  journal={ICLR 2026},
+  year={2025}
+}</code></pre>
+    </div>
+
+    <div class="bibtex-card">
+      <div class="bibtex-card-header">
+        <div class="bibtex-card-title">From Seeing to Doing <span class="bibtex-venue">ICLR 2026</span></div>
+        <button class="bibtex-copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('bib-s2d').textContent).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='Copy'},2000)})">Copy</button>
+      </div>
+      <pre><code id="bib-s2d">@article{yuan2025seeing,
+  title={From Seeing to Doing: Bridging Reasoning and Decision for Robotic Manipulation},
+  author={Yuan, Yifu and Cui, Haiqin and Chen, Yibin and Dong, Zibin and Ni, Fei and Kou, Longxin and Liu, Jinyi and Li, Pengyi and Zheng, Yan and Hao, Jianye},
+  journal={ICLR 2026},
+  year={2025}
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="footer">
+    Template inspired by <a href="https://polaris-evals.github.io/" target="_blank">PolaRiS</a> and <a href="https://video-mimic.github.io/" target="_blank">VideoMimic</a>.<br>
+    Source code is available <a href="https://github.com/polaris-evals/polaris-evals.github.io" target="_blank">here</a>.
+  </div>
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script>
+    // Result Tab Switching
+    document.querySelectorAll('.result-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.result-tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.result-tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        const panel = document.getElementById(btn.dataset.tab);
+        panel.classList.add('active');
+        // Trigger play on videos that became visible
+        panel.querySelectorAll('video').forEach(v => {
+          v.playbackRate = 4;
+          v.play().catch(() => {});
+        });
+      });
+    });
+    // Set 4x speed on all affordance videos when they load
+    document.querySelectorAll('.afford-video-wall video').forEach(v => {
+      v.playbackRate = 4;
+      v.addEventListener('loadedmetadata', () => { v.playbackRate = 4; });
+    });
+  </script>
+  <script>
+    // ═══════════════════════════════════════════
+    // Grouped Benchmark Bar Chart Renderer
+    // ═══════════════════════════════════════════
+    document.addEventListener('DOMContentLoaded', () => {
+      const createEl = (tag, attrs) => {
+        const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+        return el;
+      };
+
+      function renderGroupedChart(svgContainer, legendContainer, benchmarkNames, models, allValues, colors, logos) {
+        const chartId = Math.random().toString(36).slice(2, 8);
+        const nBench = benchmarkNames.length;
+        const nModels = models.length;
+        const logoSize = 18;
+        const margin = { top: 36, right: 20, bottom: 40, left: 44 };
+        const w = 860;
+        const h = 230;
+        const innerW = w - margin.left - margin.right;
+        const innerH = h - margin.top - margin.bottom;
+
+        const svg = createEl('svg', {
+          viewBox: `0 0 ${w} ${h}`,
+          preserveAspectRatio: 'xMidYMid meet',
+          style: 'width:100%;display:block;'
+        });
+        const g = createEl('g', { transform: `translate(${margin.left},${margin.top})` });
+        svg.appendChild(g);
+
+        // Compute max value across all benchmarks
+        const allVals = allValues.flat().filter(v => !isNaN(v));
+        const maxVal = Math.ceil(Math.max(...allVals) / 10) * 10;
+
+        // Layout: each benchmark group gets equal width
+        const groupW = innerW / nBench;
+        const groupPad = groupW * 0.1;
+        const barsAreaW = groupW - groupPad * 2;
+        const barW = Math.min(barsAreaW / nModels * 0.78, 28);
+        const totalBarsW = barW * nModels;
+        const barGap = (barsAreaW - totalBarsW) / Math.max(nModels - 1, 1);
+
+        // Grid lines
+        for (let i = 1; i <= 4; i++) {
+          const y = innerH - (i / 4) * innerH;
+          g.appendChild(createEl('line', {
+            x1: 0, y1: y, x2: innerW, y2: y,
+            stroke: 'rgba(0,0,0,0.06)', 'stroke-width': 1, 'stroke-dasharray': '3 3'
+          }));
+        }
+
+        // Baseline
+        g.appendChild(createEl('line', {
+          x1: 0, y1: innerH, x2: innerW, y2: innerH,
+          stroke: '#d1d5db', 'stroke-width': 1
+        }));
+
+        // Y-axis labels
+        for (let i = 0; i <= 4; i++) {
+          const val = (i / 4) * maxVal;
+          const y = innerH - (i / 4) * innerH;
+          const t = createEl('text', {
+            x: -8, y: y + 4, 'text-anchor': 'end',
+            fill: '#9ca3af', 'font-size': '11', 'font-family': 'system-ui, sans-serif'
+          });
+          t.textContent = Math.round(val);
+          g.appendChild(t);
+        }
+
+        const animatedEls = [];
+
+        benchmarkNames.forEach((benchName, bi) => {
+          const groupX = bi * groupW;
+          const barsStartX = groupX + groupPad;
+          const values = allValues[bi];
+
+          // Benchmark label below x-axis
+          const lbl = createEl('text', {
+            x: groupX + groupW / 2, y: innerH + 26,
+            'text-anchor': 'middle', fill: '#374151',
+            'font-size': '12', 'font-weight': '600', 'font-family': 'system-ui, sans-serif'
+          });
+          lbl.textContent = benchName;
+          g.appendChild(lbl);
+
+          // Group separator (except first)
+          if (bi > 0) {
+            g.appendChild(createEl('line', {
+              x1: groupX, y1: -4, x2: groupX, y2: innerH,
+              stroke: 'rgba(0,0,0,0.06)', 'stroke-width': 1
+            }));
+          }
+
+          values.forEach((val, mi) => {
+            if (isNaN(val)) return;
+            const barH = (val / maxVal) * innerH;
+            const x = barsStartX + mi * (barW + barGap);
+            const color = colors[mi];
+
+            // Bar
+            const bar = createEl('rect', {
+              x, y: innerH - barH, width: barW, height: Math.max(barH, 1),
+              fill: color, rx: 3, 'fill-opacity': 0.88
+            });
+            bar.classList.add('bar-animated');
+            bar.style.animationDelay = `${(bi * nModels + mi) * 30}ms`;
+            animatedEls.push(bar);
+            g.appendChild(bar);
+
+            // Score value above bar
+            const valLabel = createEl('text', {
+              x: x + barW / 2, y: innerH - barH - 5,
+              'text-anchor': 'middle', fill: '#374151',
+              'font-size': '9', 'font-weight': '700', 'font-family': 'system-ui, sans-serif'
+            });
+            valLabel.textContent = val.toFixed(1);
+            valLabel.classList.add('bar-label-animated');
+            valLabel.style.animationDelay = `${(bi * nModels + mi) * 30 + 300}ms`;
+            animatedEls.push(valLabel);
+            g.appendChild(valLabel);
+
+            // Logo above score
+            const logoSrc = logos[mi];
+            if (logoSrc) {
+              const lx = x + (barW - logoSize) / 2;
+              const ly = innerH - barH - 5 - 12 - logoSize;
+              const clipId = `logo-clip-${chartId}-${bi}-${mi}`;
+              const defs = createEl('defs', {});
+              const clipPath = createEl('clipPath', { id: clipId });
+              clipPath.appendChild(createEl('rect', { x: lx, y: ly, width: logoSize, height: logoSize, rx: 3, ry: 3 }));
+              defs.appendChild(clipPath);
+              g.appendChild(defs);
+              // Warm yellow background
+              g.appendChild(createEl('rect', {
+                x: lx, y: ly, width: logoSize, height: logoSize,
+                rx: 3, ry: 3, fill: '#fdf6e3'
+              }));
+              const logoEl = createEl('image', {
+                href: logoSrc, x: lx, y: ly, width: logoSize, height: logoSize,
+                'clip-path': `url(#${clipId})`, preserveAspectRatio: 'xMidYMid slice'
+              });
+              logoEl.classList.add('bar-label-animated');
+              logoEl.style.animationDelay = `${(bi * nModels + mi) * 30 + 300}ms`;
+              animatedEls.push(logoEl);
+              g.appendChild(logoEl);
+            }
+          });
+        });
+
+        svgContainer.appendChild(svg);
+
+        // Build legend row: color dot + model name (logos are inside bars now)
+        if (legendContainer) {
+          legendContainer.innerHTML = '';
+          models.forEach((model, i) => {
+            const item = document.createElement('div');
+            item.className = 'chart-legend-item';
+            const colorDot = document.createElement('span');
+            colorDot.className = 'chart-legend-dot';
+            colorDot.style.background = colors[i];
+            item.appendChild(colorDot);
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'chart-legend-name';
+            nameSpan.textContent = model.name;
+            item.appendChild(nameSpan);
+            legendContainer.appendChild(item);
+          });
+        }
+
+        // Scroll animation
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animatedEls.forEach(el => el.classList.add('animate'));
+              obs.disconnect();
+            }
+          });
+        }, { threshold: 0.15 });
+        obs.observe(svgContainer);
+      }
+
+      // Overall chart: logos above scores, above bars
+      function renderOverallChart(svgContainer, legendContainer, benchmarkNames, models, allValues, colors, logos) {
+        const chartId = Math.random().toString(36).slice(2, 8);
+        const nBench = benchmarkNames.length;
+        const nModels = models.length;
+        const logoSize = 18;
+        const hasMultiLine = benchmarkNames.some(n => n.includes('\n'));
+        const margin = { top: 36, right: 20, bottom: hasMultiLine ? 58 : 40, left: 44 };
+        const w = 860;
+        const h = 230;
+        const innerW = w - margin.left - margin.right;
+        const innerH = h - margin.top - margin.bottom;
+
+        const svg = createEl('svg', {
+          viewBox: `0 0 ${w} ${h}`,
+          preserveAspectRatio: 'xMidYMid meet',
+          style: 'width:100%;display:block;'
+        });
+        const g = createEl('g', { transform: `translate(${margin.left},${margin.top})` });
+        svg.appendChild(g);
+
+        const allVals = allValues.flat().filter(v => !isNaN(v));
+        const maxVal = Math.ceil(Math.max(...allVals) / 10) * 10;
+
+        const groupW = innerW / nBench;
+        const groupPad = groupW * 0.1;
+        const barsAreaW = groupW - groupPad * 2;
+        const barW = Math.min(barsAreaW / nModels * 0.78, 28);
+        const totalBarsW = barW * nModels;
+        const barGap = (barsAreaW - totalBarsW) / Math.max(nModels - 1, 1);
+
+        // Grid lines
+        for (let i = 1; i <= 4; i++) {
+          const y = innerH - (i / 4) * innerH;
+          g.appendChild(createEl('line', {
+            x1: 0, y1: y, x2: innerW, y2: y,
+            stroke: 'rgba(0,0,0,0.06)', 'stroke-width': 1, 'stroke-dasharray': '3 3'
+          }));
+        }
+        g.appendChild(createEl('line', {
+          x1: 0, y1: innerH, x2: innerW, y2: innerH,
+          stroke: '#d1d5db', 'stroke-width': 1
+        }));
+
+        // Y-axis labels
+        for (let i = 0; i <= 4; i++) {
+          const val = (i / 4) * maxVal;
+          const y = innerH - (i / 4) * innerH;
+          const t = createEl('text', {
+            x: -8, y: y + 4, 'text-anchor': 'end',
+            fill: '#9ca3af', 'font-size': '11', 'font-family': 'system-ui, sans-serif'
+          });
+          t.textContent = Math.round(val);
+          g.appendChild(t);
+        }
+
+        const animatedEls = [];
+
+        benchmarkNames.forEach((benchName, bi) => {
+          const groupX = bi * groupW;
+          const barsStartX = groupX + groupPad;
+          const values = allValues[bi];
+
+          // Benchmark label below x-axis
+          const lblLines = benchName.split('\n');
+          const lbl = createEl('text', {
+            x: groupX + groupW / 2, y: innerH + 22,
+            'text-anchor': 'middle', 'font-family': 'system-ui, sans-serif'
+          });
+          const tspan1 = createEl('tspan', {
+            x: groupX + groupW / 2, dy: '0',
+            fill: '#374151', 'font-size': '12', 'font-weight': '600'
+          });
+          tspan1.textContent = lblLines[0];
+          lbl.appendChild(tspan1);
+          if (lblLines.length > 1) {
+            const tspan2 = createEl('tspan', {
+              x: groupX + groupW / 2, dy: '14',
+              fill: '#9ca3af', 'font-size': '11', 'font-weight': '500'
+            });
+            tspan2.textContent = lblLines[1].startsWith('(') ? lblLines[1] : '(' + lblLines[1] + ')';
+            lbl.appendChild(tspan2);
+          }
+          g.appendChild(lbl);
+
+          if (bi > 0) {
+            g.appendChild(createEl('line', {
+              x1: groupX, y1: -margin.top + 4, x2: groupX, y2: innerH,
+              stroke: 'rgba(0,0,0,0.06)', 'stroke-width': 1
+            }));
+          }
+
+          values.forEach((val, mi) => {
+            if (isNaN(val)) return;
+            const barH = (val / maxVal) * innerH;
+            const x = barsStartX + mi * (barW + barGap);
+            const color = colors[mi];
+
+            // Bar
+            const bar = createEl('rect', {
+              x, y: innerH - barH, width: barW, height: Math.max(barH, 1),
+              fill: color, rx: 3, 'fill-opacity': 0.88
+            });
+            bar.classList.add('bar-animated');
+            bar.style.animationDelay = `${(bi * nModels + mi) * 30}ms`;
+            animatedEls.push(bar);
+            g.appendChild(bar);
+
+            // Score value above bar
+            const valLabel = createEl('text', {
+              x: x + barW / 2, y: innerH - barH - 5,
+              'text-anchor': 'middle', fill: '#374151',
+              'font-size': '9', 'font-weight': '700', 'font-family': 'system-ui, sans-serif'
+            });
+            valLabel.textContent = val.toFixed(1);
+            valLabel.classList.add('bar-label-animated');
+            valLabel.style.animationDelay = `${(bi * nModels + mi) * 30 + 300}ms`;
+            animatedEls.push(valLabel);
+            g.appendChild(valLabel);
+
+            // Logo above score
+            const logoSrc = logos[mi];
+            if (logoSrc) {
+              const lx = x + (barW - logoSize) / 2;
+              const ly = innerH - barH - 5 - 12 - logoSize;
+              const clipId = `ov-clip-${chartId}-${bi}-${mi}`;
+              const defs = createEl('defs', {});
+              const clipPath = createEl('clipPath', { id: clipId });
+              clipPath.appendChild(createEl('rect', { x: lx, y: ly, width: logoSize, height: logoSize, rx: 3, ry: 3 }));
+              defs.appendChild(clipPath);
+              g.appendChild(defs);
+              // Warm yellow background
+              g.appendChild(createEl('rect', {
+                x: lx, y: ly, width: logoSize, height: logoSize,
+                rx: 3, ry: 3, fill: '#fdf6e3'
+              }));
+              const logoEl = createEl('image', {
+                href: logoSrc, x: lx, y: ly, width: logoSize, height: logoSize,
+                'clip-path': `url(#${clipId})`, preserveAspectRatio: 'xMidYMid slice'
+              });
+              logoEl.classList.add('bar-label-animated');
+              logoEl.style.animationDelay = `${(bi * nModels + mi) * 30 + 300}ms`;
+              animatedEls.push(logoEl);
+              g.appendChild(logoEl);
+            }
+          });
+        });
+
+        svgContainer.appendChild(svg);
+
+        // Legend
+        if (legendContainer) {
+          legendContainer.innerHTML = '';
+          models.forEach((model, i) => {
+            const item = document.createElement('div');
+            item.className = 'chart-legend-item';
+            const colorDot = document.createElement('span');
+            colorDot.className = 'chart-legend-dot';
+            colorDot.style.background = colors[i];
+            item.appendChild(colorDot);
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'chart-legend-name';
+            nameSpan.textContent = model.name;
+            item.appendChild(nameSpan);
+            legendContainer.appendChild(item);
+          });
+        }
+
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animatedEls.forEach(el => el.classList.add('animate'));
+              obs.disconnect();
+            }
+          });
+        }, { threshold: 0.15 });
+        obs.observe(svgContainer);
+      }
+
+
+      // Load VLM charts
+      fetch('./assets/data/vlm_benchmarks.json')
+        .then(r => r.json())
+        .then(data => {
+          const colors = data.models.map(m => m.color);
+          const logos = data.models.map(m => m.logo);
+
+          // Render overall charts
+          const overallContainer = document.getElementById('vlm-overall-container');
+          const overallLegend = document.getElementById('vlm-overall-legend');
+          if (overallContainer && data.overalls) {
+            const overallNames = Object.keys(data.overalls);
+            const overallValues = overallNames.map(name => data.overalls[name]);
+            renderOverallChart(overallContainer, overallLegend, overallNames, data.models, overallValues, colors, logos);
+          }
+
+          // Render best row 1
+          const row1Container = document.getElementById('vlm-best-row1-container');
+          const row1Legend = document.getElementById('vlm-best-row1-legend');
+          if (row1Container && data.best_row1) {
+            const names = data.best_row1.names;
+            const vals = names.map(n => data.best_row1.values[n]);
+            renderOverallChart(row1Container, row1Legend, names, data.models, vals, colors, logos);
+          }
+
+          // Render best row 2
+          const row2Container = document.getElementById('vlm-best-row2-container');
+          const row2Legend = document.getElementById('vlm-best-row2-legend');
+          if (row2Container && data.best_row2) {
+            const names = data.best_row2.names;
+            const vals = names.map(n => data.best_row2.values[n]);
+            renderOverallChart(row2Container, row2Legend, names, data.models, vals, colors, logos);
+          }
+
+          // Render benchmark carousel
+          const carouselTrack = document.getElementById('bench-carousel-track');
+          const carouselLegend = document.getElementById('bench-carousel-legend');
+          const carouselDots = document.getElementById('bench-carousel-dots');
+          const btnLeft = document.getElementById('bench-carousel-left');
+          const btnRight = document.getElementById('bench-carousel-right');
+          if (carouselTrack && data.all_benchmarks) {
+            const benchNames = Object.keys(data.all_benchmarks);
+            const perPage = 4;
+            const totalPages = Math.ceil(benchNames.length / perPage);
+            let currentPage = 0;
+
+            // Build pages - each page is one grouped chart with 4 benchmarks
+            for (let p = 0; p < totalPages; p++) {
+              const page = document.createElement('div');
+              page.className = 'carousel-page';
+              const slice = benchNames.slice(p * perPage, (p + 1) * perPage);
+              const vals = slice.map(n => data.all_benchmarks[n]);
+              const legendEl = p === 0 ? carouselLegend : null;
+              renderOverallChart(page, legendEl, slice, data.models, vals, colors, logos);
+              carouselTrack.appendChild(page);
+            }
+
+            // Dots
+            for (let p = 0; p < totalPages; p++) {
+              const dot = document.createElement('button');
+              dot.className = 'carousel-dot' + (p === 0 ? ' active' : '');
+              dot.addEventListener('click', () => goToPage(p));
+              carouselDots.appendChild(dot);
+            }
+
+            function goToPage(p) {
+              currentPage = p;
+              carouselTrack.style.transform = `translateX(-${p * 100}%)`;
+              carouselDots.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === p));
+              btnLeft.disabled = p === 0;
+              btnRight.disabled = p === totalPages - 1;
+            }
+
+            btnLeft.addEventListener('click', () => { if (currentPage > 0) goToPage(currentPage - 1); });
+            btnRight.addEventListener('click', () => { if (currentPage < totalPages - 1) goToPage(currentPage + 1); });
+            goToPage(1);
+          }
+        })
+        .catch(err => console.warn('VLM chart data load failed:', err));
+
+      // Load VLA charts
+      fetch('./assets/data/vla_benchmarks.json')
+        .then(r => r.json())
+        .then(data => {
+          const container = document.getElementById('vla-charts-container');
+          const legend = document.getElementById('vla-chart-legend');
+          if (!container) return;
+
+          const selectedModels = ['Embodied-R1.5-VLA', 'GR00T N1.5', 'pi0', 'pi0-FAST', 'SpatialVLA', 'OpenVLA'];
+          const modelColors = ['#2563eb', '#8b5cf6', '#f59e0b', '#f97316', '#10b981', '#ef4444'];
+
+          // 3 simpler benchmarks
+          const keys = ['google_robot_vm', 'google_robot_va', 'widowx'];
+          const benchNames = [];
+          const allValues = [];
+          keys.forEach(key => {
+            const bench = data[key];
+            if (!bench) return;
+            const overallIdx = bench.tasks.indexOf('Overall');
+            if (overallIdx < 0) return;
+            benchNames.push(bench.title.replace(/\s*\(/, '\n('));
+            allValues.push(selectedModels.map(m => bench.models[m] ? bench.models[m][overallIdx] : NaN));
+          });
+
+          // LIBERO benchmark
+          if (data.libero) {
+            const libero = data.libero;
+            const overallIdx = libero.tasks.indexOf('Overall');
+            if (overallIdx >= 0) {
+              benchNames.push('LIBERO');
+              const liberoAliases = { 'GR00T N1.5': 'GR00T N1.6', 'OpenVLA': 'OpenVLA-OFT' };
+              allValues.push(selectedModels.map(m => {
+                const lookup = liberoAliases[m] || m;
+                for (const grp of Object.values(libero.groups)) {
+                  if (grp[lookup]) return grp[lookup][overallIdx];
+                }
+                return NaN;
+              }));
+            }
+          }
+
+          const colors = modelColors;
+          const models = selectedModels.map(n => ({ name: n }));
+          const logos = selectedModels.map(() => '');
+          renderOverallChart(container, legend, benchNames, models, allValues, colors, logos);
+        })
+        .catch(err => console.warn('VLA chart data load failed:', err));
+
+      // LIBERO backbone comparison line charts
+      (function() {
+        const data = {
+          steps: ['10K', '50K', '80K'],
+          groot: {
+            'Embodied-R1.5': [92.30, 96.00, 96.90],
+            'Qwen3-VL-8B':   [81.80, 95.70, 96.15]
+          },
+          oft: {
+            'Embodied-R1.5': [90.35, 96.95, 97.00],
+            'Qwen3-VL-8B':   [89.00, 95.70, 96.40]
+          }
+        };
+        const colors = { 'Embodied-R1.5': '#2563eb', 'Qwen3-VL-8B': '#f59e0b' };
+
+        function renderLineChart(container, title, series) {
+          if (!container) return;
+          const W = 400, H = 300;
+          const margin = { top: 44, right: 24, bottom: 44, left: 54 };
+          const iW = W - margin.left - margin.right;
+          const iH = H - margin.top - margin.bottom;
+          const steps = data.steps;
+          const names = Object.keys(series);
+          const allVals = names.flatMap(n => series[n]);
+          const minVal = Math.floor(Math.min(...allVals) / 5) * 5;
+          const maxVal = Math.ceil(Math.max(...allVals) / 5) * 5;
+          const range = maxVal - minVal || 1;
+
+          function x(i) { return margin.left + (i / (steps.length - 1)) * iW; }
+          function y(v) { return margin.top + (1 - (v - minVal) / range) * iH; }
+
+          let svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg">`;
+
+          // Title
+          svg += `<text x="${W/2}" y="20" text-anchor="middle" font-size="14" font-weight="600" fill="#374151" font-family="system-ui,sans-serif">${title}</text>`;
+
+          // Grid lines
+          for (let i = 0; i <= 4; i++) {
+            const val = minVal + (range / 4) * i;
+            const yy = y(val);
+            svg += `<line x1="${margin.left}" y1="${yy}" x2="${W - margin.right}" y2="${yy}" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3 3"/>`;
+            svg += `<text x="${margin.left - 8}" y="${yy + 4}" text-anchor="end" font-size="11" fill="#9ca3af" font-family="system-ui,sans-serif">${val.toFixed(0)}%</text>`;
+          }
+
+          // X-axis labels
+          steps.forEach((s, i) => {
+            svg += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle" font-size="12" font-weight="500" fill="#374151" font-family="system-ui,sans-serif">${s}</text>`;
+          });
+
+          // Lines and points
+          const allSeries = names.map(name => ({ name, vals: series[name], color: colors[name] }));
+          allSeries.forEach(({ vals, color }) => {
+            const pts = vals.map((v, i) => `${x(i)},${y(v)}`).join(' ');
+            svg += `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+          });
+          // Points and labels (blue above, orange below)
+          allSeries.forEach(({ vals, color, name }) => {
+            const isSecond = name === 'Qwen3-VL-8B';
+            vals.forEach((v, i) => {
+              svg += `<circle cx="${x(i)}" cy="${y(v)}" r="4" fill="${color}" stroke="#fff" stroke-width="2"/>`;
+              const labelY = isSecond ? y(v) + 18 : y(v) - 10;
+              svg += `<text x="${x(i)}" y="${labelY}" text-anchor="middle" font-size="10" font-weight="700" fill="${color}" font-family="system-ui,sans-serif">${v.toFixed(1)}</text>`;
+            });
+          });
+
+          svg += '</svg>';
+          container.innerHTML = svg;
+        }
+
+        renderLineChart(document.getElementById('libero-line-groot'), 'GR00T Action Expert', data.groot);
+        renderLineChart(document.getElementById('libero-line-oft'), 'OFT Action Expert', data.oft);
+
+        // Shared legend
+        const legendEl = document.getElementById('libero-line-legend');
+        if (legendEl) {
+          legendEl.innerHTML = Object.entries(colors).map(([name, color]) =>
+            `<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#374151;font-family:system-ui,sans-serif;"><span style="display:inline-block;width:14px;height:3px;border-radius:2px;background:${color};"></span>${name}</span>`
+          ).join('');
+        }
+      })();
+
+      // Radar Chart: VLA + Affordance
+      (function() {
+        const container = document.getElementById('radar-chart-container');
+        const legendEl = document.getElementById('radar-chart-legend');
+        if (!container) return;
+
+        const axes = ['Google Robot\n(VM)', 'Google Robot\n(VA)', 'WidowX\n(VM)', 'LIBERO', 'Affordance\n(Seen)'];
+        const models = [
+          { name: 'Embodied-R1.5-VLA', color: '#2563eb', values: [92.4, 71.5, 74.0, 96.9, 70.0] },
+          { name: 'pi0',               color: '#f59e0b', values: [71.4, 54.7, 27.1, 94.2, 0] },
+          { name: 'SpatialVLA',        color: '#10b981', values: [55.3, 52.2, 42.7, 78.1, 0] },
+          { name: 'GR00T N1.5',        color: '#8b5cf6', values: [35.2, 44.5, 62.0, 93.9, 0] },
+          { name: 'ManipLLM',          color: '#ec4899', values: [0, 0, 0, 0, 59.0] },
+        ];
+
+        const W = 520, H = 480;
+        const cx = W / 2, cy = H / 2 + 10;
+        const R = 170;
+        const levels = 5;
+        const n = axes.length;
+
+        function angleFor(i) { return (Math.PI * 2 * i) / n - Math.PI / 2; }
+        function pt(i, r) {
+          const a = angleFor(i);
+          return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+        }
+
+        let svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="font-family:'Space Grotesk',sans-serif;">`;
+
+        // Grid rings
+        for (let l = 1; l <= levels; l++) {
+          const r = (R / levels) * l;
+          const pts = [];
+          for (let i = 0; i < n; i++) pts.push(pt(i, r).join(','));
+          svg += `<polygon points="${pts.join(' ')}" fill="none" stroke="#e5e7eb" stroke-width="1"/>`;
+        }
+
+        // Axis lines
+        for (let i = 0; i < n; i++) {
+          const [x, y] = pt(i, R);
+          svg += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#d1d5db" stroke-width="1"/>`;
+        }
+
+        // Level labels (0, 20, 40, 60, 80, 100)
+        for (let l = 0; l <= levels; l++) {
+          const r = (R / levels) * l;
+          const val = (100 / levels) * l;
+          const [x, y] = pt(0, r);
+          svg += `<text x="${x + 4}" y="${y - 4}" font-size="10" fill="#9ca3af">${val}</text>`;
+        }
+
+        // Axis labels
+        for (let i = 0; i < n; i++) {
+          const [x, y] = pt(i, R + 30);
+          const anchor = x < cx - 10 ? 'end' : x > cx + 10 ? 'start' : 'middle';
+          const lines = axes[i].split('\n');
+          if (lines.length > 1) {
+            svg += `<text x="${x}" y="${y - 6}" text-anchor="${anchor}" font-size="12.5" font-weight="600" fill="#374151">${lines[0]}</text>`;
+            svg += `<text x="${x}" y="${y + 9}" text-anchor="${anchor}" font-size="11" fill="#6b7280">${lines[1]}</text>`;
+          } else {
+            svg += `<text x="${x}" y="${y + 2}" text-anchor="${anchor}" font-size="12.5" font-weight="600" fill="#374151">${lines[0]}</text>`;
+          }
+        }
+
+        // Model polygons
+        models.forEach((m, mi) => {
+          const pts = [];
+          for (let i = 0; i < n; i++) {
+            const r = (m.values[i] / 100) * R;
+            pts.push(pt(i, r).join(','));
+          }
+          const isOurs = mi === 0;
+          svg += `<polygon points="${pts.join(' ')}" fill="${m.color}" fill-opacity="${isOurs ? 0.15 : 0.05}" stroke="${m.color}" stroke-width="${isOurs ? 2.5 : 1.5}" stroke-opacity="${isOurs ? 1 : 0.7}"/>`;
+        });
+
+        // Data points
+        models.forEach((m, mi) => {
+          const isOurs = mi === 0;
+          for (let i = 0; i < n; i++) {
+            if (m.values[i] === 0) continue;
+            const r = (m.values[i] / 100) * R;
+            const [x, y] = pt(i, r);
+            svg += `<circle cx="${x}" cy="${y}" r="${isOurs ? 4 : 3}" fill="${m.color}" stroke="#fff" stroke-width="1.5"/>`;
+            if (isOurs) {
+              svg += `<text x="${x}" y="${y - 8}" text-anchor="middle" font-size="11" font-weight="700" fill="${m.color}">${m.values[i]}</text>`;
+            }
+          }
+        });
+
+        svg += '</svg>';
+        container.innerHTML = svg;
+
+        // Legend
+        if (legendEl) {
+          legendEl.innerHTML = models.map(m =>
+            `<span class="chart-legend-item"><span class="chart-legend-dot" style="background:${m.color}"></span><span class="chart-legend-name">${m.name}</span></span>`
+          ).join('');
+        }
+      })();
+    });
+  </script>
+  <script>
+    // Leaderboard: highlight best score
+    document.addEventListener('DOMContentLoaded', () => {
+      // VLM table: best per row
+      const vlmRows = document.querySelectorAll('.leaderboard-table:not(.vla-table) tbody tr:not(.category-row)');
+      vlmRows.forEach(row => {
+        const isOverall = row.classList.contains('overall-row');
+        const cells = Array.from(row.querySelectorAll('td:not(.sticky-col)'));
+        const vals = cells.map(c => parseFloat(c.textContent));
+        const valid = vals.filter(v => !isNaN(v));
+        if (valid.length < 2) return;
+        const best = Math.max(...valid);
+        cells.forEach((c, i) => {
+          if (vals[i] === best) c.classList.add(isOverall ? 'score-best-overall' : 'score-best');
+        });
+      });
+
+      // VLA tables: best per column, respecting category-row groups
+      document.querySelectorAll('.vla-table').forEach(table => {
+        // Split rows into groups by category-row separators
+        const allRows = Array.from(table.querySelectorAll('tbody tr'));
+        const groups = [];
+        let current = [];
+        allRows.forEach(row => {
+          if (row.classList.contains('category-row')) {
+            if (current.length) groups.push(current);
+            current = [];
+          } else {
+            current.push(row);
+          }
+        });
+        if (current.length) groups.push(current);
+
+        // If no category-rows found, treat entire table as one group
+        if (groups.length === 0) groups.push(allRows.filter(r => !r.classList.contains('category-row')));
+
+        groups.forEach(rows => {
+          if (rows.length < 2) return;
+          const numCols = Math.max(...rows.map(r => r.querySelectorAll('td:not(.sticky-col)').length));
+          for (let col = 0; col < numCols; col++) {
+            let best = -Infinity;
+            const cellsInCol = [];
+            rows.forEach(row => {
+              const cells = Array.from(row.querySelectorAll('td:not(.sticky-col)'));
+              if (!cells[col]) return;
+              const v = parseFloat(cells[col].textContent);
+              cellsInCol.push({ cell: cells[col], val: v });
+              if (!isNaN(v) && v > best) best = v;
+            });
+            if (best === -Infinity) continue;
+            cellsInCol.forEach(({ cell, val }) => {
+              if (val === best && !isNaN(val)) cell.classList.add('score-best');
+            });
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    // Progress Sidebar
+    document.addEventListener('DOMContentLoaded', () => {
+      const progressItems = document.querySelectorAll('.progress-item');
+      const progressLineFill = document.querySelector('.progress-line-fill');
+      const progressTrack = document.querySelector('.progress-track');
+
+      // Build sections array from progress items to ensure they match
+      const sections = [];
+      progressItems.forEach(item => {
+        const id = item.dataset.section;
+        let el;
+        if (id === 'hero') {
+          el = document.querySelector('.hero-flow');
+        } else {
+          el = document.getElementById(id);
+        }
+        if (el) {
+          sections.push({ id, el });
+        }
+      });
+
+      const updateProgress = () => {
+        if (sections.length === 0) return;
+
+        const viewportHeight = window.innerHeight;
+        const activationThreshold = viewportHeight * 0.35;
+
+        // Find active section index
+        let activeIdx = 0;
+        for (let idx = 0; idx < sections.length; idx++) {
+          const rect = sections[idx].el.getBoundingClientRect();
+          if (rect.top <= activationThreshold) {
+            activeIdx = idx;
+          } else {
+            break;
+          }
+        }
+
+        // Update progress line fill based on active section
+        if (progressLineFill && progressTrack) {
+          const trackHeight = progressTrack.offsetHeight;
+          const maxFillHeight = trackHeight - 44; // Account for top/bottom padding
+          const fillHeight = (activeIdx / Math.max(sections.length - 1, 1)) * maxFillHeight;
+          progressLineFill.style.height = `${Math.min(Math.max(fillHeight, 0), maxFillHeight)}px`;
+        }
+
+        // Update dot states
+        progressItems.forEach(item => {
+          const sectionId = item.dataset.section;
+          const sectionIdx = sections.findIndex(s => s.id === sectionId);
+
+          item.classList.remove('active', 'passed');
+          if (sectionIdx === activeIdx) {
+            item.classList.add('active');
+          } else if (sectionIdx >= 0 && sectionIdx < activeIdx) {
+            item.classList.add('passed');
+          }
+        });
+      };
+
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const sliderSection = document.getElementById('slider-comparison');
+      if (!sliderSection) return;
+
+      const range = sliderSection.querySelector('.slider-input');
+      const overlay = sliderSection.querySelector('.slider-overlay');
+      const handle = sliderSection.querySelector('.slider-handle');
+      const simVideo = document.getElementById('slider-sim-video');
+      const realVideo = document.getElementById('slider-real-video');
+      const taskName = document.getElementById('slider-task-name');
+      const prevBtn = document.getElementById('slider-prev');
+      const nextBtn = document.getElementById('slider-next');
+
+      const videoPairs = [
+        { task: 'Food Bussing', sim: './assets/videos/sim_rollouts/fruitbus.mp4', real: './assets/videos/real_rollouts/fruitbus.mp4' },
+        { task: 'Block Stacking', sim: './assets/videos/sim_rollouts/stack.mp4', real: './assets/videos/real_rollouts/stack.mp4' },
+        { task: 'Pan Cleaning', sim: './assets/videos/sim_rollouts/panclean.mp4', real: './assets/videos/real_rollouts/panclean.mp4' },
+        { task: 'Move Latte Cup', sim: './assets/videos/sim_rollouts/latte-cup.mp4', real: './assets/videos/real_rollouts/lattecup.mp4' },
+        { task: 'Organize Tools', sim: './assets/videos/sim_rollouts/organize-tools.mp4', real: './assets/videos/real_rollouts/scissor.mp4' },
+        { task: 'Tape Into Container', sim: './assets/videos/sim_rollouts/tape-into-container.mp4', real: './assets/videos/real_rollouts/tape.mp4' },
+      ];
+
+      let currentIdx = 0;
+
+      const updateVideos = () => {
+        const pair = videoPairs[currentIdx];
+        simVideo.src = pair.sim;
+        realVideo.src = pair.real;
+        taskName.textContent = pair.task;
+        simVideo.play();
+        realVideo.play();
+      };
+
+      prevBtn?.addEventListener('click', () => {
+        currentIdx = (currentIdx - 1 + videoPairs.length) % videoPairs.length;
+        updateVideos();
+      });
+
+      nextBtn?.addEventListener('click', () => {
+        currentIdx = (currentIdx + 1) % videoPairs.length;
+        updateVideos();
+      });
+
+      const updateSlider = (value) => {
+        const clamped = Math.max(0, Math.min(100, value));
+        overlay.style.width = clamped + '%';
+        handle.style.left = clamped + '%';
+        // Keep overlay video at full wrapper width
+        const wrapperWidth = sliderSection.querySelector('.slider-wrapper').offsetWidth;
+        realVideo.style.width = wrapperWidth + 'px';
+      };
+
+      range?.addEventListener('input', (e) => updateSlider(Number(e.target.value)));
+      range?.addEventListener('change', (e) => updateSlider(Number(e.target.value)));
+
+      // Set initial width after videos load
+      const initSlider = () => updateSlider(Number(range?.value || 50));
+      initSlider();
+      realVideo.addEventListener('loadedmetadata', initSlider);
+      simVideo.addEventListener('loadedmetadata', initSlider);
+
+      // Update on resize
+      window.addEventListener('resize', initSlider);
+    });
+
+    // Mobile detection helper
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+        (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) ||
+        ('ontouchstart' in window && navigator.maxTouchPoints > 2);
+    }
+
+    // Gaussian Splat iframe - lazy loading with scene switcher
+    document.addEventListener('DOMContentLoaded', () => {
+      const iframe = document.getElementById('gsplatIframe');
+      const loading = document.getElementById('gsplatIframeLoading');
+      const progress = document.getElementById('gsplatIframeProgress');
+      const loadingText = loading?.querySelector('.gsplat-loading-text');
+      const desktopViewer = document.getElementById('gsplatDesktopViewer');
+      const mobileViewer = document.getElementById('gsplatMobileViewer');
+      const viewerHint = document.getElementById('gsplatViewerHint');
+      const select = document.getElementById('gsplatSelect');
+
+      // Scene configurations
+      const scenes = {
+        workbench: { label: 'Workbench', file: './assets/splats/workbench.html.gz' },
+        splat_stove: { label: 'Stove', file: './assets/splats/splat_stove.html.gz' },
+        splat_lobbydesk: { label: 'Lobby Desk', file: './assets/splats/splat_lobbydesk.html.gz' }
+      };
+
+      // Track current blob URL for cleanup
+      let currentBlobUrl = null;
+      let isLoading = false;
+      let currentSceneKey = null;
+
+      // Mobile fallback: show unsupported message instead of WebGL viewer
+      if (isMobileDevice()) {
+        if (desktopViewer) desktopViewer.style.display = 'none';
+        if (mobileViewer) mobileViewer.style.display = 'flex';
+        if (viewerHint) viewerHint.style.display = 'none';
+        return; // Skip loading the heavy WebGL viewer
+      }
+
+      if (!iframe || !loading || !select) return;
+
+      // Cleanup function to free resources
+      const cleanup = () => {
+        // Clear onload handler to prevent it firing during cleanup
+        iframe.onload = null;
+        // Revoke previous blob URL to free memory
+        if (currentBlobUrl) {
+          URL.revokeObjectURL(currentBlobUrl);
+          currentBlobUrl = null;
+        }
+        // Clear iframe to release WebGL context and memory
+        iframe.src = 'about:blank';
+      };
+
+      // Load a specific scene
+      const loadScene = async (sceneKey) => {
+        const scene = scenes[sceneKey];
+        if (!scene || isLoading) return;
+
+        isLoading = true;
+        select.disabled = true;
+        currentSceneKey = sceneKey;
+
+        // Show loading state in dropdown
+        const originalText = select.options[select.selectedIndex].text;
+        select.options[select.selectedIndex].text = 'Loading...';
+
+        // Cleanup previous scene
+        cleanup();
+
+        // Show loading
+        loading.classList.remove('hidden');
+        progress.style.width = '0%';
+        loadingText.textContent = 'Downloading viewer...';
+
+        try {
+          const response = await fetch(scene.file);
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+          const contentLength = response.headers.get('content-length');
+          const total = contentLength ? parseInt(contentLength, 10) : 0;
+          let loaded = 0;
+
+          const reader = response.body.getReader();
+          const chunks = [];
+
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            chunks.push(value);
+            loaded += value.length;
+            if (total > 0) {
+              const pct = Math.round((loaded / total) * 70);
+              progress.style.width = pct + '%';
+              loadingText.textContent = `Downloading... ${Math.round(loaded / 1024 / 1024)}MB`;
+            }
+          }
+
+          const compressedData = new Uint8Array(loaded);
+          let offset = 0;
+          for (const chunk of chunks) {
+            compressedData.set(chunk, offset);
+            offset += chunk.length;
+          }
+
+          loadingText.textContent = 'Decompressing...';
+          progress.style.width = '75%';
+
+          const ds = new DecompressionStream('gzip');
+          const decompressedStream = new Blob([compressedData]).stream().pipeThrough(ds);
+          const decompressedArrayBuffer = await new Response(decompressedStream).arrayBuffer();
+
+          progress.style.width = '85%';
+          loadingText.textContent = 'Preparing viewer...';
+
+          let htmlText = new TextDecoder().decode(decompressedArrayBuffer);
+          const realBaseUrl = new URL(scene.file.replace('.gz', ''), window.location.href).href;
+
+          // Inject script to patch URL constructor for blob context
+          const patchScript = `<script>
+(function() {
+  const fakeHref = "${realBaseUrl}";
+  const OrigURL = window.URL;
+  window.URL = function(url, base) {
+    if (base !== undefined && typeof base === 'string' && base.startsWith('blob:')) {
+      base = fakeHref;
+    }
+    return new OrigURL(url, base);
+  };
+  window.URL.prototype = OrigURL.prototype;
+  Object.setPrototypeOf(window.URL, OrigURL);
+  window.URL.createObjectURL = OrigURL.createObjectURL;
+  window.URL.revokeObjectURL = OrigURL.revokeObjectURL;
+  window.URL.canParse = OrigURL.canParse;
+})();
+<\/script>`;
+
+          htmlText = htmlText.replace('<head>', '<head>' + patchScript);
+
+          progress.style.width = '90%';
+          loadingText.textContent = 'Loading viewer...';
+
+          const htmlBlob = new Blob([htmlText], { type: 'text/html' });
+          currentBlobUrl = URL.createObjectURL(htmlBlob);
+
+          iframe.onload = () => {
+            progress.style.width = '100%';
+            setTimeout(() => {
+              loading.classList.add('hidden');
+              isLoading = false;
+              select.disabled = false;
+              // Restore original text
+              select.options[select.selectedIndex].text = scene.label;
+            }, 300);
+          };
+          iframe.src = currentBlobUrl;
+
+        } catch (err) {
+          console.error('Failed to load splat viewer:', err);
+          loadingText.textContent = 'Error: ' + err.message;
+          isLoading = false;
+          select.disabled = false;
+          // Restore original text
+          select.options[select.selectedIndex].text = scene.label;
+        }
+      };
+
+      // Handle scene selection
+      select.addEventListener('change', (e) => {
+        const sceneKey = e.target.value;
+        if (sceneKey) {
+          loadScene(sceneKey);
+        }
+      });
+
+      // Load default scene (workbench)
+      loadScene('workbench');
+    });
+
+    // TRELLIS mesh switcher
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('meshSelect');
+      const raw = document.getElementById('meshRaw');
+      const activeName = document.getElementById('meshActiveName');
+      const video = document.getElementById('meshVideo');
+      const note = document.getElementById('meshVideoNote');
+
+      const meshes = {
+        coke: { label: 'Coke', file: 'mesh_coke.glb', video: 'coke.mp4' },
+        cleaner: { label: 'Cleaner', file: 'mesh_cleaner.glb', video: 'cleaner.mp4' },
+        electricdrill: { label: 'Electric Drill', file: 'mesh_electricdrill.glb', video: 'electricdrill.mp4' },
+        pot: { label: 'Pot', file: 'mesh_pot.glb', video: 'pot.mp4' },
+        scissor: { label: 'Scissor', file: 'mesh_scissor.glb', video: 'scissor.mp4' },
+        spoon: { label: 'Spoon', file: 'mesh_spoon.glb', video: 'spoon.mp4' }
+      };
+
+      // Adjust video height to maintain aspect ratio and sync mesh viewer height
+      const adjustVideoHeight = () => {
+        if (video && video.videoWidth && video.videoHeight) {
+          const aspectRatio = video.videoHeight / video.videoWidth;
+          const containerWidth = video.offsetWidth || video.parentElement.offsetWidth;
+          if (containerWidth > 0) {
+            const calculatedHeight = containerWidth * aspectRatio;
+            video.style.height = `${calculatedHeight}px`;
+            // Sync mesh viewer to same height
+            if (raw) {
+              const meshViewer = raw;
+              meshViewer.style.height = `${calculatedHeight}px`;
+              meshViewer.style.minHeight = `${calculatedHeight}px`;
+            }
+          }
+        }
+      };
+
+      // Add window resize listener once
+      window.addEventListener('resize', adjustVideoHeight);
+
+      const setMesh = (key) => {
+        const entry = meshes[key];
+        if (!entry || !raw) return;
+        const src = `./assets/trellis/${entry.file}`;
+        raw.setAttribute('src', src);
+        raw.setAttribute('camera-orbit', 'auto auto 600%');
+        raw.setAttribute('min-camera-orbit', 'auto auto 200%');
+        raw.setAttribute('max-camera-orbit', 'auto auto 1000%');
+        raw.setAttribute('field-of-view', '85deg');
+        if (activeName) activeName.textContent = entry.label;
+        if (video) {
+          if (entry.video) {
+            video.src = `./assets/videos/objects/${entry.video}`;
+            video.classList.remove('hidden');
+            video.load();
+            video.addEventListener('loadedmetadata', adjustVideoHeight);
+            // Also check if metadata is already available
+            if (video.readyState >= 1) {
+              setTimeout(adjustVideoHeight, 100);
+            }
+
+            video.play().catch(() => { });
+            if (note) note.textContent = '';
+          } else {
+            video.pause();
+            video.removeAttribute('src');
+            video.classList.add('hidden');
+            video.style.height = ''; // Reset height
+            if (raw) {
+              raw.style.height = '';
+              raw.style.minHeight = '';
+            }
+            if (note) note.textContent = 'No scan video available for this object.';
+          }
+        }
+      };
+
+      select?.addEventListener('change', (e) => setMesh(e.target.value));
+      setMesh(select?.value || 'cleaner');
+    });
+
+    // COMMENTED OUT: Original Gaussian Splat Viewer using @mkkellogg/gaussian-splats-3d
+    /*
+    (async function() {
+      const gsplatSelect = document.getElementById('gsplatSelect');
+      const gsplatActiveName = document.getElementById('gsplatActiveName');
+      const gsplatContainer = document.getElementById('gsplatContainer');
+      const gsplatLoading = document.getElementById('gsplatLoading');
+
+      if (!gsplatContainer) return;
+
+      // Scene configurations - customize camera for each scene
+      const scenes = {
+        stovetop: {
+          label: 'Stovetop',
+          file: './assets/splats/stovetop.splat',
+          // Camera settings
+          cameraUp: [0, -1, 0],                    // Up direction
+          cameraPosition: [3, -3, 8],              // Camera position [x, y, z]
+          cameraLookAt: [0, 0, 0],                 // Look at point [x, y, z]
+          // Scene transform (optional)
+          position: [0, 0, 0],                     // Scene offset [x, y, z]
+          rotation: [ 0, 0.7071068, -0.7071068, 0 ],                  // Rotation quaternion [x, y, z, w]
+          // rotation: [0, 0, 0, 1],                  // Rotation quaternion [x, y, z, w]
+          scale: [1, 1, 1]                         // Scale [x, y, z]
+        },
+        kitchen_tabletop: {
+          label: 'Kitchen Tabletop',
+          file: './assets/splats/kitchen_table.splat',
+          cameraUp: [0, 1, 0],
+          cameraPosition: [2, 2, 2],
+          cameraLookAt: [0, 0, 0],
+          position: [0, 0, 0],
+          rotation: [ -0.7071068, 0, 0, 0.7071068 ],
+          scale: [1, 1, 1]
+        }
+        // Add more scenes here:
+        // kitchen: {
+        //   label: 'Kitchen',
+        //   file: './assets/splats/kitchen.ply',
+        //   cameraUp: [0, 1, 0],
+        //   cameraPosition: [2, 1, 4],
+        //   cameraLookAt: [0, 0, 0],
+        //   position: [0, 0, 0],
+        //   rotation: [0, 0, 0, 1],
+        //   scale: [1, 1, 1]
+        // }
+      };
+
+      let viewer = null;
+      let GaussianSplats3D = null;
+
+      const loadScene = async (sceneKey) => {
+        const scene = scenes[sceneKey];
+        if (!scene) return;
+
+        const gsplatLoadingText = gsplatLoading.querySelector('.gsplat-loading-text');
+        const gsplatProgressFill = document.getElementById('gsplatProgressFill');
+        gsplatLoadingText.textContent = 'Initializing viewer...';
+        gsplatProgressFill.style.width = '0%';
+        gsplatLoading.classList.remove('hidden');
+
+        // Clean up previous viewer
+        if (viewer) {
+          try {
+            viewer.dispose();
+          } catch (e) {
+            console.warn('Viewer dispose error:', e);
+          }
+          viewer = null;
+        }
+        // Remove any existing canvases
+        gsplatContainer.querySelectorAll('canvas').forEach(c => c.remove());
+
+        try {
+          // Import library if not loaded
+          if (!GaussianSplats3D) {
+            GaussianSplats3D = await import('https://cdn.jsdelivr.net/npm/@mkkellogg/gaussian-splats-3d@0.4.6/build/gaussian-splats-3d.module.min.js');
+          }
+
+          // Create viewer with scene-specific camera settings
+          viewer = new GaussianSplats3D.Viewer({
+            cameraUp: scene.cameraUp || [0, -1, 0],
+            initialCameraPosition: scene.cameraPosition || [0, -2, 6],
+            initialCameraLookAt: scene.cameraLookAt || [0, 0, 0],
+            rootElement: gsplatContainer,
+            sharedMemoryForWorkers: false,
+            dynamicScene: false,
+            selfDrivenMode: true
+          });
+
+          gsplatLoadingText.textContent = 'Loading splats...';
+
+          // Load the scene with transform settings
+          await viewer.addSplatScene(scene.file, {
+            splatAlphaRemovalThreshold: 5,
+            showLoadingUI: false,
+            progressiveLoad: false,
+            position: scene.position || [0, 0, 0],
+            rotation: scene.rotation || [0, 0, 0, 1],
+            scale: scene.scale || [1, 1, 1],
+            onProgress: (percent, message) => {
+              gsplatProgressFill.style.width = Math.round(percent) + '%';
+              gsplatLoadingText.textContent = message || `Loading... ${Math.round(percent)}%`;
+            }
+          });
+
+          viewer.start();
+          gsplatLoading.classList.add('hidden');
+          if (gsplatActiveName) gsplatActiveName.textContent = scene.label + ' (loaded)';
+
+        } catch (error) {
+          console.error('Viewer error:', error);
+          gsplatLoadingText.textContent = 'Error: ' + error.message;
+          gsplatProgressFill.style.width = '0%';
+        }
+      };
+
+      // Handle scene selection
+      gsplatSelect?.addEventListener('change', (e) => {
+        loadScene(e.target.value);
+      });
+
+      // Load initial scene
+      loadScene(gsplatSelect?.value || 'splat');
+    })();
+    */
+
+    // Simple interactive scatter backed by exported data (PolaRiS only)
+    document.addEventListener('DOMContentLoaded', () => {
+      const svg = document.getElementById('corr-scatter');
+      const statusEl = document.getElementById('scatter-status');
+      const benchmarkLegend = document.getElementById('benchmark-legend');
+      const taskLegend = document.getElementById('task-legend');
+      const policyLegend = document.getElementById('policy-legend');
+      if (!svg) return;
+
+      const margin = { top: 20, right: 20, bottom: 40, left: 50 };
+      const width = 400 - margin.left - margin.right;
+      const height = 320 - margin.top - margin.bottom;
+      const min = 0;
+      const max = 1;
+
+      const createEl = (tag, attrs) => {
+        const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+        return el;
+      };
+
+      const renderScatter = (data) => {
+        // Clear
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+        const g = createEl('g', { transform: `translate(${margin.left},${margin.top})` });
+        svg.appendChild(g);
+
+        const scaleX = (v) => (v - min) / (max - min) * width;
+        const scaleY = (v) => height - (v - min) / (max - min) * height;
+
+        // Grid lines
+        const gridCount = 5;
+        for (let i = 1; i < gridCount; i++) {
+          const gx = (i / gridCount) * width;
+          const gy = (i / gridCount) * height;
+          g.appendChild(createEl('line', { x1: gx, y1: 0, x2: gx, y2: height, stroke: 'rgba(0,0,0,0.06)', 'stroke-width': 1, 'stroke-dasharray': '4 4' }));
+          g.appendChild(createEl('line', { x1: 0, y1: gy, x2: width, y2: gy, stroke: 'rgba(0,0,0,0.06)', 'stroke-width': 1, 'stroke-dasharray': '4 4' }));
+        }
+
+        // Axes lines
+        g.appendChild(createEl('line', { x1: 0, y1: height, x2: width, y2: height, stroke: '#9ca3af', 'stroke-width': 2 }));
+        g.appendChild(createEl('line', { x1: 0, y1: 0, x2: 0, y2: height, stroke: '#9ca3af', 'stroke-width': 2 }));
+
+        // Axis labels
+        const xLabel = createEl('text', { x: width / 2, y: height + 32, 'text-anchor': 'middle', fill: '#4a4a4a', 'font-size': '11', 'font-weight': '500' });
+        xLabel.textContent = 'Simulation Success Rate';
+        g.appendChild(xLabel);
+        const yLabel = createEl('text', { x: -36, y: height / 2, 'text-anchor': 'middle', fill: '#4a4a4a', 'font-size': '11', 'font-weight': '500', transform: `rotate(-90 -36 ${height / 2})` });
+        yLabel.textContent = 'Real-World Success Rate';
+        g.appendChild(yLabel);
+
+        // Diagonal reference
+        g.appendChild(createEl('line', { x1: 0, y1: height, x2: width, y2: 0, stroke: 'rgba(212,148,10,0.4)', 'stroke-dasharray': '8 6', 'stroke-width': 2, 'stroke-opacity': 1 }));
+
+        // Tooltip
+        const tooltip = document.createElement('div');
+        tooltip.className = 'scatter-tooltip';
+        document.body.appendChild(tooltip);
+
+        // Policy name mapping for display
+        const policyDisplayName = {
+          'paligemma_binning_droid_jointpos': 'PaliGemma',
+          'pi05_droid_jointpos': 'π₀.₅',
+          'pi0_droid_jointpos': 'π₀',
+          'pi0_droid_jointpos_100k': 'π₀ (100k)',
+          'pi0_fast_droid_jointpos': 'π₀-fast',
+        };
+
+        // Map marker codes from JSON to shape names
+        const markerToShape = {
+          'o': 'circle',
+          's': 'square',
+          '^': 'triangle',
+          'D': 'diamond',
+          'd': 'diamond',
+          '*': 'star',
+          'v': 'triangle-down',
+          'p': 'pentagon',
+          'h': 'circle',  // hexagon fallback
+          'H': 'circle',  // hexagon fallback
+        };
+
+        // Collect all points for animation
+        const scatterPoints = [];
+        data.forEach((d, index) => {
+          const cx = scaleX(d.sim);
+          const cy = scaleY(d.real);
+          // Use color from data for PolaRiS, use blue for LIBERO
+          const isPolaris = d.source === 'polaris';
+          const fill = isPolaris ? (d.color || '#c026d3') : '#eab308';
+          // Use marker from data, map to shape name
+          const shape = markerToShape[d.marker] || d.marker || 'circle';
+          const size = 6;
+
+          let node;
+          const fillColor = fill;
+          const fillOpacity = isPolaris ? 0.9 : 0.5;
+
+          if (shape === 'circle') {
+            node = createEl('circle', {
+              cx, cy, r: size,
+              fill: fillColor, 'fill-opacity': fillOpacity
+            });
+          } else if (shape === 'square') {
+            node = createEl('rect', {
+              x: cx - size, y: cy - size,
+              width: size * 2, height: size * 2,
+              fill: fillColor, 'fill-opacity': fillOpacity
+            });
+          } else if (shape === 'diamond') {
+            const pts = `${cx},${cy - size * 1.2} ${cx + size},${cy} ${cx},${cy + size * 1.2} ${cx - size},${cy}`;
+            node = createEl('polygon', {
+              points: pts,
+              fill: fillColor, 'fill-opacity': fillOpacity
+            });
+          } else if (shape === 'triangle') {
+            const pts = `${cx},${cy - size * 1.1} ${cx + size},${cy + size * 0.8} ${cx - size},${cy + size * 0.8}`;
+            node = createEl('polygon', {
+              points: pts,
+              fill: fillColor, 'fill-opacity': fillOpacity
+            });
+          } else if (shape === 'star') {
+            // 5-point star
+            const outerR = size * 1.1;
+            const innerR = size * 0.5;
+            let pts = '';
+            for (let i = 0; i < 10; i++) {
+              const r = i % 2 === 0 ? outerR : innerR;
+              const angle = (Math.PI / 2) + (i * Math.PI / 5);
+              pts += `${cx + r * Math.cos(angle)},${cy - r * Math.sin(angle)} `;
+            }
+            node = createEl('polygon', {
+              points: pts.trim(),
+              fill: fillColor, 'fill-opacity': fillOpacity
+            });
+          } else if (shape === 'triangle-down') {
+            const pts = `${cx},${cy + size * 1.1} ${cx + size},${cy - size * 0.8} ${cx - size},${cy - size * 0.8}`;
+            node = createEl('polygon', {
+              points: pts,
+              fill: fillColor, 'fill-opacity': fillOpacity
+            });
+          } else if (shape === 'pentagon') {
+            // 5-sided polygon
+            let pts = '';
+            for (let i = 0; i < 5; i++) {
+              const angle = (Math.PI / 2) + (i * 2 * Math.PI / 5);
+              pts += `${cx + size * Math.cos(angle)},${cy - size * Math.sin(angle)} `;
+            }
+            node = createEl('polygon', {
+              points: pts.trim(),
+              fill: fillColor, 'fill-opacity': fillOpacity
+            });
+          } else {
+            // Default to circle for unknown shapes
+            node = createEl('circle', {
+              cx, cy, r: size,
+              fill: fillColor, 'fill-opacity': fillOpacity
+            });
+          }
+
+          // Add animation class with staggered delay for scatter effect
+          node.classList.add('scatter-point-animated');
+          node.style.animationDelay = `${index * 15 + Math.random() * 50}ms`;
+          scatterPoints.push(node);
+
+          node.style.cursor = 'pointer';
+          node.addEventListener('mouseenter', (e) => {
+            tooltip.style.opacity = '1';
+            const displayName = policyDisplayName[d.policy] || d.policy || d.name;
+            tooltip.innerHTML = `<strong>${displayName}</strong><br>Task: ${d.environment || 'N/A'}<br>Sim: ${Math.round(d.sim * 100)}% · Real: ${Math.round(d.real * 100)}%`;
+            tooltip.style.left = `${e.pageX + 12}px`;
+            tooltip.style.top = `${e.pageY + 12}px`;
+          });
+          node.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = '0';
+          });
+          node.addEventListener('mousemove', (e) => {
+            tooltip.style.left = `${e.pageX + 12}px`;
+            tooltip.style.top = `${e.pageY + 12}px`;
+          });
+          g.appendChild(node);
+        });
+
+        // Build dynamic legends from data
+        // Collect unique environments with their colors (from polaris data)
+        const envColorMap = {};
+        const policyMarkerMap = {};
+        data.forEach(d => {
+          if (d.source === 'polaris' && d.environment && d.color) {
+            if (!envColorMap[d.environment]) envColorMap[d.environment] = d.color;
+          }
+          if (d.policy && d.marker) {
+            if (!policyMarkerMap[d.policy]) policyMarkerMap[d.policy] = d.marker;
+          }
+        });
+
+        // Helper to calculate luminance from hex color (for sorting dark to light)
+        const getLuminance = (hex) => {
+          const c = hex.replace('#', '');
+          const r = parseInt(c.substr(0, 2), 16) / 255;
+          const g = parseInt(c.substr(2, 2), 16) / 255;
+          const b = parseInt(c.substr(4, 2), 16) / 255;
+          return 0.299 * r + 0.587 * g + 0.114 * b;
+        };
+
+        // Benchmark legend (first)
+        if (benchmarkLegend) {
+          benchmarkLegend.innerHTML = '<strong style="margin-right: 12px; color: #1a1a1a;">Benchmark:</strong>';
+          const polItem = document.createElement('span');
+          polItem.className = 'legend-item';
+          polItem.innerHTML = `<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#c026d3;opacity:0.9;margin-right:6px;vertical-align:middle;"></span>PolaRiS`;
+          benchmarkLegend.appendChild(polItem);
+          const libItem = document.createElement('span');
+          libItem.className = 'legend-item';
+          libItem.innerHTML = `<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#eab308;opacity:0.5;margin-right:6px;vertical-align:middle;"></span>LIBERO`;
+          benchmarkLegend.appendChild(libItem);
+        }
+
+        // Task legend (colors) - sorted dark to light
+        if (taskLegend) {
+          taskLegend.innerHTML = '<strong style="margin-right: 12px; color: #1a1a1a;">Tasks:</strong>';
+          const sortedEnvs = Object.entries(envColorMap).sort((a, b) => getLuminance(a[1]) - getLuminance(b[1]));
+          sortedEnvs.forEach(([env, color]) => {
+            const item = document.createElement('span');
+            item.className = 'legend-item';
+            item.innerHTML = `<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${color};margin-right:6px;vertical-align:middle;"></span>${env}`;
+            taskLegend.appendChild(item);
+          });
+        }
+
+        // Policies legend (shapes)
+        if (policyLegend) {
+          policyLegend.innerHTML = '<strong style="margin-right: 12px; color: #1a1a1a;">Policies:</strong>';
+          const shapesSVG = {
+            'o': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><circle cx="6" cy="6" r="4" fill="#1a1a1a"/></svg>`,
+            's': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><rect x="2" y="2" width="8" height="8" fill="#1a1a1a"/></svg>`,
+            'D': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><polygon points="6,1 11,6 6,11 1,6" fill="#1a1a1a"/></svg>`,
+            '^': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><polygon points="6,2 11,10 1,10" fill="#1a1a1a"/></svg>`,
+            '*': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><polygon points="6,1 7.2,4.2 11,4.2 8,6.8 9.2,11 6,8.5 2.8,11 4,6.8 1,4.2 4.8,4.2" fill="#1a1a1a"/></svg>`,
+            'v': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><polygon points="6,10 11,2 1,2" fill="#1a1a1a"/></svg>`,
+            'p': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><circle cx="6" cy="6" r="4" fill="#1a1a1a"/></svg>`,
+            'circle': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><circle cx="6" cy="6" r="4" fill="#1a1a1a"/></svg>`,
+            'square': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><rect x="2" y="2" width="8" height="8" fill="#1a1a1a"/></svg>`,
+            'diamond': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><polygon points="6,1 11,6 6,11 1,6" fill="#1a1a1a"/></svg>`,
+            'triangle': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><polygon points="6,2 11,10 1,10" fill="#1a1a1a"/></svg>`,
+            'star': `<svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:5px;"><polygon points="6,1 7.2,4.2 11,4.2 8,6.8 9.2,11 6,8.5 2.8,11 4,6.8 1,4.2 4.8,4.2" fill="#1a1a1a"/></svg>`,
+          };
+          Object.entries(policyMarkerMap).forEach(([policy, marker]) => {
+            const item = document.createElement('span');
+            item.className = 'legend-item';
+            const svg = shapesSVG[marker] || shapesSVG['o'];
+            item.innerHTML = `${svg}${policyDisplayName[policy] || policy}`;
+            policyLegend.appendChild(item);
+          });
+        }
+
+        // Set up IntersectionObserver to trigger scatter animation on first view
+        const scatterObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              scatterPoints.forEach(point => {
+                point.classList.add('animate');
+              });
+              scatterObserver.disconnect();
+            }
+          });
+        }, { threshold: 0.2 });
+        scatterObserver.observe(svg);
+      };
+
+      fetch('./assets/data/main_correlation_data.json')
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then((jsonData) => {
+          // Show both PolaRiS and LIBERO points in scatter
+          const polarisPoints = (jsonData.polaris_points || []).map(r => ({
+            ...r,
+            source: 'polaris',
+            sim: Number(r.sim),
+            real: Number(r.real)
+          }));
+          const liberoPoints = (jsonData.libero_points || []).map(r => ({
+            ...r,
+            source: 'libero',
+            sim: Number(r.sim),
+            real: Number(r.real)
+          }));
+          const data = [...polarisPoints, ...liberoPoints];
+          if (data.length === 0) {
+            if (statusEl) statusEl.textContent = 'No correlation data available.';
+            return;
+          }
+          renderScatter(data);
+          if (statusEl) statusEl.textContent = '';
+
+        })
+        .catch((err) => {
+          console.warn('Correlation data load failed; showing demo data', err);
+          if (statusEl) statusEl.textContent = 'Showing demo points (data file missing).';
+          const demo = [];
+          for (let i = 0; i < 10; i++) {
+            const sim = 0.6 + Math.random() * 0.3;
+            const real = Math.min(1, Math.max(0, sim + (Math.random() * 0.1 - 0.05)));
+            demo.push({ name: `POLARIS ${i + 1}`, sim, real, source: 'polaris' });
+          }
+          for (let i = 0; i < 10; i++) {
+            demo.push({ name: `LIBERO ${i + 1}`, sim: Math.random(), real: Math.random(), source: 'libero' });
+          }
+          renderScatter(demo);
+        });
+
+      // Fetch and render comparison bar chart from separate JSON
+      fetch('./assets/data/main_barplots_metrics.json')
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then((metricsData) => {
+          renderComparisonBar(metricsData);
+        })
+        .catch((err) => {
+          console.warn('Barplot metrics load failed', err);
+        });
+
+      // Render comparison bar chart (Pearson r and MMRV)
+      const renderComparisonBar = (metrics) => {
+        const barSvg = document.getElementById('comparison-bar');
+        if (!barSvg || !metrics) return;
+
+        while (barSvg.firstChild) barSvg.removeChild(barSvg.firstChild);
+
+        // Collect bars for animation
+        const animatedBars = [];
+
+        // Dimensions to match correlation scatter height
+        const margin = { top: 20, right: 30, bottom: 50, left: 50 };
+        const w = 500 - margin.left - margin.right;
+        const h = 320 - margin.top - margin.bottom;
+
+        const g = createEl('g', { transform: `translate(${margin.left},${margin.top})` });
+        barSvg.appendChild(g);
+
+        // Convert metrics object to array
+        const benchmarks = Object.entries(metrics)
+          .map(([name, values]) => ({
+            name,
+            pearson: values.pearson,
+            mmrv: values.mmrv
+          }));
+
+        // Colors for each benchmark - distinct colors (LIBERO 10k matches correlation scatter)
+        // Using colorblind-friendly palette: yellow for LIBERO 10k (distinct from purple)
+        const benchmarkColors = {
+          'PolaRiS': '#c026d3',
+          'Ctrl-World': '#3b82f6',
+          'LIBERO 1k': '#f87171',
+          'LIBERO 10k': '#eab308',
+          'LIBERO 50k': '#10b981',
+          'MSE (Train)': '#ef4444',
+          'MSE (Val)': '#f97316'
+        };
+
+        // Two groups: Pearson r (higher is better), MMRV (lower is better)
+        const groups = ['Pearson r ↑', 'MMRV ↓'];
+        const groupWidth = w / 2;
+        const numBars = benchmarks.length;
+        const barWidth = 22;
+        const barGap = 4;
+        const totalBarSpace = numBars * barWidth + (numBars - 1) * barGap;
+
+        // Scales - extended pearsonMin to leave room for negative value labels
+        const pearsonMin = -0.8;
+        const pearsonMax = 1;
+        const mmrvMax = 0.5;
+
+        // Background grid
+        for (let i = 1; i < 5; i++) {
+          const gy = (i / 5) * h;
+          g.appendChild(createEl('line', { x1: 0, y1: gy, x2: w, y2: gy, stroke: 'rgba(0,0,0,0.06)', 'stroke-width': 1, 'stroke-dasharray': '4 4' }));
+        }
+
+        // Axes
+        g.appendChild(createEl('line', { x1: 0, y1: h, x2: w, y2: h, stroke: '#9ca3af', 'stroke-width': 2 }));
+        g.appendChild(createEl('line', { x1: 0, y1: 0, x2: 0, y2: h, stroke: '#9ca3af', 'stroke-width': 2 }));
+
+        groups.forEach((label, gi) => {
+          const groupCenterX = gi * groupWidth + groupWidth / 2;
+          const groupStartX = groupCenterX - totalBarSpace / 2;
+
+          // Group label
+          const labelEl = createEl('text', {
+            x: groupCenterX, y: h + 28,
+            'text-anchor': 'middle',
+            fill: '#4a4a4a',
+            'font-size': '12',
+            'font-weight': '500'
+          });
+          labelEl.textContent = label;
+          g.appendChild(labelEl);
+
+          // Zero line for Pearson r (first group)
+          if (gi === 0) {
+            const range = pearsonMax - pearsonMin;
+            const zeroY = h - ((0 - pearsonMin) / range) * h;
+            g.appendChild(createEl('line', {
+              x1: groupStartX - 8,
+              y1: zeroY,
+              x2: groupStartX + totalBarSpace + 8,
+              y2: zeroY,
+              stroke: '#6b7280',
+              'stroke-width': 1.5,
+              'stroke-dasharray': '4 3'
+            }));
+            // Zero label
+            const zeroLabel = createEl('text', {
+              x: groupStartX - 12,
+              y: zeroY + 4,
+              'text-anchor': 'end',
+              fill: '#6b7280',
+              'font-size': '9'
+            });
+            zeroLabel.textContent = '0';
+            g.appendChild(zeroLabel);
+          }
+
+          benchmarks.forEach((benchmark, bi) => {
+            let val, maxVal, minVal;
+            if (gi === 0) {
+              val = benchmark.pearson;
+              maxVal = pearsonMax;
+              minVal = pearsonMin;
+            } else {
+              val = benchmark.mmrv;
+              maxVal = mmrvMax;
+              minVal = 0;
+            }
+
+            const barX = groupStartX + bi * (barWidth + barGap);
+            const color = benchmarkColors[benchmark.name] || '#888';
+
+            // Calculate bar position
+            const range = maxVal - minVal;
+            const zeroY = h - ((0 - minVal) / range) * h;
+            const valY = h - ((val - minVal) / range) * h;
+
+            let barY, barH;
+            if (val >= 0) {
+              barY = valY;
+              barH = zeroY - valY;
+            } else {
+              barY = zeroY;
+              barH = valY - zeroY;
+            }
+
+            const bar = createEl('rect', {
+              x: barX,
+              y: barY,
+              width: barWidth,
+              height: Math.max(barH, 2),
+              fill: color,
+              rx: 3
+            });
+            // Add animation class with transform-origin based on value direction
+            bar.classList.add('bar-animated');
+            bar.style.transformOrigin = val >= 0 ? 'bottom center' : 'top center';
+            bar.style.animationDelay = `${(gi * benchmarks.length + bi) * 50}ms`;
+            animatedBars.push(bar);
+            g.appendChild(bar);
+
+            // Value label - position based on positive/negative
+            // For negative: barY + barH is the bottom of the bar
+            const labelY = val >= 0 ? valY - 8 : barY + barH + 14;
+            const valLabel = createEl('text', {
+              x: barX + barWidth / 2,
+              y: labelY,
+              'text-anchor': 'middle',
+              fill: color,
+              'font-size': '9',
+              'font-weight': '600'
+            });
+            valLabel.textContent = val.toFixed(2);
+            // Also animate value labels
+            valLabel.style.opacity = '0';
+            valLabel.classList.add('bar-label-animated');
+            valLabel.style.animationDelay = `${(gi * benchmarks.length + bi) * 50 + 300}ms`;
+            animatedBars.push(valLabel);
+            g.appendChild(valLabel);
+          });
+        });
+
+        // Set up IntersectionObserver to trigger bar animation on first view
+        const barObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animatedBars.forEach(el => {
+                el.classList.add('animate');
+              });
+              barObserver.disconnect();
+            }
+          });
+        }, { threshold: 0.2 });
+        barObserver.observe(barSvg);
+
+        // Update benchmark legend (italic = shown in correlation plot)
+        if (benchmarkLegend) {
+          const shownInCorrelation = ['PolaRiS', 'LIBERO 10k'];
+          benchmarkLegend.innerHTML = '';
+          benchmarks.forEach((benchmark) => {
+            const color = benchmarkColors[benchmark.name] || '#888';
+            const inCorrelation = shownInCorrelation.includes(benchmark.name);
+            const item = document.createElement('span');
+            item.className = 'legend-item';
+            item.innerHTML = `<span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:${color};margin-right:6px;vertical-align:middle;"></span><span style="font-style:${inCorrelation ? 'italic' : 'normal'}">${benchmark.name}</span>`;
+            benchmarkLegend.appendChild(item);
+          });
+          // Add note about italic entries
+          const note = document.createElement('span');
+          note.className = 'legend-item';
+          note.style.cssText = 'font-size:11px;color:#6b7280;margin-left:8px;';
+          note.textContent = '(italic = in correlation plot)';
+          benchmarkLegend.appendChild(note);
+        }
+      };
+    });
+
+    // Co-training data mix bar plot
+    document.addEventListener('DOMContentLoaded', () => {
+      const svg = document.getElementById('cotrain-bar');
+      if (!svg) return;
+
+      const createEl = (tag, attrs) => {
+        const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+        return el;
+      };
+
+      const renderCotrainBar = (metrics) => {
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+        // Collect bars for animation
+        const animatedBars = [];
+
+        const margin = { top: 20, right: 20, bottom: 70, left: 50 };
+        const w = 400 - margin.left - margin.right;
+        const h = 310 - margin.top - margin.bottom;
+
+        const g = createEl('g', { transform: `translate(${margin.left},${margin.top})` });
+        svg.appendChild(g);
+
+        // Use OOD Zeroshot and OOD Cotrained
+        const conditions = [
+          { label: 'Zeroshot', pearson: metrics['OOD Zeroshot'].pearson, mmrv: metrics['OOD Zeroshot'].mmrv, color: '#9ca3af' },
+          { label: 'Cotrained', pearson: metrics['OOD Cotrained'].pearson, mmrv: metrics['OOD Cotrained'].mmrv, color: '#c026d3' }
+        ];
+
+        const groups = ['Pearson r ↑', 'MMRV ↓'];
+        const groupWidth = w / 2;
+        const barWidth = 50;
+        const barGap = 12;
+
+        // Grid
+        for (let i = 1; i <= 4; i++) {
+          const gy = (i / 5) * h;
+          g.appendChild(createEl('line', { x1: 0, y1: gy, x2: w, y2: gy, stroke: 'rgba(0,0,0,0.06)', 'stroke-width': 1, 'stroke-dasharray': '4 4' }));
+        }
+
+        // Axes
+        g.appendChild(createEl('line', { x1: 0, y1: h, x2: w, y2: h, stroke: '#9ca3af', 'stroke-width': 2 }));
+        g.appendChild(createEl('line', { x1: 0, y1: 0, x2: 0, y2: h, stroke: '#9ca3af', 'stroke-width': 2 }));
+
+        groups.forEach((groupLabel, gi) => {
+          const groupCenterX = gi * groupWidth + groupWidth / 2;
+          const totalBarSpace = conditions.length * barWidth + (conditions.length - 1) * barGap;
+          const groupStartX = groupCenterX - totalBarSpace / 2;
+
+          // Group label
+          const labelEl = createEl('text', {
+            x: groupCenterX, y: h + 30,
+            'text-anchor': 'middle',
+            fill: '#4a4a4a',
+            'font-size': '11',
+            'font-weight': '500'
+          });
+          labelEl.textContent = groupLabel;
+          g.appendChild(labelEl);
+
+          conditions.forEach((cond, ci) => {
+            const val = gi === 0 ? cond.pearson : cond.mmrv;
+            const maxVal = gi === 0 ? 1 : 0.5;
+            const barX = groupStartX + ci * (barWidth + barGap);
+            const barH = (val / maxVal) * h;
+
+            // Bar
+            const bar = createEl('rect', {
+              x: barX,
+              y: h - barH,
+              width: barWidth,
+              height: Math.max(barH, 2),
+              fill: cond.color,
+              rx: 4
+            });
+            // Add animation class
+            bar.classList.add('bar-animated');
+            bar.style.animationDelay = `${(gi * conditions.length + ci) * 80}ms`;
+            animatedBars.push(bar);
+            g.appendChild(bar);
+
+            // Value label
+            const valLabel = createEl('text', {
+              x: barX + barWidth / 2,
+              y: h - barH - 6,
+              'text-anchor': 'middle',
+              fill: cond.color,
+              'font-size': '11',
+              'font-weight': '600'
+            });
+            valLabel.textContent = val.toFixed(2);
+            // Also animate value labels
+            valLabel.style.opacity = '0';
+            valLabel.classList.add('bar-label-animated');
+            valLabel.style.animationDelay = `${(gi * conditions.length + ci) * 80 + 300}ms`;
+            animatedBars.push(valLabel);
+            g.appendChild(valLabel);
+          });
+        });
+
+        // Legend
+        const legendY = h + 42;
+        conditions.forEach((cond, i) => {
+          const legendX = w / 2 - 60 + i * 80;
+          g.appendChild(createEl('rect', {
+            x: legendX, y: legendY, width: 12, height: 12,
+            fill: cond.color, rx: 2
+          }));
+          const legendLabel = createEl('text', {
+            x: legendX + 18, y: legendY + 10,
+            fill: '#4a4a4a', 'font-size': '11'
+          });
+          legendLabel.textContent = cond.label;
+          g.appendChild(legendLabel);
+        });
+
+        // Set up IntersectionObserver to trigger bar animation on first view
+        const cotrainObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animatedBars.forEach(el => {
+                el.classList.add('animate');
+              });
+              cotrainObserver.disconnect();
+            }
+          });
+        }, { threshold: 0.2 });
+        cotrainObserver.observe(svg);
+      };
+
+      fetch('./assets/data/data_mix_metrics.json')
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then((metrics) => {
+          renderCotrainBar(metrics);
+        })
+        .catch((err) => {
+          console.warn('Co-training metrics load failed', err);
+        });
+    });
+
+    // Interactive bar plot (sim vs real per policy)
+    document.addEventListener('DOMContentLoaded', () => {
+      const svg = document.getElementById('bar-plot');
+      const statusEl = document.getElementById('bar-status');
+      const envSelect = document.getElementById('bar-env-select');
+      if (!svg) return;
+
+      const colors = {
+        sim: '#9333ea',
+        real: '#d4940a',
+        axis: '#9ca3af',
+        grid: 'rgba(0,0,0,0.06)'
+      };
+
+      const policyDisplayName = {
+        'paligemma_binning_droid_jointpos': 'PaliGemma',
+        'pi05_droid_jointpos': 'π₀.₅',
+        'pi0_droid_jointpos': 'π₀',
+        'pi0_droid_jointpos_100k': 'π₀ (100k)',
+        'pi0_fast_droid_jointpos': 'π₀-fast',
+      };
+
+      const margin = { top: 20, right: 20, bottom: 80, left: 60 };
+      const width = 700 - margin.left - margin.right;
+      const height = 360 - margin.top - margin.bottom;
+
+      const createEl = (tag, attrs) => {
+        const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+        return el;
+      };
+
+      let allData = [];
+      let tooltip = null;
+
+      let barPlotHasAnimated = false;
+      const renderBars = (records, filterEnv = 'all') => {
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+        // Collect bars for animation
+        const animatedBars = [];
+
+        // Filter by environment if needed
+        let filtered = records.filter(r => r.source === 'polaris');
+        if (filterEnv !== 'all') {
+          filtered = filtered.filter(r => r.environment === filterEnv);
+        }
+
+        // Group by policy and average if showing all environments
+        const byPolicy = {};
+        filtered.forEach(r => {
+          const pol = r.policy;
+          if (!byPolicy[pol]) byPolicy[pol] = { sims: [], reals: [] };
+          byPolicy[pol].sims.push(r.sim);
+          byPolicy[pol].reals.push(r.real);
+        });
+
+        const policyData = Object.entries(byPolicy).map(([policy, vals]) => ({
+          policy,
+          displayName: policyDisplayName[policy] || policy,
+          sim: vals.sims.reduce((a, b) => a + b, 0) / vals.sims.length,
+          real: vals.reals.reduce((a, b) => a + b, 0) / vals.reals.length
+        }));
+
+        // Sort by real performance
+        policyData.sort((a, b) => b.real - a.real);
+
+        const defs = createEl('defs', {});
+        svg.appendChild(defs);
+
+        const g = createEl('g', { transform: `translate(${margin.left},${margin.top})` });
+        svg.appendChild(g);
+
+        const maxVal = 1;
+        const xBand = (idx) => (idx * (width / policyData.length)) + 0.1 * (width / policyData.length);
+        const bandWidth = 0.8 * (width / policyData.length);
+        const scaleY = (v) => height - (v / maxVal) * height;
+
+        // Grid lines
+        const gridCount = 5;
+        for (let i = 0; i <= gridCount; i++) {
+          const y = (i / gridCount) * height;
+          g.appendChild(createEl('line', { x1: 0, y1: y, x2: width, y2: y, stroke: colors.grid, 'stroke-width': 1, 'stroke-dasharray': '4 4' }));
+        }
+
+        // Axes
+        g.appendChild(createEl('line', { x1: 0, y1: height, x2: width, y2: height, stroke: colors.axis, 'stroke-width': 2 }));
+        g.appendChild(createEl('line', { x1: 0, y1: 0, x2: 0, y2: height, stroke: colors.axis, 'stroke-width': 2 }));
+
+        // Tooltip
+        if (!tooltip) {
+          tooltip = document.createElement('div');
+          tooltip.className = 'scatter-tooltip';
+          document.body.appendChild(tooltip);
+        }
+
+        policyData.forEach((r, idx) => {
+          const baseX = xBand(idx);
+          const simH = height - scaleY(r.sim);
+          const realH = height - scaleY(r.real);
+          const barW = bandWidth / 2.4;
+
+          const simRect = createEl('rect', {
+            x: baseX,
+            y: scaleY(r.sim),
+            width: barW,
+            height: Math.max(simH, 1),
+            fill: colors.sim,
+            'fill-opacity': 0.9,
+            rx: 4
+          });
+          const realRect = createEl('rect', {
+            x: baseX + barW + 6,
+            y: scaleY(r.real),
+            width: barW,
+            height: Math.max(realH, 1),
+            fill: colors.real,
+            'fill-opacity': 0.9,
+            rx: 4
+          });
+
+          [simRect, realRect].forEach((node, i) => {
+            // Add animation class
+            node.classList.add('bar-animated');
+            node.style.animationDelay = `${(idx * 2 + i) * 60}ms`;
+            animatedBars.push(node);
+
+            node.style.cursor = 'pointer';
+            node.addEventListener('mouseenter', (e) => {
+              tooltip.style.opacity = '1';
+              const label = i === 0 ? 'Sim' : 'Real';
+              const val = i === 0 ? r.sim : r.real;
+              tooltip.innerHTML = `<strong>${r.displayName}</strong><br>${label}: ${Math.round(val * 100)}%`;
+              tooltip.style.left = `${e.pageX + 10}px`;
+              tooltip.style.top = `${e.pageY + 10}px`;
+            });
+            node.addEventListener('mouseleave', () => {
+              tooltip.style.opacity = '0';
+            });
+            node.addEventListener('mousemove', (e) => {
+              tooltip.style.left = `${e.pageX + 10}px`;
+              tooltip.style.top = `${e.pageY + 10}px`;
+            });
+          });
+
+          g.appendChild(simRect);
+          g.appendChild(realRect);
+
+          // x labels
+          const lbl = createEl('text', {
+            x: baseX + barW + 3,
+            y: height + 20,
+            'text-anchor': 'middle',
+            fill: '#1a1a1a',
+            'font-size': '12',
+            'font-weight': '500'
+          });
+          lbl.textContent = r.displayName;
+          g.appendChild(lbl);
+        });
+
+        // y-axis ticks/labels
+        for (let i = 0; i <= gridCount; i++) {
+          const val = (i / gridCount) * maxVal;
+          const y = height - (val / maxVal) * height;
+          const t = createEl('text', { x: -10, y: y + 4, 'text-anchor': 'end', fill: '#4a4a4a', 'font-size': '11' });
+          t.textContent = `${Math.round(val * 100)}%`;
+          g.appendChild(t);
+        }
+
+        // Legend
+        const legendY = height + 50;
+        const simLegend = createEl('rect', { x: width / 2 - 80, y: legendY, width: 14, height: 14, fill: colors.sim, rx: 2 });
+        const simLabel = createEl('text', { x: width / 2 - 60, y: legendY + 11, fill: '#4a4a4a', 'font-size': '12' });
+        simLabel.textContent = 'Sim';
+        const realLegend = createEl('rect', { x: width / 2 + 20, y: legendY, width: 14, height: 14, fill: colors.real, rx: 2 });
+        const realLabel = createEl('text', { x: width / 2 + 40, y: legendY + 11, fill: '#4a4a4a', 'font-size': '12' });
+        realLabel.textContent = 'Real';
+        g.appendChild(simLegend);
+        g.appendChild(simLabel);
+        g.appendChild(realLegend);
+        g.appendChild(realLabel);
+
+        // Set up animation - if filter changed (already seen), animate immediately
+        if (barPlotHasAnimated) {
+          animatedBars.forEach(el => el.classList.add('animate'));
+        } else {
+          // First time: use IntersectionObserver
+          const barPlotObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                animatedBars.forEach(el => el.classList.add('animate'));
+                barPlotHasAnimated = true;
+                barPlotObserver.disconnect();
+              }
+            });
+          }, { threshold: 0.2 });
+          barPlotObserver.observe(svg);
+        }
+
+        if (statusEl) statusEl.textContent = '';
+      };
+
+      fetch('./assets/data/main_correlation_data.json')
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then((jsonData) => {
+          // New structure: { metrics, polaris_points, libero_points }
+          const polarisPoints = (jsonData.polaris_points || []).map(r => ({
+            ...r,
+            source: 'polaris',
+            sim: Number(r.sim),
+            real: Number(r.real)
+          }));
+          const liberoPoints = (jsonData.libero_points || []).map(r => ({
+            ...r,
+            source: 'libero',
+            sim: Number(r.sim),
+            real: Number(r.real)
+          }));
+          const records = [...polarisPoints, ...liberoPoints];
+          if (records.length === 0) {
+            if (statusEl) statusEl.textContent = 'No data available.';
+            return;
+          }
+          allData = records;
+
+          // Populate environment dropdown
+          const envs = Array.from(new Set(records.filter(r => r.source === 'polaris').map(r => r.environment)));
+          envs.forEach(env => {
+            const opt = document.createElement('option');
+            opt.value = env;
+            opt.textContent = env;
+            envSelect.appendChild(opt);
+          });
+
+          envSelect.addEventListener('change', () => {
+            renderBars(allData, envSelect.value);
+          });
+
+          renderBars(allData, 'all');
+        })
+        .catch((err) => {
+          console.warn('Data load failed', err);
+          if (statusEl) statusEl.textContent = 'Failed to load data.';
+        });
+    });
+
+    // Policy evaluation comparison (sim vs real per env)
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('policy-list');
+      const statusEl = document.getElementById('policy-status');
+      if (!container) return;
+
+      const renderPolicies = (records) => {
+        container.innerHTML = '';
+        const byPolicy = {};
+        records.forEach((r) => {
+          const pol = r.policy || 'Unknown';
+          if (!byPolicy[pol]) byPolicy[pol] = [];
+          byPolicy[pol].push(r);
+        });
+
+        Object.entries(byPolicy).forEach(([pol, rows]) => {
+          const item = document.createElement('div');
+          item.className = 'policy-item';
+
+          const title = document.createElement('div');
+          title.className = 'policy-title';
+          title.textContent = pol;
+          item.appendChild(title);
+
+          const table = document.createElement('table');
+          table.className = 'policy-table';
+          const thead = document.createElement('thead');
+          thead.innerHTML = '<tr><th>Env</th><th>Sim</th><th>Real</th></tr>';
+          table.appendChild(thead);
+          const tbody = document.createElement('tbody');
+          rows.forEach((r) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>${r.environment || ''}</td>
+              <td class="value-sim">${Math.round(r.sim * 100)}%</td>
+              <td class="value-real">${Math.round(r.real * 100)}%</td>
+            `;
+            tbody.appendChild(tr);
+          });
+          table.appendChild(tbody);
+          item.appendChild(table);
+          container.appendChild(item);
+        });
+        if (statusEl) statusEl.textContent = '';
+      };
+
+      fetch('./assets/data/policy_eval.json')
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then((records) => {
+          if (!Array.isArray(records) || records.length === 0) {
+            if (statusEl) statusEl.textContent = 'No policy data available.';
+            return;
+          }
+          const data = records.map((r) => ({
+            policy: r.policy || '',
+            environment: r.environment || '',
+            sim: Number(r.sim),
+            real: Number(r.real)
+          }));
+          renderPolicies(data);
+        })
+        .catch((err) => {
+          console.warn('Policy data load failed; showing demo data', err);
+          if (statusEl) statusEl.textContent = '';
+          const policies = [
+            'paligemma_binning_droid_jointpos',
+            'pi05_droid_jointpos',
+            'pi0_droid_jointpos',
+            'pi0_droid_jointpos_100k',
+            'pi0_fast_droid_jointpos'
+          ];
+          const envs = ['Kitchen', 'Counter', 'Stovetop'];
+          const demo = [];
+          policies.forEach((p) => {
+            envs.forEach((env) => {
+              demo.push({
+                policy: p,
+                environment: env,
+                sim: 0.6 + Math.random() * 0.3,
+                real: 0.5 + Math.random() * 0.35
+              });
+            });
+          });
+          renderPolicies(demo);
+        });
+    });
+
+    // Policy evaluation videos
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('policy-video-grid');
+      const statusEl = document.getElementById('policy-video-status');
+      if (!grid) return;
+
+      const renderVideos = (records) => {
+        let idx = 0;
+
+        let currentSim = 'polaris'; // 'polaris' or 'ctrlworld'
+
+        const show = (dir) => {
+          if (!records.length) return;
+          const r = records[idx];
+          grid.innerHTML = '';
+          const card = document.createElement('div');
+          card.className = 'policy-video-item';
+          if (dir === 'next') card.classList.add('slide-in-right');
+          if (dir === 'prev') card.classList.add('slide-in-left');
+          card.addEventListener('animationend', () => {
+            card.classList.remove('slide-in-right', 'slide-in-left');
+          }, { once: true });
+          const pair = document.createElement('div');
+          pair.className = 'policy-video-pair';
+
+          const addVid = (src, label) => {
+            const wrap = document.createElement('div');
+            wrap.className = 'policy-video-wrap';
+            const v = document.createElement('video');
+            v.src = src;
+            v.autoplay = true;
+            v.loop = true;
+            v.muted = true;
+            v.playsInline = true;
+            wrap.appendChild(v);
+            const lbl = document.createElement('div');
+            lbl.className = 'policy-video-label';
+            lbl.textContent = label;
+            wrap.appendChild(lbl);
+            return wrap;
+          };
+
+          // Always show real first
+          if (r.realVideo) pair.appendChild(addVid(r.realVideo, 'Real'));
+
+          if (currentSim === 'polaris' && r.simVideo) {
+            pair.appendChild(addVid(r.simVideo, 'PolaRiS'));
+          } else if (currentSim === 'ctrlworld' && r.ctrlWorldVideo) {
+            pair.appendChild(addVid(r.ctrlWorldVideo, 'Ctrl-World'));
+          }
+
+          card.appendChild(pair);
+
+          // Task name centered below videos
+          const taskLabel = document.createElement('div');
+          taskLabel.className = 'policy-video-task';
+          taskLabel.innerHTML = `${r.environment || ''} <br><span style="font-weight:400; font-size: 0.9em; color: var(--text-muted);">Policy: $\\pi_{0.5}$ (Joint Pos)</span>`;
+          card.appendChild(taskLabel);
+
+          if (window.MathJax && window.MathJax.typesetPromise) {
+            window.MathJax.typesetPromise([taskLabel]);
+          }
+          grid.appendChild(card);
+        };
+
+        // Create Header Controls with Toggle
+        const headerControls = document.createElement('div');
+        headerControls.style.display = 'flex';
+        headerControls.style.justifyContent = 'center';
+        headerControls.style.marginBottom = '20px';
+        headerControls.style.gap = '16px';
+        headerControls.innerHTML = `
+          <div class="toggle-group" style="background: var(--bg-elevated); padding: 4px; border-radius: 8px; border: 1px solid var(--border-subtle); display: inline-flex;">
+            <button id="btn-polaris" class="toggle-btn active" style="padding: 6px 16px; border-radius: 6px; border: none; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); font-weight: 500; font-size: 13px; color: var(--text-primary); cursor: pointer; transition: all 0.2s;">PolaRiS</button>
+            <button id="btn-ctrlworld" class="toggle-btn" style="padding: 6px 16px; border-radius: 6px; border: none; background: transparent; font-weight: 500; font-size: 13px; color: var(--text-muted); cursor: pointer; transition: all 0.2s;">Ctrl-World</button>
+          </div>
+        `;
+
+        // Insert toggle before grid
+        grid.parentElement.insertBefore(headerControls, grid);
+
+        // Toggle Logic
+        const btnPolaris = headerControls.querySelector('#btn-polaris');
+        const btnCtrl = headerControls.querySelector('#btn-ctrlworld');
+
+        const updateToggle = (mode) => {
+          currentSim = mode;
+          if (mode === 'polaris') {
+            btnPolaris.classList.add('active');
+            btnPolaris.style.background = '#fff';
+            btnPolaris.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+            btnPolaris.style.color = 'var(--text-primary)';
+
+            btnCtrl.classList.remove('active');
+            btnCtrl.style.background = 'transparent';
+            btnCtrl.style.boxShadow = 'none';
+            btnCtrl.style.color = 'var(--text-muted)';
+          } else {
+            btnCtrl.classList.add('active');
+            btnCtrl.style.background = '#fff';
+            btnCtrl.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+            btnCtrl.style.color = 'var(--text-primary)';
+
+            btnPolaris.classList.remove('active');
+            btnPolaris.style.background = 'transparent';
+            btnPolaris.style.boxShadow = 'none';
+            btnPolaris.style.color = 'var(--text-muted)';
+          }
+          show();
+        };
+
+        btnPolaris.addEventListener('click', () => updateToggle('polaris'));
+        btnCtrl.addEventListener('click', () => updateToggle('ctrlworld'));
+
+        const controls = document.createElement('div');
+        controls.className = 'policy-video-controls';
+        const btnPrev = document.createElement('button');
+        btnPrev.className = 'gallery-nav left';
+        btnPrev.textContent = '‹';
+        const btnNext = document.createElement('button');
+        btnNext.className = 'gallery-nav right';
+        btnNext.textContent = '›';
+        controls.appendChild(btnPrev);
+        controls.appendChild(btnNext);
+        grid.parentElement.insertBefore(controls, grid.nextSibling);
+
+        btnPrev.addEventListener('click', () => {
+          idx = (idx - 1 + records.length) % records.length;
+          show('prev');
+        });
+        btnNext.addEventListener('click', () => {
+          idx = (idx + 1) % records.length;
+          show('next');
+        });
+
+        show();
+        if (statusEl) statusEl.textContent = '';
+      };
+
+      fetch('./assets/data/policy_videos.json')
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then((records) => {
+          if (!Array.isArray(records) || records.length === 0) {
+            if (statusEl) statusEl.textContent = 'No video data available.';
+            return;
+          }
+          renderVideos(records);
+        })
+        .catch((err) => {
+          console.warn('Policy video data load failed; showing demo videos', err);
+          if (statusEl) statusEl.textContent = '';
+          const demo = [
+            { policy: 'pi05_constrain-1k', realPolicy: 'pi05_joint_pos', environment: 'FruitBus', simVideo: './assets/videos/sim_rollouts/fruitbus.mp4', realVideo: './assets/videos/real_rollouts/fruitbus.mp4' },
+            { policy: 'pi05_constrain-1k', realPolicy: 'pi05_joint_pos', environment: 'Stack', simVideo: './assets/videos/sim_rollouts/stack.mp4', realVideo: './assets/videos/real_rollouts/stack.mp4' },
+            { policy: 'pi05_constrain-1k', realPolicy: 'pi05_joint_pos', environment: 'PanClean', simVideo: './assets/videos/sim_rollouts/panclean.mp4', realVideo: './assets/videos/real_rollouts/panclean.mp4' }
+          ];
+          renderVideos(demo);
+        });
+    });
+  </script>
+</body>
+
+</html>
