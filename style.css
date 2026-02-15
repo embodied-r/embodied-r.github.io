@@ -3408,60 +3408,7 @@ video.r2s-video-item {
   background: var(--neon-violet);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  body {
-    padding: 24px 18px;
-    font-size: 14px;
-  }
-  
-  .hero-text {
-    font-size: 48px;
-  }
-
-  .hero-title-art {
-    font-size: 36px;
-  }
-
-  .hero-title-sep {
-    font-size: 36px;
-  }
-
-  .hero-title-rest {
-    font-size: 18px;
-  }
-
-  .sub-hero-text {
-    font-size: 20px;
-  }
-  
-  .hero-flow {
-    padding: 40px 28px 32px 28px;
-    border-radius: 24px;
-  }
-  
-  .top-nav {
-    padding: 12px 18px;
-    gap: 10px;
-  }
-  
-  .nav-links {
-    display: none;
-  }
-  
-  .tagline {
-    font-size: 24px;
-  }
-  
-  .card-surface {
-    padding: 24px;
-    border-radius: 20px;
-  }
-  
-  .section-heading {
-    font-size: 24px;
-  }
-}
+/* Responsive — see comprehensive mobile rules at end of file */
 
 /* Smooth scrolling */
 html {
@@ -3930,4 +3877,518 @@ html {
 
 .ack-content p {
   margin: 0;
+}
+
+/* ═══════════════════════════════════════════ */
+/* Mobile Responsive — max-width: 768px       */
+/* ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── Global ── */
+  body {
+    padding: 12px 10px;
+    font-size: 14px;
+  }
+
+  .main-content {
+    max-width: 100%;
+  }
+
+  /* ── Progress sidebar: hide on mobile ── */
+  .progress-sidebar {
+    display: none !important;
+  }
+
+  /* ── Hero section ── */
+  .hero-flow,
+  .hero-compact {
+    padding: 28px 16px 24px 16px !important;
+    border-radius: 18px;
+    margin-bottom: 24px;
+  }
+
+  .hero-title-line {
+    white-space: normal;
+    line-height: 1.4;
+    margin-bottom: 18px;
+  }
+
+  .hero-title-art {
+    font-size: 28px !important;
+    display: block;
+  }
+
+  .hero-title-sep {
+    font-size: 28px !important;
+  }
+
+  .hero-title-rest {
+    font-size: 15px !important;
+    display: block;
+    margin-top: 6px;
+    top: 0;
+  }
+
+  .hero-team-logo {
+    height: 48px;
+  }
+
+  .hero-team-name {
+    font-size: 20px;
+  }
+
+  .hero-pill-row {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .hero-pill {
+    font-size: 11px;
+    padding: 7px 12px;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .cta {
+    font-size: 12px;
+    padding: 7px 14px;
+  }
+
+  .hero-waves {
+    height: 40px;
+  }
+
+  /* Hero team expand */
+  .hero-team-institutions,
+  .hero-team-authors {
+    font-size: 12px !important;
+  }
+
+  /* ── Tagline / Section headers ── */
+  .tagline {
+    font-size: 22px;
+    padding-top: 32px;
+    margin: 16px 0 14px 0;
+  }
+
+  .section-heading {
+    font-size: 20px;
+  }
+
+  /* ── Card surface ── */
+  .card-surface {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  /* ── Key Contributions cards (inline styles override) ── */
+  .main-content > div > div[style*="grid-template-columns: 1fr 1.4fr 1fr"],
+  .main-content > div > div[style*="grid-template-columns: repeat(3"],
+  .main-content div[style*="grid-template-columns: 1fr 1.4fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .main-content div[style*="grid-template-columns: repeat(2, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* ── Leaderboard tables ── */
+  .leaderboard-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .leaderboard-table {
+    font-size: 12px;
+    min-width: 600px;
+  }
+
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding: 5px 6px;
+    font-size: 11px;
+  }
+
+  .sticky-col {
+    width: 100px;
+    max-width: 100px;
+  }
+
+  .result-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .result-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .result-tab {
+    font-size: 13px;
+    padding: 10px 16px;
+    white-space: nowrap;
+  }
+
+  /* ── Video wall (6-col inline → 2-col) ── */
+  .video-wall,
+  div[style*="grid-template-columns: repeat(6"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 4px !important;
+  }
+
+  /* ── Affordance video wall ── */
+  .afford-video-wall {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+  }
+
+  .afford-video-label {
+    font-size: 9px;
+    padding: 4px 0;
+  }
+
+  /* ── TL;DR grid ── */
+  .tldr-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tldr-video {
+    height: 160px;
+    max-height: 160px;
+  }
+
+  /* ── Pipeline grid ── */
+  .pipeline-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Side by side ── */
+  .side-by-side {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Co-training split ── */
+  .cotrain-split {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Correlation split ── */
+  .correlation-split {
+    grid-template-columns: 1fr;
+  }
+
+  #comparison-bar,
+  #corr-scatter {
+    height: 240px;
+  }
+
+  /* ── Reconstruction split ── */
+  .reconstruction-split-container {
+    grid-template-columns: 1fr;
+  }
+
+  .gsplat-half,
+  .mesh-half {
+    min-height: 300px;
+  }
+
+  .gsplat-viewer-container {
+    min-height: 260px;
+  }
+
+  .gsplat-viewer-container iframe {
+    min-height: 300px;
+  }
+
+  /* ── Mesh viewer ── */
+  .mesh-columns {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Stats grid ── */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 20px 0 32px 0;
+  }
+
+  .stats-grid-inline {
+    flex-direction: column;
+  }
+
+  .stat-card {
+    padding: 20px;
+  }
+
+  /* ── Metric grid ── */
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-value {
+    font-size: 26px;
+  }
+
+  /* ── Gallery grid ── */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .gallery-grid video {
+    height: 120px;
+  }
+
+  .gallery-grid-labeled {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-item video {
+    height: 110px;
+  }
+
+  /* ── Video gallery (horizontal scroll) ── */
+  .gallery-video {
+    height: 150px;
+  }
+
+  .video-gallery {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .gallery-caption-container {
+    padding: 0 16px;
+  }
+
+  /* ── Charts grid ── */
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-card {
+    padding: 16px;
+  }
+
+  /* ── EvalKit ── */
+  .evalkit-section {
+    padding: 24px 16px;
+  }
+
+  .evalkit-features {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .evalkit-model-grid {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* ── Capabilities grid ── */
+  .capabilities-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .capability-card {
+    padding: 18px 14px;
+  }
+
+  /* ── Policy video grid ── */
+  .policy-video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .policy-list {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Slider section ── */
+  .slider-wrapper {
+    max-width: 100%;
+  }
+
+  /* ── R2S layout ── */
+  .r2s-video-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* ── Figure caption ── */
+  .figure-caption {
+    padding: 0 8px;
+    font-size: 12px;
+    margin-bottom: 28px;
+  }
+
+  /* ── Bar plot ── */
+  .bar-plot-wrap {
+    padding: 14px;
+    overflow-x: auto;
+  }
+
+  /* ── Scatter legend ── */
+  .scatter-legend {
+    padding: 10px 12px;
+    font-size: 11px;
+    gap: 10px;
+  }
+
+  /* ── Rank lists ── */
+  .rank-lists {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ── Co-gallery grid ── */
+  .co-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Abstract card: always show full on mobile ── */
+  .abstract-teaser {
+    opacity: 1 !important;
+  }
+
+  .abstract-full {
+    max-height: none !important;
+    opacity: 1 !important;
+    margin-top: 16px !important;
+  }
+
+  .abstract-hint {
+    display: none;
+  }
+
+  /* ── Images ── */
+  img {
+    border-radius: 12px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 60px;
+    padding-top: 24px;
+  }
+
+  /* ── Roadmap ── */
+  .hero-roadmap-list li {
+    font-size: 13px;
+    gap: 12px;
+  }
+
+  /* ── SVG charts responsive ── */
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ── Leaderboard section ── */
+  .leaderboard-section {
+    margin: 32px auto 28px;
+  }
+
+  /* ── Video demo ── */
+  .video-demo-section {
+    margin: 28px auto 24px;
+  }
+
+  /* ── Inline flex containers with min-width ── */
+  .roboarena-section {
+    flex-direction: column !important;
+  }
+
+  .roboarena-right {
+    width: 100% !important;
+    flex-shrink: 1 !important;
+  }
+
+  .roboarena-right > div {
+    max-width: 100% !important;
+  }
+}
+
+/* ═══════════════════════════════════════════ */
+/* Extra small screens — max-width: 420px     */
+/* ═══════════════════════════════════════════ */
+@media (max-width: 420px) {
+
+  body {
+    padding: 8px 6px;
+  }
+
+  .hero-flow,
+  .hero-compact {
+    padding: 20px 12px 18px 12px !important;
+    border-radius: 14px;
+  }
+
+  .hero-title-art {
+    font-size: 24px !important;
+  }
+
+  .hero-title-sep {
+    font-size: 24px !important;
+  }
+
+  .hero-title-rest {
+    font-size: 13px !important;
+  }
+
+  .hero-team-logo {
+    height: 36px;
+  }
+
+  .hero-team-name {
+    font-size: 16px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta {
+    text-align: center;
+  }
+
+  .tagline {
+    font-size: 20px;
+  }
+
+  .card-surface {
+    padding: 14px 10px;
+    border-radius: 14px;
+  }
+
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rank-lists {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid-labeled {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-video {
+    height: 120px;
+  }
+
+  .afford-video-wall {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
