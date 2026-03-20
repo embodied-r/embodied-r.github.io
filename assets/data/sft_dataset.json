@@ -1,0 +1,190 @@
+{
+  "total": 4051832,
+  "groups": [
+    {
+      "type": "Planning and Correction",
+      "total": 1136554,
+      "percentage": 28.1,
+      "datasets": [
+        {
+          "name": "RoboVQA",
+          "count": 801388
+        },
+        {
+          "name": "EgoPlan-IT",
+          "count": 42269
+        },
+        {
+          "name": "EO-Data",
+          "count": 100000
+        },
+        {
+          "name": "RoboFAC",
+          "count": 36015
+        },
+        {
+          "name": "Cosmos-Reason",
+          "count": 50000
+        },
+        {
+          "name": "RoboFail",
+          "count": 3362
+        },
+        {
+          "name": "ManiskillFail",
+          "count": 3520
+        },
+        {
+          "name": "BrigeDataFail",
+          "count": 100000
+        }
+      ]
+    },
+    {
+      "type": "Spatial Reasoning and Cognition",
+      "total": 514150,
+      "percentage": 12.7,
+      "datasets": [
+        {
+          "name": "EUCLID",
+          "count": 28212
+        },
+        {
+          "name": "SAT",
+          "count": 172384
+        },
+        {
+          "name": "Robo2VLM",
+          "count": 100000
+        },
+        {
+          "name": "VLM-3R",
+          "count": 203554
+        },
+        {
+          "name": "ER1.5-Spatial",
+          "count": 10000
+        }
+      ]
+    },
+    {
+      "type": "Pointing and Location,RRG",
+      "total": 1032790,
+      "percentage": 25.5,
+      "datasets": [
+        {
+          "name": "RoboPoint",
+          "count": 500000
+        },
+        {
+          "name": "ER1-Point",
+          "count": 32790
+        },
+        {
+          "name": "RefSpatial",
+          "count": 500000
+        }
+      ]
+    },
+    {
+      "type": "Pointing and Location,REG",
+      "total": 359607,
+      "percentage": 8.9,
+      "datasets": [
+        {
+          "name": "RoboRefit",
+          "count": 34986
+        },
+        {
+          "name": "Pixmo-Points",
+          "count": 161569
+        },
+        {
+          "name": "LVIS",
+          "count": 53343
+        },
+        {
+          "name": "Ref-L4",
+          "count": 45341
+        },
+        {
+          "name": "CoSyn-Point",
+          "count": 64368
+        }
+      ]
+    },
+    {
+      "type": "Pointing and Location,OFG",
+      "total": 184255,
+      "percentage": 4.5,
+      "datasets": [
+        {
+          "name": "HandAL",
+          "count": 39478
+        },
+        {
+          "name": "PACO-LVIS",
+          "count": 52993
+        },
+        {
+          "name": "InstructPart",
+          "count": 1773
+        },
+        {
+          "name": "PRISM",
+          "count": 80000
+        },
+        {
+          "name": "PartNet-Maniskill",
+          "count": 10011
+        }
+      ]
+    },
+    {
+      "type": "General Knowledge",
+      "total": 552928,
+      "percentage": 13.6,
+      "datasets": [
+        {
+          "name": "MM-IF",
+          "count": 22554
+        },
+        {
+          "name": "LLaVA-1.5-665K",
+          "count": 530374
+        }
+      ]
+    },
+    {
+      "type": "Pointing and Location,VTG",
+      "total": 271548,
+      "percentage": 6.7,
+      "datasets": [
+        {
+          "name": "ER1-Trace",
+          "count": 32790
+        },
+        {
+          "name": "Droid-Trace",
+          "count": 13181
+        },
+        {
+          "name": "InternData-Trace",
+          "count": 163342
+        },
+        {
+          "name": "HOI4D-Trace",
+          "count": 12877
+        },
+        {
+          "name": "OXE-Trace",
+          "count": 41536
+        },
+        {
+          "name": "BridgeData-Trace",
+          "count": 7822
+        }
+      ]
+    }
+  ]
+}

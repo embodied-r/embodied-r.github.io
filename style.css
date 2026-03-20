@@ -3880,6 +3880,270 @@ html {
 }
 
 /* ═══════════════════════════════════════════ */
+/* Training Data Distribution (5-col grid)    */
+/* ═══════════════════════════════════════════ */
+
+.data-dist-container {
+  margin-top: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  padding: 8px 0;
+}
+
+/* Each category group — 5-column grid; pill occupies one cell */
+.dd-group {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 2px 8px;
+}
+
+/* Category pill — fixed width, no rounded corners, muted color */
+.dd-cat {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 0;
+  border-radius: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  line-height: 1.6;
+  min-width: 100%;
+}
+
+/* Dataset item — one grid cell, same font as pill */
+.dd-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 12.5px;
+  color: #333;
+  white-space: nowrap;
+  line-height: 1.7;
+}
+
+/* Colored square bullet */
+.dd-sq {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Our generated datasets — underlined */
+.dd-item-ours {
+  text-decoration: underline;
+  text-decoration-color: #bbb;
+  text-underline-offset: 2px;
+}
+
+/* Sub-category legend at bottom */
+.dd-legend {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 12px 6px;
+  border-top: 1px solid #eee;
+}
+
+/* Sunburst pie chart container */
+.dd-pie-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.dd-pie-container svg {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Collapsible chart wrapper */
+.dd-details {
+  margin-bottom: 12px;
+}
+
+.dd-summary {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dd-summary::-webkit-details-marker {
+  display: none;
+}
+
+.dd-summary::before {
+  content: '▶';
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+
+.dd-details[open] .dd-summary::before {
+  transform: rotate(90deg);
+}
+
+.dd-summary:hover {
+  color: var(--text-primary);
+}
+
+.dd-legend-label {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 10.5px;
+  font-style: italic;
+  color: #999;
+  white-space: nowrap;
+}
+
+.dd-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 10.5px;
+  color: #999;
+}
+
+.dd-legend-sq {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════ */
+/* Real-World Video Grid                       */
+/* ═══════════════════════════════════════════ */
+.rw-video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.rw-video-item {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rw-video-item video {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+.rw-video-caption {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 8px 0 0 0;
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.rw-video-placeholder {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: linear-gradient(135deg, #f1f3f5 0%, #e5e7eb 100%);
+  border-radius: 10px;
+}
+
+.rw-video-num {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: 700;
+  color: #d1d5db;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ═══════════════════════════════════════════ */
+/* Key Contributions — vertical list           */
+/* ═══════════════════════════════════════════ */
+.kc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.kc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background 0.2s ease;
+}
+
+.kc-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.kc-item:first-child {
+  padding-top: 0;
+}
+
+.kc-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.kc-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.kc-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+  line-height: 1.4;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.kc-desc {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.kc-desc strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════ */
 /* Mobile Responsive — max-width: 768px       */
 /* ═══════════════════════════════════════════ */
 @media (max-width: 768px) {
@@ -4313,12 +4577,38 @@ html {
   .roboarena-right > div {
     max-width: 100% !important;
   }
+
+  /* ── Training Data Distribution ── */
+  .dd-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .dd-item {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+
+  .dd-cat {
+    font-size: 10.5px;
+    padding: 2px 8px;
+  }
+
+  .dd-sq {
+    width: 7px;
+    height: 7px;
+  }
 }
 
 /* ═══════════════════════════════════════════ */
 /* Extra small screens — max-width: 420px     */
 /* ═══════════════════════════════════════════ */
 @media (max-width: 420px) {
+
+  .kc-item { gap: 10px; padding: 10px 0; }
+  .kc-num { width: 22px; height: 22px; font-size: 11px; }
+  .kc-title { font-size: 14px; }
+  .kc-desc { font-size: 13px; }
+  .rw-video-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 
   body {
     padding: 8px 6px;
@@ -4390,5 +4680,14 @@ html {
 
   .afford-video-wall {
     grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .dd-item {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+
+  .dd-group {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

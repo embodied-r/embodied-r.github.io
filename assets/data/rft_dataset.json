@@ -1,0 +1,179 @@
+{
+  "total": 189876,
+  "groups": [
+    {
+      "type": "General Knowledge",
+      "total": 16000,
+      "percentage": 8.4,
+      "datasets": [
+        {
+          "name": "OneThinker",
+          "data_type": "image",
+          "count": 16000
+        }
+      ]
+    },
+    {
+      "type": "Pointing and Location,REG",
+      "total": 22000,
+      "percentage": 11.6,
+      "datasets": [
+        {
+          "name": "RefCoco",
+          "data_type": "image",
+          "count": 4000
+        },
+        {
+          "name": "RoboRefit",
+          "data_type": "image",
+          "count": 8000
+        },
+        {
+          "name": "Ref-L4",
+          "data_type": "image",
+          "count": 5000
+        },
+        {
+          "name": "CoSyn-Point",
+          "data_type": "image",
+          "count": 5000
+        }
+      ]
+    },
+    {
+      "type": "Spatial Reasoning and Cognition",
+      "total": 27930,
+      "percentage": 14.7,
+      "datasets": [
+        {
+          "name": "Space-R",
+          "data_type": "video",
+          "count": 8000
+        },
+        {
+          "name": "STAR",
+          "data_type": "video",
+          "count": 2000
+        },
+        {
+          "name": "PerceptionTest/train",
+          "data_type": "video",
+          "count": 2000
+        },
+        {
+          "name": "SAT",
+          "data_type": "image",
+          "count": 5000
+        },
+        {
+          "name": "RoboBrain-ER",
+          "data_type": "image",
+          "count": 5930
+        },
+        {
+          "name": "Spatial-SSRL",
+          "data_type": "image",
+          "count": 5000
+        }
+      ]
+    },
+    {
+      "type": "Planning and Correction",
+      "total": 21400,
+      "percentage": 11.3,
+      "datasets": [
+        {
+          "name": "Cosmos",
+          "data_type": "video",
+          "count": 1400
+        },
+        {
+          "name": "EO-Data",
+          "data_type": "image",
+          "count": 5000
+        },
+        {
+          "name": "RoboVQA",
+          "data_type": "image",
+          "count": 10000
+        },
+        {
+          "name": "Robo2VLM",
+          "data_type": "image",
+          "count": 5000
+        }
+      ]
+    },
+    {
+      "type": "Pointing and Location,RRG",
+      "total": 40000,
+      "percentage": 21.1,
+      "datasets": [
+        {
+          "name": "ER1-Point",
+          "data_type": "image",
+          "count": 20000
+        },
+        {
+          "name": "RegularRearrangement",
+          "data_type": "image",
+          "count": 5000
+        },
+        {
+          "name": "RefSpatial",
+          "data_type": "image",
+          "count": 15000
+        }
+      ]
+    },
+    {
+      "type": "Pointing and Location,OFG",
+      "total": 23546,
+      "percentage": 12.4,
+      "datasets": [
+        {
+          "name": "HandAL",
+          "data_type": "image",
+          "count": 20000
+        },
+        {
+          "name": "InstructPart",
+          "data_type": "image",
+          "count": 3546
+        }
+      ]
+    },
+    {
+      "type": "Pointing and Location,VTG",
+      "total": 39000,
+      "percentage": 20.5,
+      "datasets": [
+        {
+          "name": "ER1-Trace",
+          "data_type": "image",
+          "count": 15000
+        },
+        {
+          "name": "HOI4D-Trace",
+          "data_type": "image",
+          "count": 4000
+        },
+        {
+          "name": "InternData-Trace",
+          "data_type": "image",
+          "count": 5000
+        },
+        {
+          "name": "Droid-Trace",
+          "data_type": "image",
+          "count": 13000
+        },
+        {
+          "name": "Robocasa-Trace",
+          "data_type": "image",
+          "count": 2000
+        }
+      ]
+    }
+  ]
+}

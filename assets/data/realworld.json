@@ -1,0 +1,41 @@
+{
+  "tasks": [
+    "Pick&Place",
+    "Tool Affordance",
+    "Spatial Reasoning",
+    "Cup Disassembly",
+    "Door Open"
+  ],
+  "models": [
+    {
+      "name": "Embodied-R1",
+      "scores": [
+        83.3,
+        33.3,
+        50,
+        0,
+        "-"
+      ]
+    },
+    {
+      "name": "RoboBrain2.0",
+      "scores": [
+        100,
+        33.3,
+        66.6,
+        0,
+        "-"
+      ]
+    },
+    {
+      "name": "Embodied-R1.5",
+      "scores": [
+        100,
+        100,
+        83.3,
+        66.6,
+        25
+      ]
+    }
+  ]
+}

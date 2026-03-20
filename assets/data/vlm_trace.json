@@ -1,0 +1,146 @@
+{
+  "benchmarks": [
+    {
+      "name": "ShareRobot-V RMSE",
+      "lower_is_better": true
+    },
+    {
+      "name": "ShareRobot-V DFD",
+      "lower_is_better": true
+    },
+    {
+      "name": "VABench-V RMSE",
+      "lower_is_better": true
+    },
+    {
+      "name": "VABench-V DFD",
+      "lower_is_better": true
+    },
+    {
+      "name": "PIO-S3 GPT-Score",
+      "lower_is_better": false
+    }
+  ],
+  "groups": [
+    {
+      "group": "Generlist",
+      "models": [
+        {
+          "name": "GPT-5",
+          "institution": "OpenAI",
+          "scores": [
+            23.81,
+            33.55,
+            18.2,
+            26.5,
+            44.9
+          ]
+        },
+        {
+          "name": "GPT-5.4",
+          "institution": "OpenAI",
+          "scores": [
+            21.11,
+            30.24,
+            14.88,
+            20.59,
+            45.8
+          ]
+        },
+        {
+          "name": "Gemini-2.5-Pro",
+          "institution": "Google",
+          "scores": [
+            32.43,
+            40,
+            19.97,
+            26.4,
+            41.65
+          ]
+        },
+        {
+          "name": "Qwen2.5VL-7B",
+          "institution": "Qwen",
+          "scores": [
+            29.98,
+            42.05,
+            22.5,
+            31.6,
+            32.3
+          ]
+        },
+        {
+          "name": "Qwen3VL-8b",
+          "institution": "Qwen",
+          "scores": [
+            22.58,
+            32.47,
+            15.3,
+            21.8,
+            46.6
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Open Sourced Embodied",
+      "models": [
+        {
+          "name": "RoboBrain2.0-7B",
+          "institution": "BAAI",
+          "scores": [
+            13.23,
+            19.63,
+            18.09,
+            26.68,
+            46.9
+          ]
+        },
+        {
+          "name": "Mimo-Embodied",
+          "institution": "xiaomi",
+          "scores": [
+            33.52,
+            44.14,
+            19.36,
+            26.67,
+            43.3
+          ]
+        },
+        {
+          "name": "Embodied-R1",
+          "institution": "ER Team",
+          "scores": [
+            23.2,
+            32.9,
+            9.04,
+            12.21,
+            46.9
+          ]
+        },
+        {
+          "name": "Embodied-R1.5-SFT",
+          "institution": "ER Team",
+          "scores": [
+            20,
+            29,
+            11.4,
+            16.9,
+            46.7
+          ]
+        },
+        {
+          "name": "Embodied-R1.5",
+          "institution": "ER Team",
+          "scores": [
+            15.79,
+            22.64,
+            7,
+            9.83,
+            49.56
+          ]
+        }
+      ]
+    }
+  ]
+}

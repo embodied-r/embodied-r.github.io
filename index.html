@@ -53,6 +53,9 @@
           <span class="progress-label">Models</span>
         </a>
       </div>
+      <div class="progress-item" data-section="data">
+        <a href="#data"><span class="progress-dot"></span><span class="progress-label">Data</span></a>
+      </div>
       <div class="progress-item" data-section="multi-agent">
         <a href="#multi-agent">
           <span class="progress-dot"></span>
@@ -63,6 +66,12 @@
         <a href="#results">
           <span class="progress-dot"></span>
           <span class="progress-label">Results</span>
+        </a>
+      </div>
+      <div class="progress-item" data-section="realworld">
+        <a href="#realworld">
+          <span class="progress-dot"></span>
+          <span class="progress-label">Real-World</span>
         </a>
       </div>
       <div class="progress-item" data-section="evalkit">
@@ -98,12 +107,12 @@
         </div>
         <div class="hero-team-expand">
           <div class="hero-team-authors" style="font-family: 'STIX Two Text', serif; font-size: 18px; line-height: 2.4; color: var(--text-secondary); margin-top: 12px; max-width: 900px; margin-left: auto; margin-right: auto;">
-            <span style="font-weight: 700; color: var(--text-primary);">Yifu Yuan</span><sup style="color: var(--honey-bronze); font-size: 13px; margin-left: 2px;">&#9830;</sup>,
+            Yifu Yuan<sup style="color: var(--honey-bronze); font-size: 13px; margin-left: 2px;">&#9830;</sup><sup style="color: var(--blue-energy); font-size: 13px;">,&#10043;</sup>,
             Yaoting Huang,
             Shuoheng Zhang,
             Xianze Yao,
-            Pengyi Li,
             Linqi Han,
+            Pengyi Li,
             Yuhao Liu,
             Yutong Li,
             Ruihao Liao,
@@ -115,16 +124,19 @@
             Chen Li,
             Zibin Dong,
             Fei Ni,
-            <span style="font-weight: 700; color: var(--text-primary);">Yan Zheng</span><sup style="color: var(--blue-energy); font-size: 13px; margin-left: 2px;">&#10043;</sup>,
-            <span style="font-weight: 700; color: var(--text-primary);">Shuyang Gu</span><sup style="color: var(--blue-energy); font-size: 13px; margin-left: 2px;">&#10043;</sup>,
-            <span style="font-weight: 700; color: var(--text-primary);">Yi Ma</span><sup style="color: var(--honey-bronze); font-size: 13px; margin-left: 2px;">&#9830;</sup><sup style="color: var(--blue-energy); font-size: 13px;">,&#10043;</sup>,
-            <span style="font-weight: 700; color: var(--text-primary);">Hongyao Tang</span><sup style="color: var(--honey-bronze); font-size: 13px; margin-left: 2px;">&#9830;</sup><sup style="color: var(--blue-energy); font-size: 13px;">,&#10043;</sup>,
+            Yan Zheng<sup style="color: var(--blue-energy); font-size: 13px; margin-left: 2px;">&#10043;</sup>,
+            Shuyang Gu<sup style="color: var(--blue-energy); font-size: 13px; margin-left: 2px;">&#10043;</sup>,
+            Yi Ma<sup style="color: var(--honey-bronze); font-size: 13px; margin-left: 2px;">&#9830;</sup><sup style="color: var(--blue-energy); font-size: 13px;">,&#10043;</sup>,
+            Hongyao Tang<sup style="color: var(--honey-bronze); font-size: 13px; margin-left: 2px;">&#9830;</sup><sup style="color: var(--blue-energy); font-size: 13px;">,&#10043;</sup>,
             Han Hu,
-            <span style="font-weight: 700; color: var(--text-primary);">Jianye Hao</span><sup style="color: var(--blue-energy); font-size: 13px; margin-left: 2px;">&#10043;</sup>
+            Jianye Hao<sup style="color: var(--blue-energy); font-size: 13px; margin-left: 2px;">&#10043;</sup>
           </div>
           <div style="margin-top: 10px; font-size: 14px; color: var(--text-muted); line-height: 1.8; font-family: 'STIX Two Text', serif;">
             <span style="color: var(--honey-bronze); font-size: 15px;">&#9830;</span> Project Leader &nbsp;&nbsp;
             <span style="color: var(--blue-energy); font-size: 15px;">&#10043;</span> Corresponding Author
+          </div>
+          <div style="margin-top: 6px; font-size: 14px; color: var(--text-muted); font-family: 'STIX Two Text', serif;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -3px; margin-right: 4px; color: var(--text-muted);"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg><a href="mailto:yuanyf@tju.edu.cn" style="color: var(--text-muted); text-decoration: none;">yuanyf@tju.edu.cn</a>
           </div>
         </div>
       </div>
@@ -159,14 +171,14 @@
           </svg>
           Models
         </a>
-        <a class="cta gray" href="#" target="_blank">
+        <a class="cta gray" href="https://huggingface.co/datasets/IffYuan/Embodied-R1.5-SFT-Dataset" target="_blank">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
             style="vertical-align: -2px; margin-right: 6px;">
             <path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" />
           </svg>
           Datasets
         </a>
-        <a class="cta gray" href="#" target="_blank">
+        <a class="cta gray" href="https://github.com/pickxiguapi/EmbodiedEvalKit" target="_blank">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
             style="vertical-align: -2px; margin-right: 6px;">
             <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
@@ -180,23 +192,6 @@
           </svg>
           Video
         </a>
-      </div>
-
-      <div class="hero-roadmap expanded">
-        <div class="hero-roadmap-header" onclick="this.parentElement.classList.toggle('expanded')">
-          Open-Source Roadmap
-          <svg class="hero-roadmap-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </div>
-        <div class="hero-roadmap-content">
-          <ul class="hero-roadmap-list">
-            <li><span class="roadmap-item">Release Models and Inference Scripts</span><span class="roadmap-time">~2 weeks</span></li>
-            <li><span class="roadmap-item">Release Paper on arXiv</span><span class="roadmap-time">~3 weeks</span></li>
-            <li><span class="roadmap-item">Open-source EmbodiedEvalKit</span><span class="roadmap-time">~4 weeks</span></li>
-            <li><span class="roadmap-item">Open-source Training Data</span><span class="roadmap-time">~5 weeks</span></li>
-          </ul>
-        </div>
       </div>
 
       <div class="hero-waves" aria-hidden="true">
@@ -216,6 +211,21 @@
     </div>
 
     <!-- ═══════════════════════════════════════════ -->
+    <!-- Section: Video -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="card-surface" style="padding: 0; overflow: hidden; border-radius: 16px; margin-bottom: 0;">
+      <div style="position: relative; width: 100%; padding-bottom: 56.25%; background: #000;">
+        <iframe
+          src="https://www.youtube.com/embed/3KhSXrcA1ig"
+          title="Embodied-R1.5 Demo"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
     <!-- Section 1: Highlight -->
     <!-- ═══════════════════════════════════════════ -->
     <div class="tagline" id="highlight">Highlight</div>
@@ -231,7 +241,7 @@
           <span style="font-weight: 700; font-size: 19px; font-family: 'STIX Two Text', serif; background: linear-gradient(135deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Embodied-R1.5</span>
         </span>
       </div>
-      <p style="font-size: 17px; line-height: 1.75; color: var(--text-primary); margin: 0 0 24px 0; font-weight: 400; font-family: 'STIX Two Text', serif;">Embodied-R1.5 is a unified embodied foundation model that masters embodied cognition, planning, error correction, and pointing to achieve SOTA performance across 20+ embodied VLM benchmarks and 4 mainstream VLA evaluation suites, enabling zero-shot, long-horizon autonomy across diverse robotic embodiments.</p>
+      <p style="font-size: 17px; line-height: 1.75; color: var(--text-primary); margin: 0 0 24px 0; font-weight: 400; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;">Embodied-R1.5 is a unified embodied foundation model that masters embodied cognition, planning, error correction, and pointing to achieve SOTA performance across 20+ embodied VLM benchmarks and 4 mainstream VLA evaluation suites, enabling zero-shot, long-horizon autonomy across diverse robotic embodiments.</p>
 
       <!-- Key Contributions -->
       <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
@@ -240,43 +250,41 @@
         <div style="height: 1px; flex: 1; background: var(--border-subtle);"></div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 14px; margin-bottom: 14px;">
-        <div style="background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 100%); border: 1px solid rgba(37,99,235,0.1); border-radius: 12px; padding: 20px 18px;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-            <span style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">1</span>
-            <h3 style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.3; font-family: 'STIX Two Text', serif;">Unified Embodied Capabilities</h3>
+      <div class="kc-list">
+        <div class="kc-item">
+          <div class="kc-num">1</div>
+          <div class="kc-body">
+            <h3 class="kc-title">Unified Embodied Capabilities</h3>
+            <p class="kc-desc">Embodied-R1.5 achieves a unified integration of <strong>embodied cognition</strong>, <strong>spatial reasoning</strong>, <strong>task planning</strong>, <strong>embodied correction</strong>, and <strong>precise pointing</strong> within a single model.</p>
           </div>
-          <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin: 0; font-family: 'STIX Two Text', serif;">Embodied-R1.5 achieves a unified integration of <strong style="color: var(--text-primary);">embodied cognition</strong>, <strong style="color: var(--text-primary);">spatial reasoning</strong>, <strong style="color: var(--text-primary);">task planning</strong>, <strong style="color: var(--text-primary);">embodied correction</strong>, and <strong style="color: var(--text-primary);">precise pointing</strong> within a single model.</p>
         </div>
-        <div style="background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 100%); border: 1px solid rgba(37,99,235,0.1); border-radius: 12px; padding: 20px 18px;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-            <span style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">2</span>
-            <h3 style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.3; font-family: 'STIX Two Text', serif;">Robust Multi-Task RL Recipe</h3>
+        <div class="kc-item">
+          <div class="kc-num">2</div>
+          <div class="kc-body">
+            <h3 class="kc-title">Robust Multi-Task RL Recipe</h3>
+            <p class="kc-desc">Our innovative <strong>reinforcement learning recipe</strong> and sophisticated <strong>reward function design</strong> effectively overcome interference among heterogeneous tasks, ensuring <strong>robust convergence</strong> and <strong>balanced enhancement</strong> throughout the multi-task joint training process.</p>
           </div>
-          <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin: 0; font-family: 'STIX Two Text', serif;">Building upon the foundations established by SFT, our innovative <strong style="color: var(--text-primary);">reinforcement learning recipe</strong> and sophisticated <strong style="color: var(--text-primary);">reward function design</strong> effectively overcome interference among heterogeneous tasks. Even when integrating capabilities with vast difficulty spans, this approach ensures <strong style="color: var(--text-primary);">robust convergence</strong> and <strong style="color: var(--text-primary);">balanced enhancement</strong> throughout the multi-task joint training process.</p>
         </div>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
-        <div style="background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 100%); border: 1px solid rgba(37,99,235,0.1); border-radius: 12px; padding: 20px 18px;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-            <span style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">3</span>
-            <h3 style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.3; font-family: 'STIX Two Text', serif;">Pushing the Frontiers: SOTA in Both VLM and VLA</h3>
+        <div class="kc-item">
+          <div class="kc-num">3</div>
+          <div class="kc-body">
+            <h3 class="kc-title">Closed-Loop Autonomy Framework</h3>
+            <p class="kc-desc">A unified framework integrating <strong>Planner</strong>, <strong>Grounder</strong>, and <strong>Corrector</strong> into a robust closed-loop pipeline, enabling <strong>autonomous execution</strong> and <strong>self-correction</strong> for complex, long-horizon embodied tasks.</p>
           </div>
-          <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin: 0; font-family: 'STIX Two Text', serif;">Achieving <strong style="color: var(--text-primary);">SOTA across 20+ VLM benchmarks</strong>, the model establishes a powerful Embodied VLM backbone. Through efficient action-head integration, this intelligence translates into <strong style="color: var(--text-primary);">SOTA on 3 major VLA benchmarks across 40+ tasks</strong> &mdash; demonstrating that large-scale foundational knowledge is key to high-performance embodied execution.</p>
         </div>
-        <div style="background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 100%); border: 1px solid rgba(37,99,235,0.1); border-radius: 12px; padding: 20px 18px;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-            <span style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">4</span>
-            <h3 style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.3; font-family: 'STIX Two Text', serif;">Closed-Loop Autonomy Framework</h3>
+        <div class="kc-item">
+          <div class="kc-num">4</div>
+          <div class="kc-body">
+            <h3 class="kc-title">Pushing the Frontiers: SOTA in Both VLM and VLA</h3>
+            <p class="kc-desc">Achieving <strong>SOTA across 20+ VLM benchmarks</strong>, the model establishes a powerful Embodied VLM backbone. Through efficient action-head integration, this translates into <strong>SOTA on 3 major VLA benchmarks across 40+ tasks</strong>.</p>
           </div>
-          <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin: 0; font-family: 'STIX Two Text', serif;">A unified framework that integrates <strong style="color: var(--text-primary);">Planner</strong>, <strong style="color: var(--text-primary);">Grounder</strong>, and <strong style="color: var(--text-primary);">Corrector</strong> into a robust closed-loop pipeline. By bridging high-level task decomposition with precise spatial grounding and autonomous reflection, the model enables <strong style="color: var(--text-primary);">autonomous execution</strong> and <strong style="color: var(--text-primary);">self-correction</strong> for complex, long-horizon embodied tasks.</p>
         </div>
-        <div style="background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 100%); border: 1px solid rgba(37,99,235,0.1); border-radius: 12px; padding: 20px 18px;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-            <span style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">5</span>
-            <h3 style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.3; font-family: 'STIX Two Text', serif;">Full Open-Source Ecosystem</h3>
+        <div class="kc-item">
+          <div class="kc-num">5</div>
+          <div class="kc-body">
+            <h3 class="kc-title">Full Open-Source Ecosystem</h3>
+            <p class="kc-desc">We have open-sourced <strong>model weights</strong>, <strong>datasets</strong>, <strong>training scripts</strong>, and the <strong>EmbodiedEvalKit</strong> evaluation framework to accelerate community progress.</p>
           </div>
-          <p style="font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin: 0; font-family: 'STIX Two Text', serif;">We will progressively open-source <strong style="color: var(--text-primary);">model weights</strong>, <strong style="color: var(--text-primary);">datasets</strong>, <strong style="color: var(--text-primary);">training scripts</strong>, and the <strong style="color: var(--text-primary);">EmbodiedEvalKit</strong> evaluation framework to accelerate community progress and establish a new standard for open embodied AI research.</p>
         </div>
       </div>
     </div>
@@ -308,7 +316,6 @@
         </p>
       </div>
       <div id="vla-charts-container"></div>
-      <p style="color: #9ca3af; font-style: italic; font-size: 13px; margin: 8px 0 4px; text-align: center;">* In LIBERO, GR00T uses GR00T-N1.6 scores and OpenVLA uses OpenVLA-OFT scores.</p>
       <div class="chart-legend" id="vla-chart-legend"></div>
 
     </div>
@@ -320,6 +327,33 @@
 
     <div class="card-surface" style="padding: 0; overflow: hidden;">
       <img src="./framework.jpg" alt="Embodied-R1.5 Framework" style="width: 100%; height: auto; display: block;">
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- Section: Training Data -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="tagline" id="data">Training Data</div>
+
+    <div class="card-surface">
+      <!-- SFT Dataset Distribution -->
+      <div class="section-heading">SFT Dataset Distribution</div>
+      <p class="section-lead">Over 4M samples across 34 datasets spanning 7 capability categories, forming the foundation for comprehensive embodied skill acquisition.</p>
+      <details class="dd-details">
+        <summary class="dd-summary">Show Distribution Chart</summary>
+        <div id="sft-pie" class="dd-pie-container"></div>
+      </details>
+      <div id="sft-data-dist" class="data-dist-container"></div>
+
+      <div style="height: 32px;"></div>
+
+      <!-- RFT Dataset Distribution -->
+      <div class="section-heading">RFT Dataset Distribution</div>
+      <p class="section-lead">~190K curated samples across 25 datasets for reinforcement fine-tuning, enabling robust multi-task learning with balanced capability enhancement.</p>
+      <details class="dd-details">
+        <summary class="dd-summary">Show Distribution Chart</summary>
+        <div id="rft-pie" class="dd-pie-container"></div>
+      </details>
+      <div id="rft-data-dist" class="data-dist-container"></div>
     </div>
 
     <!-- ═══════════════════════════════════════════ -->
@@ -346,9 +380,9 @@
 
     <!-- Result Tabs -->
     <div class="result-tabs">
-      <button class="result-tab active" data-tab="vlm-tab">Comprehensive Embodied VLM Evaluation<br><span class="tab-sub">(20+ Benchmarks)</span></button>
+      <button class="result-tab active" data-tab="vlm-tab">Comprehensive Embodied VLM Evaluation<br><span class="tab-sub">(24+ Benchmarks)</span></button>
       <button class="result-tab" data-tab="vla-tab">VLA Benchmarks<br><span class="tab-sub">(SIMPLER)</span></button>
-      <button class="result-tab" data-tab="libero-tab">VLA Benchmarks<br><span class="tab-sub">(LIBERO)</span></button>
+      <button class="result-tab" data-tab="libero-tab">VLA Benchmarks<br><span class="tab-sub">(LIBERO & LIBERO-Plus)</span></button>
       <button class="result-tab" data-tab="afford-tab">Affordance Benchmarks<br><span class="tab-sub">(PartNet-Mobility)</span></button>
     </div>
 
@@ -359,176 +393,28 @@
       <p style="color: var(--text-primary); font-size: 15.5px; line-height: 1.8; margin: 0; font-weight: 500;">Compared with its predecessor, Embodied-R1.5 features comprehensive advancements in <strong>cognition</strong>, <strong>planning</strong>, and <strong>error correction</strong>, while significantly refining its <strong>pointing and localization precision</strong>. It currently establishes a <strong>new SOTA across 10+ benchmarks</strong>, with its mean performance markedly exceeding that of leading general-purpose and embodied models. Notably, Embodied-R1.5 demonstrates a <strong>clear competitive advantage over Gemini-Robotics-ER-1.5</strong> across all evaluated capability domains.</p>
     </div>
 
-    <!-- Leaderboard Table Section -->
+    <!-- Leaderboard Table Section (Dynamic) -->
     <section class="leaderboard-section" id="leaderboard">
       <div class="section-heading">Embodied VLM Leaderboard</div>
-      <p class="section-lead">Comprehensive evaluation across Embodied Planning and Correction Benchmark (4 Tasks), Embodied Pointing and Location Benchmark (8 Tasks), and Embodied Cognition and Spatial benchmarks (7 Tasks).</p>
-      <div class="leaderboard-table-wrapper">
-        <table class="leaderboard-table">
-          <thead>
-            <tr>
-              <th class="sticky-col benchmark-header" rowspan="2">Benchmark</th>
-              <th class="group-header ours-group" colspan="1">Ours</th>
-              <th class="group-header" colspan="4">Generalist</th>
-              <th class="group-header" colspan="4">Embodied</th>
-            </tr>
-            <tr class="model-row">
-              <th class="model-name ours"><span class="m-name">Embodied-R1.5*</span><span class="m-inst">ER</span></th>
-              <th class="model-name"><span class="m-name">Gemini-2.5-Pro</span><span class="m-inst">Google</span></th>
-              <th class="model-name"><span class="m-name">GPT-5</span><span class="m-inst">OpenAI</span></th>
-              <th class="model-name"><span class="m-name">Gemini-ER-1.5</span><span class="m-inst">Google</span></th>
-              <th class="model-name"><span class="m-name">Qwen3VL-8B</span><span class="m-inst">Qwen</span></th>
-              <th class="model-name"><span class="m-name">RoboBrain2.0</span><span class="m-inst">BAAI</span></th>
-              <th class="model-name"><span class="m-name">Mimo-Embodied</span><span class="m-inst">Xiaomi</span></th>
-              <th class="model-name"><span class="m-name">Pelican-VL</span><span class="m-inst">X-Humanoid</span></th>
-              <th class="model-name"><span class="m-name">Embodied-R1</span><span class="m-inst">ER</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="category-row"><td class="sticky-col category-label" colspan="10">Embodied Planning and Correction</td></tr>
-            <tr>
-              <td class="sticky-col bench-name">RoboVQA<span class="bench-split">test</span></td>
-              <td class="ours-col">60.1</td>
-              <td>33.9</td><td>33.1</td><td>32.6</td><td>55.0</td>
-              <td>57.5</td><td>62.0</td><td>58.5</td><td>51.8</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">EgoPlan2</td>
-              <td class="ours-col">53.7</td>
-              <td>42.9</td><td>36.9</td><td>32.0</td><td>32.3</td>
-              <td>33.2</td><td>43.0</td><td>32.0</td><td>26.5</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">Cosmos<span class="bench-split">reason</span></td>
-              <td class="ours-col">64.9</td>
-              <td>62.8</td><td>56.2</td><td>53.7</td><td>64.0</td>
-              <td>33.8</td><td>56.8</td><td>62.6</td><td>55.2</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">RoboFAC<span class="bench-split">test</span></td>
-              <td class="ours-col">76.8</td>
-              <td>46.4</td><td>69.0</td><td>47.0</td><td>65.4</td>
-              <td>54.2</td><td>54.6</td><td>60.2</td><td>40.2</td>
-            </tr>
-            <tr class="overall-row">
-              <td class="sticky-col bench-name overall-name">Overall</td>
-              <td class="ours-col overall-val">59.6</td>
-              <td class="overall-val">46.5</td><td class="overall-val">42.1</td><td class="overall-val">39.4</td><td class="overall-val">50.4</td>
-              <td class="overall-val">41.5</td><td class="overall-val">53.9</td><td class="overall-val">51.0</td><td class="overall-val">44.5</td>
-            </tr>
-            <tr class="category-row"><td class="sticky-col category-label" colspan="10">Embodied Pointing</td></tr>
-            <tr>
-              <td class="sticky-col bench-name">VAbench-P</td>
-              <td class="ours-col">70.7</td>
-              <td>21.7</td><td>31.1</td><td>41.6</td><td>42.3</td>
-              <td>41.0</td><td>46.9</td><td>14.5</td><td>66.0</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">Where2Place</td>
-              <td class="ours-col">71.0</td>
-              <td>49.6</td><td>39.7</td><td>48.3</td><td>64.0</td>
-              <td>63.6</td><td>63.6</td><td>57.8</td><td>69.5</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">RefSpatial<span class="bench-split">all</span></td>
-              <td class="ours-col">49.5</td>
-              <td>36.5</td><td>21.6</td><td>39.7</td><td>42.2</td>
-              <td>32.5</td><td>48.0</td><td>37.5</td><td>39.7</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">Part-Afford</td>
-              <td class="ours-col">80.8</td>
-              <td>25.5</td><td>16.9</td><td>27.0</td><td>48.7</td>
-              <td>45.6</td><td>65.5</td><td>28.8</td><td>56.6</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">RoboRefit<span class="bench-split">test</span></td>
-              <td class="ours-col">87.5</td>
-              <td>38.4</td><td>44.7</td><td>80.0</td><td>83.6</td>
-              <td>70.4</td><td>82.3</td><td>74.9</td><td>85.6</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">RoboAfford<span class="bench-split">test</span></td>
-              <td class="ours-col">79.6</td>
-              <td>23.4</td><td>30.0</td><td>57.6</td><td>69.9</td>
-              <td>51.5</td><td>69.8</td><td>63.4</td><td>67.2</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">PIO<span class="bench-split">S1&amp;S2</span></td>
-              <td class="ours-col">63.8</td>
-              <td>23.2</td><td>23.6</td><td>54.0</td><td>56.8</td>
-              <td>54.0</td><td>27.5</td><td>32.9</td><td>44.4</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">Pixmo-Point<span class="bench-split">test</span></td>
-              <td class="ours-col">62.5</td>
-              <td>12.7</td><td>23.6</td><td>52.5</td><td>59.9</td>
-              <td>54.7</td><td>42.4</td><td>26.1</td><td>49.4</td>
-            </tr>
-            <tr class="overall-row">
-              <td class="sticky-col bench-name overall-name">Overall</td>
-              <td class="ours-col overall-val">70.7</td>
-              <td class="overall-val">28.9</td><td class="overall-val">28.9</td><td class="overall-val">50.1</td><td class="overall-val">58.4</td>
-              <td class="overall-val">51.7</td><td class="overall-val">55.7</td><td class="overall-val">42.0</td><td class="overall-val">59.8</td>
-            </tr>
-            <tr class="category-row"><td class="sticky-col category-label" colspan="10">Embodied Cognition and Spatial Reasoning</td></tr>
-            <tr>
-              <td class="sticky-col bench-name">ERQA</td>
-              <td class="ours-col">51.3</td>
-              <td>55.7</td><td>54.5</td><td>48.5</td><td>41.8</td>
-              <td>38.5</td><td>46.8</td><td>39.8</td><td>35.2</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">OpenEQA</td>
-              <td class="ours-col">63.0</td>
-              <td>65.8</td><td>64.4</td><td>50.5</td><td>68.4</td>
-              <td>24.2</td><td>53.6</td><td>54.7</td><td>34.5</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">CV-Bench<span class="bench-split">all</span></td>
-              <td class="ours-col">88.8</td>
-              <td>84.6</td><td>84.5</td><td>83.6</td><td>86.3</td>
-              <td>85.8</td><td>88.8</td><td>78.9</td><td>82.7</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">EmbSpatial<span class="bench-split">test</span></td>
-              <td class="ours-col">80.2</td>
-              <td>78.7</td><td>78.3</td><td>73.4</td><td>78.5</td>
-              <td>76.3</td><td>76.2</td><td>73.2</td><td>67.4</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">SAT<span class="bench-split">test</span></td>
-              <td class="ours-col">76.7</td>
-              <td>76.7</td><td>83.3</td><td>62.7</td><td>65.3</td>
-              <td>75.3</td><td>54.6</td><td>54.6</td><td>76.3</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">BLINK<span class="bench-split">rel. depth</span></td>
-              <td class="ours-col">92.7</td>
-              <td>85.5</td><td>75.0</td><td>85.9</td><td>84.7</td>
-              <td>79.0</td><td>94.4</td><td>78.2</td><td>76.6</td>
-            </tr>
-            <tr>
-              <td class="sticky-col bench-name">RoboSpatial</td>
-              <td class="ours-col">69.1</td>
-              <td>59.9</td><td>54.1</td><td>40.1</td><td>67.4</td>
-              <td>54.2</td><td>61.8</td><td>57.5</td><td>47.4</td>
-            </tr>
-            <tr class="overall-row">
-              <td class="sticky-col bench-name overall-name">Overall</td>
-              <td class="ours-col overall-val">74.5</td>
-              <td class="overall-val">72.4</td><td class="overall-val">70.6</td><td class="overall-val">63.5</td><td class="overall-val">70.3</td>
-              <td class="overall-val">61.9</td><td class="overall-val">68.0</td><td class="overall-val">62.4</td><td class="overall-val">60.0</td>
-            </tr>
-          </tbody>
-        </table>
+      <p class="section-lead">Comprehensive evaluation across Embodied Planning and Correction (4 Tasks), Embodied Pointing and Location (9 Tasks), and Embodied Cognition and Spatial Reasoning (8 Tasks).</p>
+      <div class="leaderboard-table-wrapper" id="vlm-full-table-wrapper">
+        <div id="vlm-full-table"></div>
       </div>
     </section>
 
-    <div style="margin-top: 16px; padding: 0 4px;">
-      <p style="color: #9ca3af; font-size: 13px; font-style: italic; line-height: 1.6; margin: 0;">* Embodied-R1.5 denotes the Preview version, which has not been trained on the full dataset.</p>
-      <p style="color: #9ca3af; font-size: 13px; font-style: italic; line-height: 1.6; margin: 4px 0 0;">* Evaluation is conducted using the VLLM inference engine.</p>
+    <p class="section-lead" style="margin-top: 20px;">Visual trace prediction evaluation across ShareRobot-V (RMSE↓, DFD↓), VABench-V (RMSE↓, DFD↓), and PIO-S3 (GPT-Score↑).</p>
+    <div class="leaderboard-table-wrapper">
+      <div id="vlm-trace-table"></div>
     </div>
+
+    <!-- General Vision Benchmarks -->
+    <section class="leaderboard-section" id="general-bench-section">
+      <div class="section-heading">General Vision Benchmarks</div>
+      <p class="section-lead">Embodied-R1.5 maintains strong general vision capabilities while acquiring comprehensive embodied skills, demonstrating minimal performance trade-off compared to its base model Qwen3-VL-8B.</p>
+      <div class="leaderboard-table-wrapper">
+        <div id="general-bench-table"></div>
+      </div>
+    </section>
 
     </div><!-- end vlm-tab -->
 
@@ -809,6 +695,15 @@
       </div>
     </section>
 
+    <!-- LIBERO-Plus Robustness Benchmark -->
+    <section class="leaderboard-section" id="vla-libero-plus">
+      <div class="section-heading">LIBERO-Plus Robustness Benchmark</div>
+      <p class="section-lead">Evaluating model robustness across 7 perturbation types: Camera, Robot, Language, Light, Background, Noise, and Layout changes.</p>
+      <div class="leaderboard-table-wrapper">
+        <div id="libero-plus-table"></div>
+      </div>
+    </section>
+
     <div class="section-heading" style="margin-top: 24px;">VLM Backbone Comparison on LIBERO</div>
     <p class="section-lead">Overall success rates across training steps with different VLM backbones and action experts.</p>
     <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
@@ -1077,13 +972,98 @@
     </div><!-- end afford-tab -->
 
     <!-- ═══════════════════════════════════════════ -->
-    <!-- Section: EmbodiedEvalKit -->
+    <!-- Section: Real-World Experiments -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="tagline" id="realworld">Real-World Experiments</div>
+
+    <div class="card-surface">
+      <div style="background: linear-gradient(135deg, rgba(37,99,235,0.06) 0%, rgba(147,51,234,0.06) 100%); border-left: 3px solid var(--blue-energy); border-radius: 12px; padding: 18px 24px; margin: 0 0 20px 0;">
+        <p style="color: var(--text-primary); font-size: 15.5px; line-height: 1.8; margin: 0; font-weight: 500;">Embodied-R1.5 demonstrates strong real-world manipulation capabilities across 5 diverse tasks, significantly outperforming prior models in both <strong>tool affordance understanding</strong> and <strong>complex multi-step reasoning</strong>.</p>
+      </div>
+
+      <section class="leaderboard-section" id="realworld-results">
+        <div class="section-heading">Real-World Manipulation Results</div>
+        <div class="leaderboard-table-wrapper">
+          <div id="realworld-table"></div>
+        </div>
+      </section>
+
+      <div class="rw-video-grid" style="margin-top: 24px;">
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Pick up [X] and put it on the plate (Pick&Place).mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Pick up [X] and put it on the plate<br>(Pick&Place)</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Put the third duck toy from the left on the plate (Spatial Reasoning).mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Put the third duck toy from the left on the plate<br>(Spatial Reasoning)</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Door Open (Articulated Object Manipulation).mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Door Open<br>(Articulated Object Manipulation)</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/1-Move [X] to the empty space on the right side of the table (Tool Affordance).mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Move [X] to the empty space on the right side of the table<br>(Tool Affordance) #1</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/2-Move [X] to the empty space on the right side of the table (Tool Affordance).mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Move [X] to the empty space on the right side of the table<br>(Tool Affordance) #2</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/3-Move [X] to the empty space on the right side of the table (Tool Affordance).mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Move [X] to the empty space on the right side of the table<br>(Tool Affordance) #3</p>
+        </div>
+      </div>
+
+      <div class="section-heading" style="margin-top: 28px;">Demo Videos</div>
+      <div class="rw-video-grid">
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Clean the vase.mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Clean the vase</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Open the Drawer.mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Open the Drawer</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Plug the charger into the socket.mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Plug the charger into the socket</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Put all the clutter on the table into the box.mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Put all the clutter on the table into the box</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Put the specified object into the empty space of t.mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Put the specified object into the empty space of the table</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Stack the cups into three layers.mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Stack the cups into three layers</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Sweep the garbage on the ground into the dustpan.mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Sweep the garbage on the ground into the dustpan</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Make the milk tea.mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Make the milk tea</p>
+        </div>
+        <div class="rw-video-item">
+          <video autoplay loop muted controls playsinline><source src="./assets/videos/Take out the blue cup and place it on the coaster.mp4" type="video/mp4"></video>
+          <p class="rw-video-caption">Take out the blue cup and place it on the coaster</p>
+        </div>
+      </div>
+    </div>
+
     <!-- ═══════════════════════════════════════════ -->
     <div class="tagline" id="evalkit">EmbodiedEvalKit</div>
 
     <div class="card-surface evalkit-section">
-      <img src="./logo/EElogo.png" alt="EmbodiedEvalKit" class="evalkit-logo">
-      <p class="section-lead">A unified evaluation framework for assessing MLLM on embodied intelligence tasks.</p>
+      <a href="https://github.com/pickxiguapi/EmbodiedEvalKit" target="_blank" style="display: block;">
+        <img src="./logo/EElogo.png" alt="EmbodiedEvalKit" class="evalkit-logo">
+      </a>
+      <p class="section-lead">A unified evaluation framework for assessing MLLM on embodied intelligence tasks. <a href="https://github.com/pickxiguapi/EmbodiedEvalKit" target="_blank" style="color: var(--blue-energy); font-weight: 600; text-decoration: none;">View on GitHub →</a></p>
 
       <div class="evalkit-features">
         <div class="evalkit-feature-item">
@@ -1187,7 +1167,6 @@
         </div>
       </div>
 
-      <p class="evalkit-note">EmbodiedEvalKit is part of our open-source roadmap and will be released soon!</p>
     </div>
 
     <!-- ═══════════════════════════════════════════ -->
@@ -1215,7 +1194,7 @@
       </div>
       <pre><code id="bib-er15">@article{yuan2025embodiedr15,
   title={Embodied-R1.5: Evolving Physical Intelligence via Embodied Foundation Models},
-  author={Yuan, Yifu and Huang, Yaoting and Zhang, Shuoheng and Yao, Xianze and Li, Pengyi and Han, Linqi and Liu, Yuhao and Li, Yutong and Liao, Ruihao and Wu, Qiyu and Li, Yuxiao and Zhang, Zhao and Sun, Jiangeng and Jia, Wenting and Li, Chen and Dong, Zibin and Ni, Fei and Zheng, Yan and Gu, Shuyang and Ma, Yi and Tang, Hongyao and Hu, Han and Hao, Jianye},
+  author={Yuan, Yifu and Huang, Yaoting and Zhang, Shuoheng and Yao, Xianze and Han, Linqi and Li, Pengyi and Liu, Yuhao and Li, Yutong and Liao, Ruihao and Wu, Qiyu and Li, Yuxiao and Zhang, Zhao and Sun, Jiangeng and Jia, Wenting and Li, Chen and Dong, Zibin and Ni, Fei and Zheng, Yan and Gu, Shuyang and Ma, Yi and Tang, Hongyao and Hu, Han and Hao, Jianye},
   journal={arXiv preprint},
   year={2025}
 }</code></pre>
@@ -1276,6 +1255,621 @@
       v.addEventListener('loadedmetadata', () => { v.playbackRate = 4; });
     });
   </script>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- Dynamic Table Renderers (VLM-Full, Trace, General, LIBERO-Plus, Real-World, Training Data) -->
+  <!-- ═══════════════════════════════════════════ -->
+  <script>
+  (function() {
+    // ─── Utility: format number for display ───
+    function fmt(v) {
+      if (v === null || v === undefined) return '—';
+      if (typeof v === 'string') return v === '-' ? '—' : v;
+      // Round to max 2 decimal places, drop trailing zeros
+      return parseFloat(v.toFixed(2)).toString();
+    }
+
+    // ─── Utility: highlight best per column ───
+    function highlightBest(tableEl, lowerBetter) {
+      const tbody = tableEl.querySelector('tbody');
+      if (!tbody) return;
+      const rows = Array.from(tbody.querySelectorAll('tr:not(.category-row):not(.overall-row)'));
+      if (rows.length === 0) return;
+      const nCols = rows[0] ? rows[0].querySelectorAll('td').length : 0;
+      for (let c = 1; c < nCols; c++) {
+        let bestVal = lowerBetter ? Infinity : -Infinity;
+        let bestCells = [];
+        const isLower = Array.isArray(lowerBetter) ? lowerBetter[c - 1] : lowerBetter;
+        rows.forEach(row => {
+          const cells = row.querySelectorAll('td');
+          if (c >= cells.length) return;
+          const cell = cells[c];
+          const v = parseFloat(cell.textContent);
+          if (isNaN(v)) return;
+          if (isLower ? v < bestVal : v > bestVal) {
+            bestVal = v;
+            bestCells = [cell];
+          } else if (v === bestVal) {
+            bestCells.push(cell);
+          }
+        });
+        bestCells.forEach(cell => cell.classList.add('score-best'));
+      }
+    }
+
+    // Also highlight best in overall rows
+    function highlightOverallBest(tableEl) {
+      tableEl.querySelectorAll('tr.overall-row').forEach(row => {
+        const cells = Array.from(row.querySelectorAll('td')).slice(1);
+        let bestVal = -Infinity;
+        let bestCells = [];
+        cells.forEach(cell => {
+          const v = parseFloat(cell.textContent);
+          if (!isNaN(v) && v > bestVal) { bestVal = v; bestCells = [cell]; }
+          else if (v === bestVal) bestCells.push(cell);
+        });
+        bestCells.forEach(cell => cell.classList.add('score-best-overall'));
+      });
+    }
+
+    // ─── 1. VLM-Full Table ───
+    fetch('./assets/data/vlm_full.json')
+      .then(r => r.json())
+      .then(data => {
+        const container = document.getElementById('vlm-full-table');
+        if (!container) return;
+
+        const bms = data.benchmarks;
+        const cats = data.categories;
+        // Reorder: Planning → Pointing → Cognition
+        const catsOrdered = [cats[2], cats[1], cats[0]];
+
+        // Only show these 9 models, in this order and grouping
+        const SELECTED = [
+          { name: 'Embodied-R1.5',        display: 'Embodied-R1.5', inst: 'ER',         group: 'Ours' },
+          { name: 'Gemini-2.5-Pro',        display: 'Gemini-2.5-Pro', inst: 'Google',     group: 'Generalist' },
+          { name: 'GPT-5.4',              display: 'GPT-5.4',        inst: 'OpenAI',     group: 'Generalist' },
+          { name: 'GPT-5',                 display: 'GPT-5',          inst: 'OpenAI',     group: 'Generalist' },
+          { name: 'Gemini-Robotics-ER-1.5',display: 'Gemini-ER-1.5',  inst: 'Google',     group: 'Generalist' },
+          { name: 'RoboBrain2.0-7B',       display: 'RoboBrain2.0',   inst: 'BAAI',       group: 'Embodied' },
+          { name: 'Mimo-Embodied',         display: 'Mimo-Embodied',  inst: 'Xiaomi',     group: 'Embodied' },
+          { name: 'Pelican-VL 1.0',        display: 'Pelican-VL',     inst: 'X-Humanoid', group: 'Embodied' },
+          { name: 'Embodied-R1',           display: 'Embodied-R1',    inst: 'ER',         group: 'Embodied' },
+        ];
+
+        // Build a lookup from all models in data
+        const modelMap = {};
+        data.groups.forEach(g => g.models.forEach(m => { modelMap[m.name] = m; }));
+
+        // Resolve selected models with their scores
+        const allModels = SELECTED.map(s => {
+          const m = modelMap[s.name];
+          return { ...s, scores: m ? m.scores : [] };
+        });
+
+        // Group headers
+        const groupLabels = [
+          { name: 'Ours', count: SELECTED.filter(s => s.group === 'Ours').length },
+          { name: 'Generalist', count: SELECTED.filter(s => s.group === 'Generalist').length },
+          { name: 'Embodied', count: SELECTED.filter(s => s.group === 'Embodied').length },
+        ];
+
+        // Build table HTML
+        let html = '<table class="leaderboard-table">';
+
+        // Header row 1: group spans
+        html += '<thead><tr><th class="sticky-col benchmark-header" rowspan="2">Benchmark</th>';
+        groupLabels.forEach(g => {
+          const cls = g.name === 'Ours' ? 'group-header ours-group' : 'group-header';
+          html += `<th class="${cls}" colspan="${g.count}">${g.name}</th>`;
+        });
+        html += '</tr>';
+
+        // Header row 2: model names
+        html += '<tr class="model-row">';
+        allModels.forEach(m => {
+          const isOurs = m.group === 'Ours';
+          const cls = isOurs ? 'model-name ours' : 'model-name';
+          html += `<th class="${cls}"><span class="m-name">${m.display}</span><span class="m-inst">${m.inst}</span></th>`;
+        });
+        html += '</tr></thead><tbody>';
+
+        // Data rows grouped by category
+        catsOrdered.forEach(cat => {
+          html += `<tr class="category-row"><td class="sticky-col category-label" colspan="${allModels.length + 1}">${cat.name}</td></tr>`;
+          for (let bi = cat.start; bi < cat.end; bi++) {
+            const bm = bms[bi];
+            const isOverall = bm.name === 'Overall';
+            const rowClass = isOverall ? ' class="overall-row"' : '';
+            html += `<tr${rowClass}>`;
+            const nameClass = isOverall ? 'bench-name overall-name' : 'bench-name';
+            const splitHtml = bm.split ? `<span class="bench-split">${bm.split}</span>` : '';
+            html += `<td class="sticky-col ${nameClass}">${bm.name}${splitHtml}</td>`;
+            allModels.forEach(m => {
+              const v = m.scores[bi];
+              const isOurs = m.group === 'Ours';
+              let cls = isOurs ? 'ours-col' : '';
+              if (isOverall) cls += (cls ? ' ' : '') + 'overall-val';
+              html += `<td${cls ? ' class="' + cls + '"' : ''}>${fmt(v)}</td>`;
+            });
+            html += '</tr>';
+          }
+        });
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+
+        // Highlight best per ROW (max value in each row gets bold blue)
+        const table = container.querySelector('table');
+        table.querySelectorAll('tbody tr:not(.category-row):not(.overall-row)').forEach(row => {
+          const cells = Array.from(row.querySelectorAll('td')).slice(1); // skip name col
+          let bestVal = -Infinity, bestCells = [];
+          cells.forEach(cell => {
+            const v = parseFloat(cell.textContent);
+            if (!isNaN(v) && v > bestVal) { bestVal = v; bestCells = [cell]; }
+            else if (v === bestVal) bestCells.push(cell);
+          });
+          bestCells.forEach(cell => cell.classList.add('score-best'));
+        });
+        // Overall rows: also highlight max
+        table.querySelectorAll('tbody tr.overall-row').forEach(row => {
+          const cells = Array.from(row.querySelectorAll('td')).slice(1);
+          let bestVal = -Infinity, bestCells = [];
+          cells.forEach(cell => {
+            const v = parseFloat(cell.textContent);
+            if (!isNaN(v) && v > bestVal) { bestVal = v; bestCells = [cell]; }
+            else if (v === bestVal) bestCells.push(cell);
+          });
+          bestCells.forEach(cell => cell.classList.add('score-best-overall'));
+        });
+      })
+      .catch(err => console.warn('VLM-Full data load failed:', err));
+
+    // ─── 2. VLM-Trace Table ───
+    fetch('./assets/data/vlm_trace.json')
+      .then(r => r.json())
+      .then(data => {
+        const container = document.getElementById('vlm-trace-table');
+        if (!container) return;
+
+        const bms = data.benchmarks;
+        // Flatten models, skip SFT row and Qwen variants
+        const allModels = [];
+        data.groups.forEach(g => g.models.forEach(m => {
+          if (m.name === 'Embodied-R1.5-SFT') return;
+          if (m.name === 'Qwen2.5VL-7B' || m.name === 'Qwen3VL-8b') return;
+          allModels.push({ ...m, group: g.group });
+        }));
+
+        // Reorder: Embodied-R1.5 first (Ours), then Generalist, then Embodied
+        const ours = allModels.filter(m => m.name === 'Embodied-R1.5');
+        const generalist = allModels.filter(m => m.group === 'Generlist' && m.name !== 'Embodied-R1.5');
+        const embodied = allModels.filter(m => m.group !== 'Generlist' && m.name !== 'Embodied-R1.5');
+        const orderedModels = [...ours, ...generalist, ...embodied];
+
+        // Transposed: benchmarks as rows, models as columns
+        // Group benchmarks by parent (ShareRobot-V, VABench-V, PIO-S3)
+        const bmGroups = [
+          { parent: 'ShareRobot-V', indices: [] },
+          { parent: 'VABench-V', indices: [] },
+          { parent: 'PIO-S3', indices: [] },
+        ];
+        bms.forEach((b, bi) => {
+          const g = bmGroups.find(g => b.name.startsWith(g.parent));
+          if (g) g.indices.push(bi);
+        });
+
+        let html = '<table class="leaderboard-table vla-table">';
+        // Group header row
+        html += '<thead><tr><th class="sticky-col benchmark-header" rowspan="2">Benchmark</th>';
+        html += `<th class="group-header ours-col" colspan="${ours.length}">Ours</th>`;
+        if (generalist.length) html += `<th class="group-header" colspan="${generalist.length}">Generalist</th>`;
+        if (embodied.length) html += `<th class="group-header" colspan="${embodied.length}">Embodied</th>`;
+        html += '</tr><tr>';
+        orderedModels.forEach(m => {
+          const isOurs = m.name === 'Embodied-R1.5';
+          const cls = isOurs ? ' class="ours-col"' : '';
+          html += `<th${cls}>${m.name}</th>`;
+        });
+        html += '</tr></thead><tbody>';
+
+        const dataRowBmIndices = [];
+        bmGroups.forEach(g => {
+          if (g.indices.length > 1) {
+            // Category row spanning all columns
+            html += `<tr class="category-row"><td class="sticky-col category-label" colspan="${orderedModels.length + 1}">${g.parent}</td></tr>`;
+            g.indices.forEach(bi => {
+              const b = bms[bi];
+              const arrow = b.lower_is_better ? ' ↓' : ' ↑';
+              const metric = b.name.replace(g.parent + ' ', '');
+              html += `<tr><td class="sticky-col bench-name" style="padding-left: 24px;">${metric}${arrow}</td>`;
+              orderedModels.forEach(m => {
+                const v = m.scores[bi];
+                const isOurs = m.name === 'Embodied-R1.5';
+                const cls = isOurs ? ' class="ours-col"' : '';
+                html += `<td${cls}>${fmt(v)}</td>`;
+              });
+              html += '</tr>';
+              dataRowBmIndices.push(bi);
+            });
+          } else if (g.indices.length === 1) {
+            const bi = g.indices[0];
+            const b = bms[bi];
+            const arrow = b.lower_is_better ? ' ↓' : ' ↑';
+            const metric = b.name.replace(g.parent + ' ', '');
+            html += `<tr class="category-row"><td class="sticky-col category-label" colspan="${orderedModels.length + 1}">${g.parent}</td></tr>`;
+            html += `<tr><td class="sticky-col bench-name" style="padding-left: 24px;">${metric}${arrow}</td>`;
+            orderedModels.forEach(m => {
+              const v = m.scores[bi];
+              const isOurs = m.name === 'Embodied-R1.5';
+              const cls = isOurs ? ' class="ours-col"' : '';
+              html += `<td${cls}>${fmt(v)}</td>`;
+            });
+            html += '</tr>';
+            dataRowBmIndices.push(bi);
+          }
+        });
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+
+        // Highlight specific best values
+        const table = container.querySelector('table');
+        const bestValues = new Set(['13.23', '19.63', '7', '9.83', '49.56']);
+        table.querySelectorAll('tbody td').forEach(cell => {
+          const txt = cell.textContent.trim();
+          if (bestValues.has(txt)) cell.classList.add('score-best');
+        });
+      })
+      .catch(err => console.warn('VLM-Trace data load failed:', err));
+
+    // ─── 3. General Benchmark Table ───
+    fetch('./assets/data/general_benchmark.json')
+      .then(r => r.json())
+      .then(data => {
+        const container = document.getElementById('general-bench-table');
+        if (!container) return;
+
+        let html = '<table class="leaderboard-table vla-table">';
+        html += '<thead><tr><th class="sticky-col benchmark-header">Model</th>';
+        data.benchmarks.forEach(b => {
+          const splitHtml = b.split ? `<br><span style="font-size:10px;color:#999">${b.split}</span>` : '';
+          html += `<th>${b.name}${splitHtml}</th>`;
+        });
+        html += '</tr></thead><tbody>';
+
+        data.models.forEach(m => {
+          const isOurs = m.name.includes('Embodied-R1.5');
+          const rowCls = isOurs ? ' class="ours-row"' : '';
+          const nameCls = isOurs ? 'bench-name ours-model' : 'bench-name';
+          html += `<tr${rowCls}><td class="sticky-col ${nameCls}">${m.name}</td>`;
+          m.scores.forEach(v => {
+            const cls = isOurs ? ' class="ours-col"' : '';
+            html += `<td${cls}>${fmt(v)}</td>`;
+          });
+          html += '</tr>';
+        });
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+        highlightBest(container.querySelector('table'), false);
+      })
+      .catch(err => console.warn('General benchmark data load failed:', err));
+
+    // ─── 4. LIBERO-Plus Table ───
+    fetch('./assets/data/vla_benchmarks.json')
+      .then(r => r.json())
+      .then(data => {
+        const lp = data.libero_plus;
+        if (!lp) return;
+        const container = document.getElementById('libero-plus-table');
+        if (!container) return;
+
+        let html = '<table class="leaderboard-table vla-table">';
+        html += '<thead><tr><th class="sticky-col benchmark-header">Model</th>';
+        lp.tasks.forEach(t => html += `<th>${t}</th>`);
+        html += '</tr></thead><tbody>';
+
+        Object.entries(lp.models).forEach(([name, scores]) => {
+          const isOurs = name.includes('Embodied-R1.5');
+          const rowCls = isOurs ? ' class="ours-row"' : '';
+          const nameCls = isOurs ? 'bench-name ours-model' : 'bench-name';
+          html += `<tr${rowCls}><td class="sticky-col ${nameCls}">${name}</td>`;
+          scores.forEach(v => {
+            const cls = isOurs ? ' class="ours-col"' : '';
+            html += `<td${cls}>${fmt(v)}</td>`;
+          });
+          html += '</tr>';
+        });
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+        highlightBest(container.querySelector('table'), false);
+      })
+      .catch(err => console.warn('LIBERO-Plus data load failed:', err));
+
+    // ─── 5. Real-World Table ───
+    fetch('./assets/data/realworld.json')
+      .then(r => r.json())
+      .then(data => {
+        const container = document.getElementById('realworld-table');
+        if (!container) return;
+
+        let html = '<table class="leaderboard-table vla-table">';
+        html += '<thead><tr><th class="sticky-col benchmark-header">Model</th>';
+        data.tasks.forEach(t => html += `<th>${t}</th>`);
+        html += '</tr></thead><tbody>';
+
+        data.models.forEach(m => {
+          const isOurs = m.name.includes('Embodied-R1.5');
+          const rowCls = isOurs ? ' class="ours-row"' : '';
+          const nameCls = isOurs ? 'bench-name ours-model' : 'bench-name';
+          html += `<tr${rowCls}><td class="sticky-col ${nameCls}">${m.name}</td>`;
+          m.scores.forEach(v => {
+            const cls = isOurs ? ' class="ours-col"' : '';
+            html += `<td${cls}>${fmt(v)}</td>`;
+          });
+          html += '</tr>';
+        });
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+        highlightBest(container.querySelector('table'), false);
+      })
+      .catch(err => console.warn('Real-world data load failed:', err));
+
+    // ─── 6. Training Data Distribution ───
+    // 小方块颜色：Pointing 的 4 个子类各有不同颜色，但合并为一个大标签
+    const TYPE_COLORS = {
+      'Planning and Correction': '#ef4444',
+      'Spatial Reasoning and Cognition': '#3b82f6',
+      'Pointing and Location,REG': '#f59e0b',
+      'Pointing and Location,RRG': '#f97316',
+      'Pointing and Location,OFG': '#10b981',
+      'Pointing and Location,VTG': '#8b5cf6',
+      'General Knowledge': '#64748b',
+    };
+
+    // 大标签的颜色 — 稍高饱和
+    const GROUP_PILL_COLOR = {
+      'Planning and Correction': '#d95555',
+      'Spatial Reasoning and Cognition': '#5590d0',
+      'Pointing and Location': '#cc7a22',
+      'General Knowledge': '#7a8a9e',
+    };
+
+    const GROUP_LABELS = {
+      'Planning and Correction': 'Planning & Correction',
+      'Spatial Reasoning and Cognition': 'Spatial Reasoning',
+      'Pointing and Location': 'Pointing & Location',
+      'General Knowledge': 'General Knowledge',
+    };
+
+    function formatCount(n) {
+      if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+      if (n >= 1000) return Math.round(n / 1000) + 'K';
+      return n.toString();
+    }
+
+    // Special display for total count
+    function formatTotal(n) {
+      if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+      if (n >= 100000) return Math.round(n / 1000) + 'K';
+      if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+      return n.toString();
+    }
+
+    // 本文生成的数据集，加下划线标注
+    const OUR_DATASETS = new Set([
+      'InternData-Trace', 'OXE-Trace', 'Droid-Trace', 'HOI4D-Trace',
+      'BridgeData-Trace', 'PartNet-Maniskill', 'BrigeDataFail',
+      'ManiskillFail', 'ER1.5-Spatial', 'RegularRearrangement', 'Robocasa-Trace',
+    ]);
+
+    function renderDataDist(containerId, data) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      // Merge Pointing sub-types into one group, but keep sub-groups for color ordering
+      const merged = {};
+      data.groups.forEach(g => {
+        const isPointing = g.type.startsWith('Pointing and Location');
+        const groupKey = isPointing ? 'Pointing and Location' : g.type;
+        if (!merged[groupKey]) merged[groupKey] = { total: 0, subGroups: [] };
+        const color = TYPE_COLORS[g.type] || '#94a3b8';
+        merged[groupKey].total += g.total;
+        const datasets = g.datasets.slice().sort((a, b) => b.count - a.count).map(d => ({ name: d.name, count: d.count, color }));
+        merged[groupKey].subGroups.push({ subType: g.type, color, datasets });
+      });
+      Object.values(merged).forEach(m => {
+        m.percentage = Math.round(m.total / data.total * 1000) / 10;
+      });
+
+      const sortedKeys = Object.keys(merged).sort((a, b) => merged[b].total - merged[a].total);
+
+      let html = '';
+      sortedKeys.forEach(key => {
+        const g = merged[key];
+        const pillColor = GROUP_PILL_COLOR[key] || '#94a3b8';
+        const label = GROUP_LABELS[key] || key;
+
+        html += '<div class="dd-group">';
+        html += `<span class="dd-cat" style="background:${pillColor};">${label} (${g.percentage}%)</span>`;
+
+        // Sort sub-groups by total desc, then flatten all datasets
+        // Within each sub-group, apply saturation gradient
+        const subsSorted = g.subGroups.slice().sort((a, b) => {
+          const ta = a.datasets.reduce((s, d) => s + d.count, 0);
+          const tb = b.datasets.reduce((s, d) => s + d.count, 0);
+          return tb - ta;
+        });
+
+        subsSorted.forEach(sub => {
+          const n = sub.datasets.length;
+          sub.datasets.forEach((d, i) => {
+            // Gradient: first item full opacity, last item ~40% opacity
+            const opacity = n > 1 ? 1 - (i / (n - 1)) * 0.6 : 1;
+            const underline = OUR_DATASETS.has(d.name) ? ' dd-item-ours' : '';
+            html += `<span class="dd-item${underline}"><span class="dd-sq" style="background:${d.color};opacity:${opacity};"></span>${d.name}(${formatCount(d.count)})</span>`;
+          });
+        });
+
+        html += '</div>';
+      });
+
+      // Sub-category legend at bottom
+      const SUB_LEGEND = {
+        'Pointing and Location,RRG': 'RRG',
+        'Pointing and Location,REG': 'REG',
+        'Pointing and Location,OFG': 'OFG',
+        'Pointing and Location,VTG': 'VTG',
+      };
+      const seenSubs = new Set();
+      let legendItems = '';
+      data.groups.forEach(g => {
+        if (SUB_LEGEND[g.type] && !seenSubs.has(g.type)) {
+          seenSubs.add(g.type);
+          const color = TYPE_COLORS[g.type] || '#94a3b8';
+          legendItems += `<span class="dd-legend-item"><span class="dd-legend-sq" style="background:${color};"></span>${SUB_LEGEND[g.type]}</span>`;
+        }
+      });
+      if (legendItems) {
+        html += `<div class="dd-legend"><span class="dd-legend-label">Pointing sub-categories:</span>${legendItems}<span class="dd-legend-label" style="margin-left:12px;"><span style="text-decoration:underline;text-underline-offset:2px;">Underlined</span> = generated by this work</span></div>`;
+      }
+
+      container.innerHTML = html;
+    }
+
+    // ─── Sunburst Chart: inner = categories, outer = datasets ───
+    function arcPath(cx, cy, r1, r2, startAngle, endAngle) {
+      // Donut arc path from r1 (inner) to r2 (outer)
+      const largeArc = (endAngle - startAngle) > Math.PI ? 1 : 0;
+      const x1o = cx + r2 * Math.cos(startAngle), y1o = cy + r2 * Math.sin(startAngle);
+      const x2o = cx + r2 * Math.cos(endAngle),   y2o = cy + r2 * Math.sin(endAngle);
+      const x1i = cx + r1 * Math.cos(endAngle),   y1i = cy + r1 * Math.sin(endAngle);
+      const x2i = cx + r1 * Math.cos(startAngle), y2i = cy + r1 * Math.sin(startAngle);
+      return `M ${x1o} ${y1o} A ${r2} ${r2} 0 ${largeArc} 1 ${x2o} ${y2o} L ${x1i} ${y1i} A ${r1} ${r1} 0 ${largeArc} 0 ${x2i} ${y2i} Z`;
+    }
+
+    function renderPieChart(pieId, data, chartTitle) {
+      const container = document.getElementById(pieId);
+      if (!container) return;
+
+      const total = data.total;
+      const size = 480;
+      const cx = size / 2, cy = size / 2;
+      const innerR1 = 60, innerR2 = 140;   // inner ring (datasets)
+      const outerR1 = 145, outerR2 = 225;  // outer ring (categories, with text)
+
+      const catGroups = [];
+      const tempMerge = {};
+      data.groups.forEach(g => {
+        const isPointing = g.type.startsWith('Pointing and Location');
+        const key = isPointing ? 'Pointing and Location' : g.type;
+        if (!tempMerge[key]) tempMerge[key] = { key, total: 0, datasets: [] };
+        const color = TYPE_COLORS[g.type] || '#94a3b8';
+        tempMerge[key].total += g.total;
+        const sorted = g.datasets.slice().sort((a, b) => b.count - a.count);
+        sorted.forEach(d => tempMerge[key].datasets.push({ name: d.name, count: d.count, color }));
+      });
+      Object.values(tempMerge).sort((a, b) => b.total - a.total).forEach(g => {
+        catGroups.push({
+          key: g.key,
+          label: GROUP_LABELS[g.key] || g.key,
+          pillColor: GROUP_PILL_COLOR[g.key] || '#94a3b8',
+          total: g.total,
+          datasets: g.datasets,
+        });
+      });
+
+      // First pass: collect metadata and build arc paths in <defs> for textPath
+      let svg = `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto;border:none;box-shadow:none;"><defs>`;
+
+      let angle = -Math.PI / 2;
+      const catMeta = [];
+      catGroups.forEach((cat, idx) => {
+        const catAngle = (cat.total / total) * Math.PI * 2;
+        const catEnd = angle + catAngle;
+        const pct = Math.round(cat.total / total * 100);
+
+        const pad = 0.04;
+        const tStart = angle + pad;
+        const tEnd = catEnd - pad;
+        let topId = null, botId = null;
+
+        if (tEnd > tStart && pct >= 4) {
+          // Upper arc for category name
+          const topR = (outerR1 + outerR2) / 2 - 8;
+          const largeArc1 = (tEnd - tStart) > Math.PI ? 1 : 0;
+          topId = `tp1-${pieId}-${idx}`;
+          svg += `<path id="${topId}" d="M ${cx + topR * Math.cos(tStart)} ${cy + topR * Math.sin(tStart)} A ${topR} ${topR} 0 ${largeArc1} 1 ${cx + topR * Math.cos(tEnd)} ${cy + topR * Math.sin(tEnd)}" fill="none"/>`;
+
+          // Lower arc for percentage
+          const botR = (outerR1 + outerR2) / 2 + 8;
+          const largeArc2 = (tEnd - tStart) > Math.PI ? 1 : 0;
+          botId = `tp2-${pieId}-${idx}`;
+          svg += `<path id="${botId}" d="M ${cx + botR * Math.cos(tStart)} ${cy + botR * Math.sin(tStart)} A ${botR} ${botR} 0 ${largeArc2} 1 ${cx + botR * Math.cos(tEnd)} ${cy + botR * Math.sin(tEnd)}" fill="none"/>`;
+        }
+
+        catMeta.push({ cat, angle, catEnd, pct, topId, botId });
+        angle = catEnd;
+      });
+      svg += '</defs>';
+
+      // Second pass: draw arcs + textPath labels (two lines)
+      catMeta.forEach(({ cat, angle: a, catEnd, pct, topId, botId }) => {
+        // Outer ring arc
+        svg += `<path d="${arcPath(cx, cy, outerR1, outerR2, a, catEnd)}" fill="${cat.pillColor}" stroke="#fff" stroke-width="1.5"/>`;
+
+        // Line 1: category name (upper arc)
+        if (topId && pct >= 8) {
+          const fs1 = pct >= 20 ? 13 : (pct >= 12 ? 11.5 : 10);
+          svg += `<text fill="#fff" font-size="${fs1}" font-weight="800" font-family="Inter,system-ui,sans-serif" style="text-shadow:0 1px 2px rgba(0,0,0,0.3);"><textPath href="#${topId}" startOffset="50%" text-anchor="middle">${cat.label}</textPath></text>`;
+        }
+        // Line 2: percentage (lower arc)
+        if (botId) {
+          const pctLabel = pct >= 8 ? `${pct}%` : `${pct}%`;
+          const fs = pct >= 20 ? 12 : (pct >= 12 ? 10.5 : 9.5);
+          svg += `<text fill="#fff" font-size="${fs}" font-weight="700" font-family="Inter,system-ui,sans-serif" style="text-shadow:0 1px 2px rgba(0,0,0,0.3);"><textPath href="#${botId}" startOffset="50%" text-anchor="middle">${pctLabel}</textPath></text>`;
+        }
+
+        // Inner ring: dataset arcs
+        let dsAngle = a;
+        const nDs = cat.datasets.length;
+        cat.datasets.forEach((d, i) => {
+          const dsSlice = (d.count / total) * Math.PI * 2;
+          const dsEnd = dsAngle + dsSlice;
+          const opacity = nDs > 1 ? 1 - (i / (nDs - 1)) * 0.5 : 1;
+          svg += `<path d="${arcPath(cx, cy, innerR1, innerR2, dsAngle, dsEnd)}" fill="${d.color}" fill-opacity="${opacity}" stroke="#fff" stroke-width="0.8"/>`;
+          dsAngle = dsEnd;
+        });
+      });
+
+      // Center circle with label — 3 lines, each on its own line
+      svg += `<circle cx="${cx}" cy="${cy}" r="${innerR1}" fill="#fff"/>`;
+      const line1 = 'Embodied-R1.5';
+      const line2 = chartTitle;
+      svg += `<text x="${cx}" y="${cy - 20}" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="13" font-weight="700" font-family="'Playfair Display','Georgia',serif" letter-spacing="0.3">${line1}</text>`;
+      svg += `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="12" font-weight="700" font-family="'Playfair Display','Georgia',serif" letter-spacing="0.3">${line2}</text>`;
+      svg += `<text x="${cx}" y="${cy + 22}" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="19" font-weight="800" font-family="'Space Grotesk',system-ui,sans-serif">${formatTotal(total)}</text>`;
+
+      svg += '</svg>';
+      container.innerHTML = svg;
+    }
+
+    fetch('./assets/data/sft_dataset.json')
+      .then(r => r.json())
+      .then(data => { renderDataDist('sft-data-dist', data); renderPieChart('sft-pie', data, 'SFT Data'); })
+      .catch(err => console.warn('SFT data load failed:', err));
+
+    fetch('./assets/data/rft_dataset.json')
+      .then(r => r.json())
+      .then(data => { renderDataDist('rft-data-dist', data); renderPieChart('rft-pie', data, 'RFT Data'); })
+      .catch(err => console.warn('RFT data load failed:', err));
+
+  })();
+  </script>
+
   <script>
     // ═══════════════════════════════════════════
     // Grouped Benchmark Bar Chart Renderer
@@ -1549,10 +2143,18 @@
             }));
           }
 
+          // Compute compact positioning: skip NaN, center valid bars
+          const validIndices = values.map((v, i) => isNaN(v) ? -1 : i).filter(i => i >= 0);
+          const nValid = validIndices.length;
+          const compactBarsW = barW * nValid;
+          const compactBarGap = nValid > 1 ? (barsAreaW - compactBarsW) / (nValid - 1) : 0;
+          const compactStartX = groupX + groupW / 2 - (compactBarsW + compactBarGap * (nValid - 1)) / 2;
+
           values.forEach((val, mi) => {
             if (isNaN(val)) return;
+            const validPos = validIndices.indexOf(mi);
             const barH = (val / maxVal) * innerH;
-            const x = barsStartX + mi * (barW + barGap);
+            const x = compactStartX + validPos * (barW + compactBarGap);
             const color = colors[mi];
 
             // Bar
@@ -1712,7 +2314,7 @@
 
             btnLeft.addEventListener('click', () => { if (currentPage > 0) goToPage(currentPage - 1); });
             btnRight.addEventListener('click', () => { if (currentPage < totalPages - 1) goToPage(currentPage + 1); });
-            goToPage(1);
+            goToPage(2);
           }
         })
         .catch(err => console.warn('VLM chart data load failed:', err));
@@ -1758,6 +2360,19 @@
             }
           }
 
+          // LIBERO-Plus benchmark
+          if (data.libero_plus) {
+            const lp = data.libero_plus;
+            const totalIdx = lp.tasks.indexOf('Total');
+            if (totalIdx >= 0) {
+              benchNames.push('LIBERO-Plus');
+              allValues.push(selectedModels.map(m => {
+                if (lp.models[m]) return lp.models[m][totalIdx];
+                return NaN;
+              }));
+            }
+          }
+
           const colors = modelColors;
           const models = selectedModels.map(n => ({ name: n }));
           const logos = selectedModels.map(() => '');
@@ -1768,14 +2383,14 @@
       // LIBERO backbone comparison line charts
       (function() {
         const data = {
-          steps: ['10K', '50K', '80K'],
+          steps: ["10K", "50K", "80K"],
           groot: {
-            'Embodied-R1.5': [92.30, 96.00, 96.90],
-            'Qwen3-VL-8B':   [81.80, 95.70, 96.15]
+            'Embodied-R1.5': [92.0, 96.0, 97.0],
+            'Qwen3-VL-8B': [82.0, 96.0, 96.0]
           },
           oft: {
-            'Embodied-R1.5': [90.35, 96.95, 97.00],
-            'Qwen3-VL-8B':   [89.00, 95.70, 96.40]
+            'Embodied-R1.5': [90.0, 97.0, 97.0],
+            'Qwen3-VL-8B': [89.0, 96.0, 96.0]
           }
         };
         const colors = { 'Embodied-R1.5': '#2563eb', 'Qwen3-VL-8B': '#f59e0b' };

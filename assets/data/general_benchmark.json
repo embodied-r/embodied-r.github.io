@@ -1,0 +1,58 @@
+{
+  "benchmarks": [
+    {
+      "name": "AI2D",
+      "split": "TEST"
+    },
+    {
+      "name": "SEEDBench",
+      "split": "IMG"
+    },
+    {
+      "name": "POPE",
+      "split": "TEST"
+    },
+    {
+      "name": "MMMU",
+      "split": "VAL"
+    },
+    {
+      "name": "RealWorldQA",
+      "split": "TEST"
+    },
+    {
+      "name": "ChartQA",
+      "split": "TEST"
+    },
+    {
+      "name": "ScienceQA",
+      "split": "TEST"
+    }
+  ],
+  "models": [
+    {
+      "name": "Qwen3-VL-8B",
+      "scores": [
+        85.7,
+        77.6,
+        88.1,
+        52,
+        71.3,
+        83,
+        92.3
+      ]
+    },
+    {
+      "name": "Embodied-R1.5",
+      "scores": [
+        83.3,
+        76.5,
+        88.2,
+        54.8,
+        69.4,
+        83,
+        93.1
+      ]
+    }
+  ]
+}
