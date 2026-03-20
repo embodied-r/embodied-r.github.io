@@ -152,8 +152,8 @@ VLM_BENCHMARKS_COLS = {
 
 # 三大类 overall 列
 VLM_OVERALL_COLS = {
-    "Embodied Cognition and Spatial Reasoning\n7 Benchmarks": 10,  # K
-    "Embodied Pointing and Location\n8 Benchmarks": 20,            # U  (注: 实际是9 tasks)
+    "Embodied Cognition and Spatial Reasoning\n8 Benchmarks": 10,  # K
+    "Embodied Pointing and Location\n9 Benchmarks": 20,            # U
     "Embodied Planning and Correction\n4 Benchmarks": 25,          # Z
 }
 

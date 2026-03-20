@@ -112,9 +112,9 @@
             Shuoheng Zhang,
             Xianze Yao,
             Linqi Han,
+            Yutong Li,
             Pengyi Li,
             Yuhao Liu,
-            Yutong Li,
             Ruihao Liao,
             Qiyu Wu,
             Yuxiao Li,
@@ -1194,7 +1194,7 @@
       </div>
       <pre><code id="bib-er15">@article{yuan2025embodiedr15,
   title={Embodied-R1.5: Evolving Physical Intelligence via Embodied Foundation Models},
-  author={Yuan, Yifu and Huang, Yaoting and Zhang, Shuoheng and Yao, Xianze and Han, Linqi and Li, Pengyi and Liu, Yuhao and Li, Yutong and Liao, Ruihao and Wu, Qiyu and Li, Yuxiao and Zhang, Zhao and Sun, Jiangeng and Jia, Wenting and Li, Chen and Dong, Zibin and Ni, Fei and Zheng, Yan and Gu, Shuyang and Ma, Yi and Tang, Hongyao and Hu, Han and Hao, Jianye},
+  author={Yuan, Yifu and Huang, Yaoting and Zhang, Shuoheng and Yao, Xianze and Han, Linqi and Li, Yutong and Li, Pengyi and Liu, Yuhao and Liao, Ruihao and Wu, Qiyu and Li, Yuxiao and Zhang, Zhao and Sun, Jiangeng and Jia, Wenting and Li, Chen and Dong, Zibin and Ni, Fei and Zheng, Yan and Gu, Shuyang and Ma, Yi and Tang, Hongyao and Hu, Han and Hao, Jianye},
   journal={arXiv preprint},
   year={2025}
 }</code></pre>
@@ -1513,12 +1513,16 @@
         html += '</tbody></table>';
         container.innerHTML = html;
 
-        // Highlight specific best values
+        // Highlight specific best values — one per row
         const table = container.querySelector('table');
-        const bestValues = new Set(['13.23', '19.63', '7', '9.83', '49.56']);
-        table.querySelectorAll('tbody td').forEach(cell => {
-          const txt = cell.textContent.trim();
-          if (bestValues.has(txt)) cell.classList.add('score-best');
+        const bestPerRow = ['13.23', '19.63', '7', '9.83', '49.56'];
+        const dataRows = Array.from(table.querySelectorAll('tbody tr:not(.category-row)'));
+        dataRows.forEach((row, ri) => {
+          if (ri >= bestPerRow.length) return;
+          const target = bestPerRow[ri];
+          Array.from(row.querySelectorAll('td')).slice(1).forEach(cell => {
+            if (cell.textContent.trim() === target) cell.classList.add('score-best');
+          });
         });
       })
       .catch(err => console.warn('VLM-Trace data load failed:', err));
@@ -2250,7 +2254,13 @@
           const overallContainer = document.getElementById('vlm-overall-container');
           const overallLegend = document.getElementById('vlm-overall-legend');
           if (overallContainer && data.overalls) {
-            const overallNames = Object.keys(data.overalls);
+            const allNames = Object.keys(data.overalls);
+            // Reorder: Planning first, then Pointing, then Cognition
+            const overallNames = [
+              allNames.find(n => n.includes('Planning')),
+              allNames.find(n => n.includes('Pointing')),
+              allNames.find(n => n.includes('Cognition')),
+            ].filter(Boolean);
             const overallValues = overallNames.map(name => data.overalls[name]);
             renderOverallChart(overallContainer, overallLegend, overallNames, data.models, overallValues, colors, logos);
           }
