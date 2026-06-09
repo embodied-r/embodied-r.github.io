@@ -1590,7 +1590,7 @@
         const logoSize = 18;
         const margin = { top: 36, right: 20, bottom: 40, left: 44 };
         const w = 860;
-        const h = 230;
+        const h = 200;
         const innerW = w - margin.left - margin.right;
         const innerH = h - margin.top - margin.bottom;
 
@@ -1610,7 +1610,7 @@
         const groupW = innerW / nBench;
         const groupPad = groupW * 0.1;
         const barsAreaW = groupW - groupPad * 2;
-        const barW = Math.min(barsAreaW / nModels * 0.78, 28);
+        const barW = Math.min(barsAreaW / nModels * 0.94, 38);
         const totalBarsW = barW * nModels;
         const barGap = (barsAreaW - totalBarsW) / Math.max(nModels - 1, 1);
 
@@ -1764,7 +1764,7 @@
         const hasMultiLine = benchmarkNames.some(n => n.includes('\n'));
         const margin = { top: 36, right: 20, bottom: hasMultiLine ? 58 : 40, left: 44 };
         const w = 860;
-        const h = 230;
+        const h = 200;
         const innerW = w - margin.left - margin.right;
         const innerH = h - margin.top - margin.bottom;
 
@@ -1790,7 +1790,7 @@
           cumX += groupWidths[i];
         }
 
-        const barW = Math.min(18, 28);
+        const barW = Math.min(24, 38);
 
         // Grid lines
         for (let i = 1; i <= 4; i++) {
@@ -2087,7 +2087,7 @@
         const data = {
           steps: ["10K", "50K", "80K"],
           groot: {
-            'Embodied-R1.5': [92.0, 96.0, 97.0],
+            'Embodied-R1.5': [92.0, 96.0, 97.3],
             'Qwen3-VL-8B': [82.0, 96.0, 96.0]
           },
           oft: {
